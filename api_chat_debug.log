@@ -1,0 +1,16 @@
+[10-Dec-2025 11:17:52 Europe/Lisbon] PHP Warning:  session_start(): Cannot start session when headers already sent in /home/aluno19355/public_html/api_chat.php on line 64
+[10-Dec-2025 11:17:52 Europe/Lisbon] PHP Notice:  Undefined variable: x in /home/aluno19355/public_html/api_chat.php on line 130
+[10-Dec-2025 11:20:23 Europe/Lisbon] PHP Warning:  session_start(): Cannot start session when headers already sent in /home/aluno19355/public_html/api_chat.php on line 65
+[10-Dec-2025 11:20:23 Europe/Lisbon] PHP Notice:  Undefined variable: x in /home/aluno19355/public_html/api_chat.php on line 131
+[10-Dec-2025 11:23:04 Europe/Lisbon] PHP Warning:  session_start(): Cannot start session when headers already sent in /home/aluno19355/public_html/api_chat.php on line 65
+[10-Dec-2025 11:23:04 Europe/Lisbon] PHP Notice:  Undefined variable: x in /home/aluno19355/public_html/api_chat.php on line 131
+[10-Dec-2025 11:31:36 Europe/Lisbon] PHP Warning:  session_start(): Cannot start session when headers already sent in /home/aluno19355/public_html/api_chat.php on line 68
+[10-Dec-2025 11:31:36 Europe/Lisbon] API Error: Erro na API (401): Invalid API Key
+[10-Dec-2025 11:32:03 Europe/Lisbon] PHP Warning:  session_start(): Cannot start session when headers already sent in /home/aluno19355/public_html/api_chat.php on line 68
+[10-Dec-2025 11:37:55 Europe/Lisbon] PHP Warning:  session_start(): Cannot start session when headers already sent in /home/aluno19355/public_html/api_chat.php on line 68
+[10-Dec-2025 11:38:01 Europe/Lisbon] PHP Warning:  session_start(): Cannot start session when headers already sent in /home/aluno19355/public_html/api_chat.php on line 68
+[10-Dec-2025 11:39:11 Europe/Lisbon] PHP Warning:  session_start(): Cannot start session when headers already sent in /home/aluno19355/public_html/api_chat.php on line 68
+[10-Dec-2025 11:39:47 Europe/Lisbon] PHP Warning:  session_start(): Cannot start session when headers already sent in /home/aluno19355/public_html/api_chat.php on line 68
+[10-Dec-2025 11:39:59 Europe/Lisbon] PHP Warning:  session_start(): Cannot start session when headers already sent in /home/aluno19355/public_html/api_chat.php on line 68
+[10-Dec-2025 11:40:33 Europe/Lisbon] PHP Warning:  session_start(): Cannot start session when headers already sent in /home/aluno19355/public_html/api_chat.php on line 68
+[10-Dec-2025 11:43:54 Europe/Lisbon] PHP Warning:  session_start(): Cannot start session when headers already sent in /home/aluno19355/public_html/api_chat.php on line 68

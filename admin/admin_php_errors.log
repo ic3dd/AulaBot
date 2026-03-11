@@ -1,0 +1,615 @@
+[21-Oct-2025 16:01:00 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 16:01:08 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 16:01:08 Europe/Lisbon] PHP Fatal error:  Uncaught Error: Call to undefined function atualizarUtilizador() in /home/aluno19355/public_html/admin/admin_api.php:104
+Stack trace:
+#0 {main}
+  thrown in /home/aluno19355/public_html/admin/admin_api.php on line 104
+[21-Oct-2025 16:01:08 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 16:01:08 Europe/Lisbon] PHP Fatal error:  Uncaught Error: Call to undefined function atualizarUtilizador() in /home/aluno19355/public_html/admin/admin_api.php:104
+Stack trace:
+#0 {main}
+  thrown in /home/aluno19355/public_html/admin/admin_api.php on line 104
+[21-Oct-2025 16:01:33 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 16:02:03 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 16:02:33 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 16:03:03 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 16:03:33 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 16:04:02 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 16:04:12 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 16:04:29 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 16:04:37 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 16:05:07 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 16:05:37 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 16:06:07 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 16:06:29 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 16:06:55 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 16:07:25 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 16:07:55 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 16:08:25 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 16:08:55 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 16:09:25 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 16:09:55 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 16:10:44 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 16:11:19 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 16:11:25 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 16:11:57 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 16:12:27 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 16:12:57 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 16:13:27 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 16:14:27 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 16:14:57 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 16:15:27 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 16:15:57 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 16:16:27 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 16:16:57 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 16:17:35 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 16:18:07 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 16:18:37 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 16:19:07 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 16:20:06 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 16:20:36 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 16:21:06 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 16:21:36 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 16:22:06 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 16:22:36 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 16:23:44 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 16:24:44 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 16:25:44 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 16:26:44 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 16:27:44 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 16:28:44 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 16:29:44 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 16:30:44 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 16:31:44 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 16:32:44 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 16:33:44 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 16:34:44 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 16:35:44 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 16:36:17 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 16:36:36 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 16:37:06 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 16:37:44 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 16:38:44 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 16:39:44 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 16:40:17 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 16:40:48 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 16:41:18 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 16:41:48 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 16:42:18 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 16:42:48 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 16:43:18 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 16:44:16 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 16:44:18 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 16:44:48 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 16:45:18 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 16:46:15 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 16:46:45 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 16:47:15 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 16:47:45 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 16:54:00 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 16:54:30 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 16:55:00 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 16:55:30 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 16:56:00 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 16:56:30 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 16:57:44 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 16:58:44 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 16:59:44 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 17:00:44 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 17:01:44 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 17:02:44 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 17:03:44 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 17:04:39 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 17:05:18 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 17:05:45 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 17:06:15 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 17:06:45 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 17:06:52 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 17:07:01 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 17:07:34 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 17:08:04 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 17:08:34 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 17:09:04 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 17:09:34 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 17:09:46 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 17:09:50 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 17:09:50 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 17:10:03 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 17:10:04 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 17:10:05 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 17:10:06 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 17:10:14 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 17:10:43 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 17:11:14 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 17:11:44 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 17:12:14 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 17:12:25 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 17:12:31 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 17:12:31 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 17:12:52 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 17:12:52 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 17:12:53 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 17:12:53 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 17:12:54 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 17:12:54 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 17:12:56 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 17:12:56 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 19:09:52 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 19:10:01 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 19:10:30 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 19:10:38 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 19:10:39 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 19:11:00 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 19:11:30 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 19:12:00 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 19:12:05 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 19:12:33 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 19:13:03 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 19:13:33 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 19:14:03 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 19:14:33 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 19:15:03 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 19:15:39 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 19:16:39 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 19:17:39 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 19:18:40 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 19:19:40 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 19:19:59 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 19:20:03 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 19:20:33 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 19:20:46 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 19:20:56 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 19:21:14 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 19:21:20 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 19:21:22 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 19:21:22 Europe/Lisbon] PHP Warning:  mysqli_autocommit() expects exactly 2 parameters, 1 given in /home/aluno19355/public_html/admin/admin_api.php on line 473
+[21-Oct-2025 19:21:23 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 19:21:23 Europe/Lisbon] PHP Warning:  mysqli_autocommit() expects exactly 2 parameters, 1 given in /home/aluno19355/public_html/admin/admin_api.php on line 473
+[21-Oct-2025 19:21:24 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 19:21:24 Europe/Lisbon] PHP Warning:  mysqli_autocommit() expects exactly 2 parameters, 1 given in /home/aluno19355/public_html/admin/admin_api.php on line 473
+[21-Oct-2025 19:21:24 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 19:21:24 Europe/Lisbon] PHP Warning:  mysqli_autocommit() expects exactly 2 parameters, 1 given in /home/aluno19355/public_html/admin/admin_api.php on line 473
+[21-Oct-2025 19:21:25 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 19:21:25 Europe/Lisbon] PHP Warning:  mysqli_autocommit() expects exactly 2 parameters, 1 given in /home/aluno19355/public_html/admin/admin_api.php on line 473
+[21-Oct-2025 19:21:27 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 19:21:27 Europe/Lisbon] PHP Warning:  mysqli_autocommit() expects exactly 2 parameters, 1 given in /home/aluno19355/public_html/admin/admin_api.php on line 473
+[21-Oct-2025 19:21:44 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 19:22:14 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 19:22:47 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 19:23:17 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 19:23:47 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 19:24:18 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 19:24:47 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 19:25:17 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 19:26:39 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 19:27:39 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 19:28:39 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 19:29:39 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 19:30:39 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 19:31:39 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 19:32:39 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 19:33:40 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 19:34:40 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 19:35:39 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 19:36:20 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 19:36:40 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 19:37:09 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 19:37:39 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 19:38:09 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 19:38:39 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 19:39:09 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 19:39:39 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 19:40:17 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 19:40:39 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 19:41:39 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 19:42:39 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 19:43:40 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 19:44:39 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 19:45:40 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 19:46:39 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 19:47:39 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 19:48:40 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 19:49:39 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 19:50:39 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 19:51:40 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 19:52:39 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 19:53:39 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 19:54:40 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 19:55:39 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 19:56:40 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 19:57:40 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 19:58:39 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 19:59:34 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 19:59:40 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 20:00:09 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 20:00:11 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 20:00:13 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 20:00:39 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 20:01:26 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 20:01:57 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 20:02:26 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 20:02:57 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 20:03:05 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 20:03:06 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 20:03:07 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 20:03:08 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 20:03:09 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 20:03:10 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 20:03:37 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 20:04:10 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 20:04:41 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 20:05:11 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 20:05:40 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 20:06:11 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 20:06:41 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 20:07:18 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 20:08:06 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 20:08:10 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 20:08:20 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 20:08:41 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 20:08:45 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 20:08:52 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 20:09:18 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 20:09:33 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 20:09:38 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 20:10:05 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 20:10:36 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 20:11:06 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 20:11:36 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 20:11:56 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 20:12:06 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 20:12:12 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 20:12:32 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 20:12:36 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 20:13:04 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 20:13:34 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 20:14:04 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 20:14:34 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 20:14:51 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 20:14:55 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 20:15:28 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 20:15:58 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 20:16:28 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 20:16:58 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 20:17:28 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 20:17:58 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 20:18:36 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 20:19:40 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 20:20:40 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 20:21:40 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 20:22:40 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 20:23:40 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 20:24:40 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 20:25:40 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 20:26:40 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 20:27:40 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 20:28:40 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 20:29:40 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 20:30:24 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 20:30:27 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 21:54:51 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 21:55:21 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Oct-2025 21:55:51 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[28-Oct-2025 14:57:38 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[28-Oct-2025 14:57:46 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[07-Nov-2025 10:03:51 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[07-Nov-2025 18:53:56 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[07-Nov-2025 18:54:26 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[07-Nov-2025 18:55:01 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[07-Nov-2025 18:55:31 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[07-Nov-2025 18:56:01 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[07-Nov-2025 18:56:31 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[07-Nov-2025 18:57:01 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[07-Nov-2025 18:57:31 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[07-Nov-2025 18:58:56 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[07-Nov-2025 18:59:01 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[07-Nov-2025 18:59:32 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[07-Nov-2025 19:00:02 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[07-Nov-2025 19:00:32 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[07-Nov-2025 19:01:02 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[07-Nov-2025 19:01:32 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[07-Nov-2025 19:02:02 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[07-Nov-2025 19:02:40 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[07-Nov-2025 19:03:02 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[11-Nov-2025 17:07:03 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[11-Nov-2025 17:07:17 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[11-Nov-2025 17:07:20 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[11-Nov-2025 17:07:52 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[11-Nov-2025 17:08:22 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[11-Nov-2025 17:08:52 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[11-Nov-2025 17:09:22 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[11-Nov-2025 17:09:52 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[11-Nov-2025 17:10:22 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[11-Nov-2025 17:10:52 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[11-Nov-2025 17:11:22 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[14-Nov-2025 08:52:44 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[14-Nov-2025 08:53:14 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[14-Nov-2025 08:53:44 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[14-Nov-2025 08:54:14 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[19-Nov-2025 12:10:34 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[19-Nov-2025 12:10:37 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[19-Nov-2025 12:10:40 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[19-Nov-2025 12:10:43 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[19-Nov-2025 12:10:46 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[19-Nov-2025 12:10:49 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[20-Nov-2025 20:56:48 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[20-Nov-2025 20:56:48 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[20-Nov-2025 20:57:48 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[20-Nov-2025 20:57:48 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[20-Nov-2025 20:58:48 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[20-Nov-2025 20:58:49 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[20-Nov-2025 20:59:48 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[20-Nov-2025 20:59:48 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[20-Nov-2025 21:00:23 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[20-Nov-2025 21:00:23 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[20-Nov-2025 21:00:25 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[20-Nov-2025 21:00:28 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[20-Nov-2025 21:00:28 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[20-Nov-2025 21:00:31 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[20-Nov-2025 21:00:36 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[20-Nov-2025 21:00:36 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[20-Nov-2025 21:00:40 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[20-Nov-2025 21:00:42 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[20-Nov-2025 21:00:48 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[20-Nov-2025 21:00:52 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[20-Nov-2025 21:00:52 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[20-Nov-2025 21:00:52 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[20-Nov-2025 21:00:53 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[20-Nov-2025 21:00:54 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[20-Nov-2025 21:00:54 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[20-Nov-2025 21:00:55 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[20-Nov-2025 21:00:56 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[20-Nov-2025 21:00:57 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[20-Nov-2025 21:00:58 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[20-Nov-2025 21:00:58 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[20-Nov-2025 21:00:59 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[20-Nov-2025 21:01:00 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[20-Nov-2025 21:01:00 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[20-Nov-2025 21:01:01 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[20-Nov-2025 21:01:01 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[20-Nov-2025 21:01:02 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[20-Nov-2025 21:01:08 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[20-Nov-2025 21:01:12 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[20-Nov-2025 21:01:17 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[20-Nov-2025 21:01:22 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[20-Nov-2025 21:01:28 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Nov-2025 08:38:20 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Nov-2025 08:38:25 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Nov-2025 08:38:30 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Nov-2025 08:38:35 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Nov-2025 08:38:40 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Nov-2025 08:38:45 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Nov-2025 08:38:50 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Nov-2025 08:38:50 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Nov-2025 08:38:55 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Nov-2025 08:39:00 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Nov-2025 08:39:05 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Nov-2025 08:39:10 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Nov-2025 08:39:15 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Nov-2025 08:39:20 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Nov-2025 08:39:20 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Nov-2025 08:39:25 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Nov-2025 08:39:30 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Nov-2025 08:39:35 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Nov-2025 08:39:40 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Nov-2025 08:39:45 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Nov-2025 08:39:50 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Nov-2025 08:39:50 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Nov-2025 08:39:55 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Nov-2025 08:40:00 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Nov-2025 08:40:05 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Nov-2025 08:40:10 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Nov-2025 08:40:15 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Nov-2025 08:40:20 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Nov-2025 08:40:20 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Nov-2025 08:40:25 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Nov-2025 08:40:30 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Nov-2025 08:40:35 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Nov-2025 08:40:40 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Nov-2025 08:40:45 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Nov-2025 08:40:50 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Nov-2025 08:40:50 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Nov-2025 08:40:55 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Nov-2025 08:41:00 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Nov-2025 08:41:05 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Nov-2025 08:41:10 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Nov-2025 08:41:15 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Nov-2025 08:41:20 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Nov-2025 08:41:20 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Nov-2025 08:41:25 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Nov-2025 08:41:30 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Nov-2025 08:41:35 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Nov-2025 08:41:40 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Nov-2025 08:41:45 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Nov-2025 08:41:50 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Nov-2025 08:41:50 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Nov-2025 08:41:55 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Nov-2025 08:42:00 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Nov-2025 08:42:05 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Nov-2025 08:42:10 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Nov-2025 08:42:15 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Nov-2025 08:42:20 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Nov-2025 08:42:20 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Nov-2025 08:42:25 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Nov-2025 08:42:30 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Nov-2025 08:42:35 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Nov-2025 08:42:40 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Nov-2025 08:42:45 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Nov-2025 08:42:50 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Nov-2025 08:42:50 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Nov-2025 08:42:55 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Nov-2025 08:43:00 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Nov-2025 08:43:05 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Nov-2025 08:43:10 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Nov-2025 08:43:15 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Nov-2025 08:43:20 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Nov-2025 08:43:20 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Nov-2025 08:43:25 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Nov-2025 08:43:30 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Nov-2025 08:43:35 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Nov-2025 08:43:40 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Nov-2025 08:43:45 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Nov-2025 08:43:50 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Nov-2025 08:43:51 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Nov-2025 08:43:55 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Nov-2025 08:44:00 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Nov-2025 08:44:05 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Nov-2025 08:44:10 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Nov-2025 08:44:15 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Nov-2025 08:44:20 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Nov-2025 08:44:20 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Nov-2025 08:44:25 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Nov-2025 08:44:30 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Nov-2025 08:44:35 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Nov-2025 08:44:40 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Nov-2025 08:44:45 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Nov-2025 08:44:50 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Nov-2025 08:44:50 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Nov-2025 08:44:55 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Nov-2025 08:45:00 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Nov-2025 08:45:05 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Nov-2025 08:45:10 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Nov-2025 08:45:15 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Nov-2025 08:45:20 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Nov-2025 08:45:20 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Nov-2025 08:45:25 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Nov-2025 08:45:30 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Nov-2025 08:45:35 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Nov-2025 08:45:40 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Nov-2025 08:45:45 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Nov-2025 08:45:50 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Nov-2025 08:45:50 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Nov-2025 08:45:55 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Nov-2025 08:46:00 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Nov-2025 08:46:05 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Nov-2025 08:46:10 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Nov-2025 08:46:15 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Nov-2025 08:46:20 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Nov-2025 08:46:20 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Nov-2025 08:46:25 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Nov-2025 08:46:30 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Nov-2025 08:46:35 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Nov-2025 08:46:40 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[21-Nov-2025 08:46:45 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[25-Nov-2025 17:12:27 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[25-Nov-2025 17:12:32 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[25-Nov-2025 17:12:34 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[25-Nov-2025 20:27:33 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[25-Nov-2025 20:27:38 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[25-Nov-2025 20:27:39 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[25-Nov-2025 20:31:52 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[26-Nov-2025 09:11:53 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[26-Nov-2025 09:11:58 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[26-Nov-2025 09:12:03 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[26-Nov-2025 09:12:08 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[26-Nov-2025 09:12:08 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[26-Nov-2025 09:12:08 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[26-Nov-2025 09:12:13 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[05-Dec-2025 09:25:00 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[05-Dec-2025 09:25:05 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[05-Dec-2025 09:31:05 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[05-Dec-2025 09:31:10 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[05-Dec-2025 09:31:15 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[05-Dec-2025 09:31:20 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[11-Dec-2025 10:00:22 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[11-Dec-2025 10:00:23 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[11-Dec-2025 10:01:22 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[11-Dec-2025 10:01:22 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[11-Dec-2025 10:02:22 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[11-Dec-2025 10:02:23 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[11-Dec-2025 10:03:22 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[11-Dec-2025 10:03:22 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[11-Dec-2025 10:04:22 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[11-Dec-2025 10:04:22 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[14-Dec-2025 00:48:35 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[14-Dec-2025 00:48:35 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[14-Dec-2025 00:49:35 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[14-Dec-2025 00:49:35 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[14-Dec-2025 00:50:35 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[14-Dec-2025 00:50:35 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[14-Dec-2025 00:51:35 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[14-Dec-2025 00:51:35 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[14-Dec-2025 00:52:32 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[14-Dec-2025 00:52:32 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[14-Dec-2025 00:52:33 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[14-Dec-2025 00:52:37 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[14-Dec-2025 00:52:37 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[14-Dec-2025 00:52:39 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[14-Dec-2025 00:52:44 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[16-Dec-2025 14:31:13 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[16-Dec-2025 14:31:18 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[16-Dec-2025 14:31:28 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[16-Dec-2025 14:31:33 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3
+[03-Feb-2026 13:35:28 Europe/Lisbon] PHP Warning:  session_set_cookie_params(): Cannot change session cookie parameters when session is active in /home/aluno19355/public_html/auth_check.php on line 4
+[03-Feb-2026 13:35:41 Europe/Lisbon] PHP Warning:  session_set_cookie_params(): Cannot change session cookie parameters when session is active in /home/aluno19355/public_html/auth_check.php on line 4
+[03-Feb-2026 13:36:37 Europe/Lisbon] PHP Warning:  session_set_cookie_params(): Cannot change session cookie parameters when session is active in /home/aluno19355/public_html/auth_check.php on line 4
+[03-Feb-2026 13:36:37 Europe/Lisbon] PHP Warning:  session_set_cookie_params(): Cannot change session cookie parameters when session is active in /home/aluno19355/public_html/auth_check.php on line 4
+[03-Feb-2026 13:36:38 Europe/Lisbon] PHP Warning:  session_set_cookie_params(): Cannot change session cookie parameters when session is active in /home/aluno19355/public_html/auth_check.php on line 4
+[03-Feb-2026 13:36:39 Europe/Lisbon] PHP Warning:  session_set_cookie_params(): Cannot change session cookie parameters when session is active in /home/aluno19355/public_html/auth_check.php on line 4
+[03-Feb-2026 13:36:39 Europe/Lisbon] PHP Warning:  session_set_cookie_params(): Cannot change session cookie parameters when session is active in /home/aluno19355/public_html/auth_check.php on line 4
+[03-Feb-2026 13:36:40 Europe/Lisbon] PHP Warning:  session_set_cookie_params(): Cannot change session cookie parameters when session is active in /home/aluno19355/public_html/auth_check.php on line 4
+[03-Feb-2026 13:36:40 Europe/Lisbon] PHP Warning:  session_set_cookie_params(): Cannot change session cookie parameters when session is active in /home/aluno19355/public_html/auth_check.php on line 4
+[03-Feb-2026 13:36:40 Europe/Lisbon] PHP Warning:  session_set_cookie_params(): Cannot change session cookie parameters when session is active in /home/aluno19355/public_html/auth_check.php on line 4
+[03-Feb-2026 13:36:40 Europe/Lisbon] PHP Warning:  session_set_cookie_params(): Cannot change session cookie parameters when session is active in /home/aluno19355/public_html/auth_check.php on line 4
+[03-Feb-2026 13:36:40 Europe/Lisbon] PHP Warning:  session_set_cookie_params(): Cannot change session cookie parameters when session is active in /home/aluno19355/public_html/auth_check.php on line 4
+[03-Feb-2026 13:36:40 Europe/Lisbon] PHP Warning:  session_set_cookie_params(): Cannot change session cookie parameters when session is active in /home/aluno19355/public_html/auth_check.php on line 4
+[03-Feb-2026 13:36:41 Europe/Lisbon] PHP Warning:  session_set_cookie_params(): Cannot change session cookie parameters when session is active in /home/aluno19355/public_html/auth_check.php on line 4
+[03-Feb-2026 13:36:41 Europe/Lisbon] PHP Warning:  session_set_cookie_params(): Cannot change session cookie parameters when session is active in /home/aluno19355/public_html/auth_check.php on line 4
+[03-Feb-2026 13:36:41 Europe/Lisbon] PHP Warning:  session_set_cookie_params(): Cannot change session cookie parameters when session is active in /home/aluno19355/public_html/auth_check.php on line 4
+[03-Feb-2026 13:36:46 Europe/Lisbon] PHP Warning:  session_set_cookie_params(): Cannot change session cookie parameters when session is active in /home/aluno19355/public_html/auth_check.php on line 4
+[03-Feb-2026 13:36:51 Europe/Lisbon] PHP Warning:  session_set_cookie_params(): Cannot change session cookie parameters when session is active in /home/aluno19355/public_html/auth_check.php on line 4
+[03-Feb-2026 13:36:56 Europe/Lisbon] PHP Warning:  session_set_cookie_params(): Cannot change session cookie parameters when session is active in /home/aluno19355/public_html/auth_check.php on line 4
+[03-Feb-2026 13:37:01 Europe/Lisbon] PHP Warning:  session_set_cookie_params(): Cannot change session cookie parameters when session is active in /home/aluno19355/public_html/auth_check.php on line 4
+[03-Feb-2026 13:37:06 Europe/Lisbon] PHP Warning:  session_set_cookie_params(): Cannot change session cookie parameters when session is active in /home/aluno19355/public_html/auth_check.php on line 4
+[03-Feb-2026 13:37:11 Europe/Lisbon] PHP Warning:  session_set_cookie_params(): Cannot change session cookie parameters when session is active in /home/aluno19355/public_html/auth_check.php on line 4
+[03-Feb-2026 13:37:11 Europe/Lisbon] PHP Warning:  session_set_cookie_params(): Cannot change session cookie parameters when session is active in /home/aluno19355/public_html/auth_check.php on line 4
+[03-Feb-2026 13:37:13 Europe/Lisbon] PHP Warning:  session_set_cookie_params(): Cannot change session cookie parameters when session is active in /home/aluno19355/public_html/auth_check.php on line 4
+[03-Feb-2026 13:37:13 Europe/Lisbon] PHP Warning:  session_set_cookie_params(): Cannot change session cookie parameters when session is active in /home/aluno19355/public_html/auth_check.php on line 4
+[03-Feb-2026 13:37:16 Europe/Lisbon] PHP Warning:  session_set_cookie_params(): Cannot change session cookie parameters when session is active in /home/aluno19355/public_html/auth_check.php on line 4
+[03-Feb-2026 13:37:22 Europe/Lisbon] PHP Warning:  session_set_cookie_params(): Cannot change session cookie parameters when session is active in /home/aluno19355/public_html/auth_check.php on line 4
+[03-Feb-2026 13:37:27 Europe/Lisbon] PHP Warning:  session_set_cookie_params(): Cannot change session cookie parameters when session is active in /home/aluno19355/public_html/auth_check.php on line 4
+[03-Feb-2026 13:37:32 Europe/Lisbon] PHP Warning:  session_set_cookie_params(): Cannot change session cookie parameters when session is active in /home/aluno19355/public_html/auth_check.php on line 4
+[03-Feb-2026 13:37:37 Europe/Lisbon] PHP Warning:  session_set_cookie_params(): Cannot change session cookie parameters when session is active in /home/aluno19355/public_html/auth_check.php on line 4
+[03-Feb-2026 13:37:42 Europe/Lisbon] PHP Warning:  session_set_cookie_params(): Cannot change session cookie parameters when session is active in /home/aluno19355/public_html/auth_check.php on line 4
+[03-Feb-2026 13:37:42 Europe/Lisbon] PHP Warning:  session_set_cookie_params(): Cannot change session cookie parameters when session is active in /home/aluno19355/public_html/auth_check.php on line 4
+[03-Feb-2026 13:37:47 Europe/Lisbon] PHP Warning:  session_set_cookie_params(): Cannot change session cookie parameters when session is active in /home/aluno19355/public_html/auth_check.php on line 4
+[03-Feb-2026 13:37:52 Europe/Lisbon] PHP Warning:  session_set_cookie_params(): Cannot change session cookie parameters when session is active in /home/aluno19355/public_html/auth_check.php on line 4
+[03-Feb-2026 13:37:57 Europe/Lisbon] PHP Warning:  session_set_cookie_params(): Cannot change session cookie parameters when session is active in /home/aluno19355/public_html/auth_check.php on line 4
+[03-Feb-2026 13:38:02 Europe/Lisbon] PHP Warning:  session_set_cookie_params(): Cannot change session cookie parameters when session is active in /home/aluno19355/public_html/auth_check.php on line 4
+[03-Feb-2026 13:38:07 Europe/Lisbon] PHP Warning:  session_set_cookie_params(): Cannot change session cookie parameters when session is active in /home/aluno19355/public_html/auth_check.php on line 4
+[03-Feb-2026 13:38:12 Europe/Lisbon] PHP Warning:  session_set_cookie_params(): Cannot change session cookie parameters when session is active in /home/aluno19355/public_html/auth_check.php on line 4
+[03-Feb-2026 13:38:12 Europe/Lisbon] PHP Warning:  session_set_cookie_params(): Cannot change session cookie parameters when session is active in /home/aluno19355/public_html/auth_check.php on line 4
+[03-Feb-2026 13:38:17 Europe/Lisbon] PHP Warning:  session_set_cookie_params(): Cannot change session cookie parameters when session is active in /home/aluno19355/public_html/auth_check.php on line 4
+[03-Feb-2026 13:38:41 Europe/Lisbon] PHP Warning:  session_set_cookie_params(): Cannot change session cookie parameters when session is active in /home/aluno19355/public_html/auth_check.php on line 4
+[03-Feb-2026 13:38:42 Europe/Lisbon] PHP Warning:  session_set_cookie_params(): Cannot change session cookie parameters when session is active in /home/aluno19355/public_html/auth_check.php on line 4
+[03-Feb-2026 13:39:12 Europe/Lisbon] PHP Warning:  session_set_cookie_params(): Cannot change session cookie parameters when session is active in /home/aluno19355/public_html/auth_check.php on line 4
+[03-Feb-2026 13:39:41 Europe/Lisbon] PHP Warning:  session_set_cookie_params(): Cannot change session cookie parameters when session is active in /home/aluno19355/public_html/auth_check.php on line 4
+[03-Feb-2026 13:39:42 Europe/Lisbon] PHP Warning:  session_set_cookie_params(): Cannot change session cookie parameters when session is active in /home/aluno19355/public_html/auth_check.php on line 4
+[03-Feb-2026 13:40:35 Europe/Lisbon] PHP Warning:  session_set_cookie_params(): Cannot change session cookie parameters when session is active in /home/aluno19355/public_html/auth_check.php on line 4
+[03-Feb-2026 13:40:35 Europe/Lisbon] PHP Warning:  session_set_cookie_params(): Cannot change session cookie parameters when session is active in /home/aluno19355/public_html/auth_check.php on line 4
+[03-Feb-2026 13:40:36 Europe/Lisbon] PHP Warning:  session_set_cookie_params(): Cannot change session cookie parameters when session is active in /home/aluno19355/public_html/auth_check.php on line 4
+[03-Feb-2026 13:40:41 Europe/Lisbon] PHP Warning:  session_set_cookie_params(): Cannot change session cookie parameters when session is active in /home/aluno19355/public_html/auth_check.php on line 4
+[03-Feb-2026 13:40:41 Europe/Lisbon] PHP Warning:  session_set_cookie_params(): Cannot change session cookie parameters when session is active in /home/aluno19355/public_html/auth_check.php on line 4
+[03-Feb-2026 13:40:53 Europe/Lisbon] PHP Warning:  session_set_cookie_params(): Cannot change session cookie parameters when session is active in /home/aluno19355/public_html/auth_check.php on line 4
+[03-Feb-2026 13:40:58 Europe/Lisbon] PHP Warning:  session_set_cookie_params(): Cannot change session cookie parameters when session is active in /home/aluno19355/public_html/auth_check.php on line 4
+[03-Feb-2026 13:41:03 Europe/Lisbon] PHP Warning:  session_set_cookie_params(): Cannot change session cookie parameters when session is active in /home/aluno19355/public_html/auth_check.php on line 4
+[03-Feb-2026 13:41:09 Europe/Lisbon] PHP Warning:  session_set_cookie_params(): Cannot change session cookie parameters when session is active in /home/aluno19355/public_html/auth_check.php on line 4
+[03-Feb-2026 13:41:13 Europe/Lisbon] PHP Warning:  session_set_cookie_params(): Cannot change session cookie parameters when session is active in /home/aluno19355/public_html/auth_check.php on line 4
+[03-Feb-2026 13:41:18 Europe/Lisbon] PHP Warning:  session_set_cookie_params(): Cannot change session cookie parameters when session is active in /home/aluno19355/public_html/auth_check.php on line 4
+[03-Feb-2026 13:41:23 Europe/Lisbon] PHP Warning:  session_set_cookie_params(): Cannot change session cookie parameters when session is active in /home/aluno19355/public_html/auth_check.php on line 4
+[03-Feb-2026 13:41:23 Europe/Lisbon] PHP Warning:  session_set_cookie_params(): Cannot change session cookie parameters when session is active in /home/aluno19355/public_html/auth_check.php on line 4
+[03-Feb-2026 13:41:28 Europe/Lisbon] PHP Warning:  session_set_cookie_params(): Cannot change session cookie parameters when session is active in /home/aluno19355/public_html/auth_check.php on line 4
+[03-Feb-2026 13:41:33 Europe/Lisbon] PHP Warning:  session_set_cookie_params(): Cannot change session cookie parameters when session is active in /home/aluno19355/public_html/auth_check.php on line 4
+[03-Feb-2026 13:41:38 Europe/Lisbon] PHP Warning:  session_set_cookie_params(): Cannot change session cookie parameters when session is active in /home/aluno19355/public_html/auth_check.php on line 4
+[03-Feb-2026 13:41:43 Europe/Lisbon] PHP Warning:  session_set_cookie_params(): Cannot change session cookie parameters when session is active in /home/aluno19355/public_html/auth_check.php on line 4
+[03-Feb-2026 13:41:48 Europe/Lisbon] PHP Warning:  session_set_cookie_params(): Cannot change session cookie parameters when session is active in /home/aluno19355/public_html/auth_check.php on line 4
+[04-Feb-2026 11:10:05 Europe/Lisbon] PHP Warning:  session_set_cookie_params(): Cannot change session cookie parameters when session is active in /home/aluno19355/public_html/auth_check.php on line 4
+[04-Feb-2026 11:10:10 Europe/Lisbon] PHP Warning:  session_set_cookie_params(): Cannot change session cookie parameters when session is active in /home/aluno19355/public_html/auth_check.php on line 4
+[04-Feb-2026 11:10:15 Europe/Lisbon] PHP Warning:  session_set_cookie_params(): Cannot change session cookie parameters when session is active in /home/aluno19355/public_html/auth_check.php on line 4
+[04-Feb-2026 11:10:20 Europe/Lisbon] PHP Warning:  session_set_cookie_params(): Cannot change session cookie parameters when session is active in /home/aluno19355/public_html/auth_check.php on line 4
+[04-Feb-2026 11:10:25 Europe/Lisbon] PHP Warning:  session_set_cookie_params(): Cannot change session cookie parameters when session is active in /home/aluno19355/public_html/auth_check.php on line 4
+[04-Feb-2026 11:10:30 Europe/Lisbon] PHP Warning:  session_set_cookie_params(): Cannot change session cookie parameters when session is active in /home/aluno19355/public_html/auth_check.php on line 4
+[04-Feb-2026 11:10:35 Europe/Lisbon] PHP Warning:  session_set_cookie_params(): Cannot change session cookie parameters when session is active in /home/aluno19355/public_html/auth_check.php on line 4
+[04-Feb-2026 11:10:35 Europe/Lisbon] PHP Warning:  session_set_cookie_params(): Cannot change session cookie parameters when session is active in /home/aluno19355/public_html/auth_check.php on line 4
+[04-Feb-2026 11:10:40 Europe/Lisbon] PHP Warning:  session_set_cookie_params(): Cannot change session cookie parameters when session is active in /home/aluno19355/public_html/auth_check.php on line 4
+[04-Feb-2026 11:10:45 Europe/Lisbon] PHP Warning:  session_set_cookie_params(): Cannot change session cookie parameters when session is active in /home/aluno19355/public_html/auth_check.php on line 4

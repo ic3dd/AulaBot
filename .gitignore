@@ -1,0 +1,20 @@
+# Logs
+*.log
+admin_php_errors.log
+admin_debug.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Env / secrets (não subir senhas)
+.env
+.env.local
+*config_local*
+config_secrets.php

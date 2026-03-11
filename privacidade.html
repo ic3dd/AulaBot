@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Politica de Privacidade | AulaBot</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --secondary-gradient: linear-gradient(135deg, #06d6a0 0%, #118ab2 100%);
+            --accent-gradient: linear-gradient(135deg, #ffd166 0%, #f77f00 100%);
+            --text-primary: #2d3748;
+            --text-secondary: #4a5568;
+            --text-muted: #718096;
+            --bg-primary: #ffffff;
+            --bg-secondary: #f7fafc;
+            --border-color: #e2e8f0;
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+            --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+            --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.1);
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --radius-xl: 20px;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--primary-gradient);
+            min-height: 100vh;
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Header com botão de voltar */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-color);
+            padding: 1rem 2rem;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 24px;
+            background: var(--primary-gradient);
+            color: white;
+            text-decoration: none;
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: var(--shadow-md);
+            border: none;
+            cursor: pointer;
+        }
+
+        .back-button:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .back-button i {
+            font-size: 16px;
+            transition: transform 0.3s ease;
+        }
+
+        .back-button:hover i {
+            transform: translateX(-4px);
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--primary-gradient);
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+        }
+
+        .logo-text {
+            font-size: 24px;
+            font-weight: 700;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Container principal */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 120px 2rem 2rem;
+        }
+
+        .content-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: var(--radius-xl);
+            padding: 3rem;
+            box-shadow: var(--shadow-xl);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .content-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--primary-gradient);
+        }
+
+        /* Título principal */
+        .main-title {
+            font-size: 3rem;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 1rem;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.2;
+        }
+
+        .subtitle {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            text-align: center;
+            margin-bottom: 3rem;
+            font-weight: 500;
+        }
+
+        /* Seções */
+        .section {
+            margin-bottom: 2.5rem;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--border-color);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 60px;
+            height: 2px;
+            background: var(--primary-gradient);
+        }
+
+        .section-content {
+            color: var(--text-secondary);
+            line-height: 1.7;
+            font-size: 1rem;
+        }
+
+        .section-content p {
+            margin-bottom: 1rem;
+        }
+
+        /* Listas */
+        .terms-list {
+            list-style: none;
+            padding: 0;
+            margin: 1.5rem 0;
+        }
+
+        .terms-list li {
+            position: relative;
+            padding-left: 2rem;
+            margin-bottom: 1rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .terms-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 20px;
+            height: 20px;
+            background: var(--secondary-gradient);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        /* Links */
+        .link {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .link:hover {
+            color: #764ba2;
+        }
+
+        .link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-gradient);
+            transition: width 0.3s ease;
+        }
+
+        .link:hover::after {
+            width: 100%;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+        }
+
+        .last-updated {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* Animações */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .content-card {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        .section {
+            animation: fadeInUp 0.6s ease-out;
+            animation-fill-mode: both;
+        }
+
+        .section:nth-child(2) {
+            animation-delay: 0.1s;
+        }
+
+        .section:nth-child(3) {
+            animation-delay: 0.2s;
+        }
+
+        .section:nth-child(4) {
+            animation-delay: 0.3s;
+        }
+
+        .section:nth-child(5) {
+            animation-delay: 0.4s;
+        }
+
+        .section:nth-child(6) {
+            animation-delay: 0.5s;
+        }
+
+        .section:nth-child(7) {
+            animation-delay: 0.6s;
+        }
+
+        .section:nth-child(8) {
+            animation-delay: 0.7s;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .container {
+                padding: 100px 1rem 2rem;
+            }
+
+            .content-card {
+                padding: 2rem 1.5rem;
+                border-radius: var(--radius-lg);
+            }
+
+            .main-title {
+                font-size: 2.5rem;
+            }
+
+            .header {
+                padding: 1rem;
+            }
+
+            .back-button {
+                padding: 10px 20px;
+                font-size: 13px;
+            }
+
+            .logo-text {
+                font-size: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .main-title {
+                font-size: 2rem;
+            }
+
+            .subtitle {
+                font-size: 1.1rem;
+            }
+
+            .section-title {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="logo-section">
+                <div class="logo-icon">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <span class="logo-text">AulaBot</span>
+            </div>
+            <button class="back-button" onclick="window.location.href='index.php'">
+                <i class="fas fa-arrow-left"></i>
+                Voltar
+            </button>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="content-card">
+            <h1 class="main-title">Política de Privacidade</h1>
+            <p class="subtitle">A tua privacidade é uma prioridade para nós. Esta política explica de forma transparente
+                como recolhemos, utilizamos e protegemos os teus dados pessoais.</p>
+
+            <div class="section">
+                <h2 class="section-title">1. Quem Somos</h2>
+                <div class="section-content">
+                    <p>O <strong>AulaBot</strong> é uma plataforma educacional portuguesa que utiliza inteligência
+                        artificial para apoiar estudantes no seu percurso escolar. Estamos comprometidos em proteger a
+                        tua privacidade e em tratar os teus dados com total transparência e segurança.</p>
+                    <p>Para qualquer questão relacionada com a proteção de dados, podes contactar-nos através de: <a
+                            href="mailto:privacidade@aulabot.pt" class="link">privacidade@aulabot.pt</a></p>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">2. Dados que Recolhemos</h2>
+                <div class="section-content">
+                    <p>Para te oferecer o melhor serviço possível, recolhemos os seguintes tipos de informação:</p>
+                    <ul class="terms-list">
+                        <li><strong>Dados de registo:</strong> Nome, endereço de email e palavra-passe encriptada quando
+                            crias uma conta</li>
+                        <li><strong>Dados de utilização:</strong> Perguntas enviadas ao AulaBot, histórico de conversas
+                            e preferências de disciplinas</li>
+                        <li><strong>Dados técnicos:</strong> Endereço IP (de forma anonimizada), tipo de navegador,
+                            sistema operativo e padrões de acesso</li>
+                        <li><strong>Imagens:</strong> Fotografias de exercícios ou apontamentos que envies para análise
+                            pelo sistema</li>
+                    </ul>
+                    <p><strong>Dados de menores:</strong> Se tens menos de 16 anos, deves obter autorização do teu
+                        encarregado de educação antes de utilizares o serviço.</p>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">3. Como Utilizamos os Teus Dados</h2>
+                <div class="section-content">
+                    <p>Os teus dados são utilizados exclusivamente para:</p>
+                    <ul class="terms-list">
+                        <li><strong>Fornecer o serviço:</strong> Processar as tuas perguntas e gerar respostas
+                            personalizadas</li>
+                        <li><strong>Melhorar a experiência:</strong> Adaptar as respostas ao teu nível escolar e
+                            disciplinas selecionadas</li>
+                        <li><strong>Garantir a segurança:</strong> Prevenir fraudes, abusos e proteger o serviço de
+                            utilizações maliciosas</li>
+                        <li><strong>Comunicar contigo:</strong> Enviar notificações importantes sobre o serviço (podes
+                            optar por não as receber)</li>
+                        <li><strong>Aperfeiçoar o AulaBot:</strong> Analisar tendências de utilização para melhorar a
+                            qualidade das respostas</li>
+                    </ul>
+                    <p><strong>Importante:</strong> Nunca vendemos os teus dados a terceiros, nem os utilizamos para
+                        fins publicitários.</p>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">4. Base Legal para o Tratamento</h2>
+                <div class="section-content">
+                    <p>Tratamos os teus dados pessoais com base nas seguintes fundamentos legais, em conformidade com o
+                        RGPD:</p>
+                    <ul class="terms-list">
+                        <li><strong>Execução de contrato:</strong> Para te fornecer o serviço que solicitaste ao criares
+                            uma conta</li>
+                        <li><strong>Consentimento:</strong> Para funcionalidades opcionais como notificações por email
+                            ou análise de imagens</li>
+                        <li><strong>Interesse legítimo:</strong> Para melhorar o serviço, garantir a segurança e
+                            prevenir fraudes</li>
+                        <li><strong>Obrigação legal:</strong> Quando a lei nos obriga a conservar ou partilhar
+                            determinadas informações</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">5. Partilha de Dados</h2>
+                <div class="section-content">
+                    <p>Os teus dados pessoais só são partilhados nas seguintes circunstâncias:</p>
+                    <ul class="terms-list">
+                        <li><strong>Fornecedores de serviços:</strong> Empresas que nos ajudam a operar o AulaBot (ex:
+                            alojamento de servidores), sempre sob contratos de confidencialidade rigorosos</li>
+                        <li><strong>Obrigações legais:</strong> Quando exigido por tribunais, autoridades policiais ou
+                            reguladores</li>
+                        <li><strong>Com o teu consentimento:</strong> Apenas quando nos deres autorização explícita</li>
+                    </ul>
+                    <p>Nunca partilhamos os teus dados para fins comerciais ou de marketing de terceiros.</p>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">6. Conservação dos Dados</h2>
+                <div class="section-content">
+                    <p>Conservamos os teus dados apenas durante o tempo necessário:</p>
+                    <ul class="terms-list">
+                        <li><strong>Dados da conta:</strong> Enquanto mantiveres a conta ativa, e até 30 dias após
+                            eliminação</li>
+                        <li><strong>Histórico de conversas:</strong> Até 12 meses, para permitir continuidade nas
+                            sessões de estudo</li>
+                        <li><strong>Dados técnicos:</strong> Até 6 meses para fins de segurança e análise</li>
+                        <li><strong>Imagens enviadas:</strong> Processadas em tempo real e eliminadas automaticamente
+                            após 24 horas</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">7. Os Teus Direitos</h2>
+                <div class="section-content">
+                    <p>Ao abrigo do Regulamento Geral sobre a Proteção de Dados (RGPD), tens os seguintes direitos:</p>
+                    <ul class="terms-list">
+                        <li><strong>Direito de acesso:</strong> Podes solicitar uma cópia de todos os dados que temos
+                            sobre ti</li>
+                        <li><strong>Direito de retificação:</strong> Podes corrigir dados incorretos ou incompletos</li>
+                        <li><strong>Direito ao apagamento:</strong> Podes pedir que eliminemos os teus dados ("direito a
+                            ser esquecido")</li>
+                        <li><strong>Direito à portabilidade:</strong> Podes receber os teus dados num formato
+                            estruturado</li>
+                        <li><strong>Direito de oposição:</strong> Podes opor-te ao tratamento dos teus dados em certas
+                            circunstâncias</li>
+                        <li><strong>Direito de retirar consentimento:</strong> Podes retirar o consentimento a qualquer
+                            momento</li>
+                    </ul>
+                    <p>Para exercer qualquer destes direitos, contacta-nos através de <a
+                            href="mailto:privacidade@aulabot.pt" class="link">privacidade@aulabot.pt</a>. Responderemos
+                        no prazo de 30 dias.</p>
+                    <p>Se considerares que os teus direitos não foram respeitados, podes apresentar reclamação junto da
+                        <strong>Comissão Nacional de Proteção de Dados (CNPD)</strong> em <a href="https://www.cnpd.pt"
+                            class="link" target="_blank">www.cnpd.pt</a>.</p>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">8. Segurança dos Dados</h2>
+                <div class="section-content">
+                    <p>Implementamos medidas de segurança técnicas e organizativas para proteger os teus dados:</p>
+                    <ul class="terms-list">
+                        <li>Encriptação de palavras-passe e dados sensíveis</li>
+                        <li>Ligações seguras através de HTTPS</li>
+                        <li>Acesso restrito aos dados apenas a pessoal autorizado</li>
+                        <li>Monitorização contínua de acessos suspeitos</li>
+                        <li>Backups regulares e seguros</li>
+                    </ul>
+                    <p>Apesar de todos os esforços, nenhum sistema é 100% seguro. Recomendamos que utilizes uma
+                        palavra-passe forte e única para a tua conta.</p>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">9. Alterações a Esta Política</h2>
+                <div class="section-content">
+                    <p>Podemos atualizar esta Política de Privacidade para refletir alterações nos nossos serviços ou
+                        requisitos legais. Se fizermos alterações significativas, notificar-te-emos através do email
+                        associado à tua conta.</p>
+                    <p>Recomendamos que consultes esta página periodicamente para te manteres informado sobre como
+                        protegemos os teus dados.</p>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">10. Contacto</h2>
+                <div class="section-content">
+                    <p>Para qualquer questão sobre privacidade ou proteção de dados, contacta-nos:</p>
+                    <ul class="terms-list">
+                        <li><strong>Email:</strong> <a href="mailto:privacidade@aulabot.pt"
+                                class="link">privacidade@aulabot.pt</a></li>
+                        <li><strong>Suporte geral:</strong> <a href="mailto:suporte@aulabot.pt"
+                                class="link">suporte@aulabot.pt</a></li>
+                    </ul>
+                    <p>Estamos empenhados em responder às tuas questões no prazo máximo de 5 dias úteis.</p>
+                </div>
+            </div>
+
+            <div class="footer">
+                <p class="last-updated">Última atualização: Fevereiro 2026</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Animação suave ao carregar
+        document.addEventListener('DOMContentLoaded', function () {
+            // Adicionar efeito de parallax sutil
+            window.addEventListener('scroll', function () {
+                const scrolled = window.pageYOffset;
+                const parallax = document.querySelector('.content-card');
+                const speed = scrolled * 0.1;
+                parallax.style.transform = `translateY(${speed}px)`;
+            });
+
+            // Efeito de hover nos links
+            const links = document.querySelectorAll('.link');
+            links.forEach(link => {
+                link.addEventListener('mouseenter', function () {
+                    this.style.transform = 'translateY(-1px)';
+                });
+                link.addEventListener('mouseleave', function () {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

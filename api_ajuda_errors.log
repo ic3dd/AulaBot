@@ -1,0 +1,1 @@
+[19-Nov-2025 12:10:17 Europe/Lisbon] PHP Notice:  session_start(): A session had already been started - ignoring in /home/aluno19355/public_html/auth_check.php on line 3

@@ -1,0 +1,2 @@
+[2026-02-03 14:18:52] ID: 45 | Materias: ["portugues","matematica","fisica","quimica","biologia","ingles","franc\u00e9s","artes","educacao_fisica"] | Msg: fala sobre as colonias portuguesas
+[2026-02-03 14:19:03] ID: 45 | Materias: ["portugues","matematica","fisica","quimica","biologia","ingles","franc\u00e9s","artes","educacao_fisica"] | Msg: fala sobre camoes

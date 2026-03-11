@@ -1,0 +1,633 @@
+/* Modal base */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* Efeito de desfoque no fundo quando modal está ativo */
+body.modal-active {
+  overflow: hidden;
+}
+
+body.modal-active .conteudo-principal,
+body.modal-active .barra-lateral {
+  filter: blur(5px);
+  pointer-events: none;
+}
+
+.modal-content {
+  background-color: #ffffff;
+  margin: 5% auto;
+  padding: 0;
+  border-radius: 20px;
+  width: 90%;
+  max-width: 420px;
+  position: relative;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+  animation: modalSlideIn 0.4s ease-out;
+  overflow: visible;
+  /* Changed from hidden to avoid clipping shadows/content */
+  min-height: 540px;
+  /* Reduced from 620px */
+  height: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-30px) scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Estilos do componente - Temática AulaBot */
+.wrapper {
+  --primary-color: #5436DA;
+  --secondary-color: #19C37D;
+  --text-color: #343541;
+  --text-light: #6e6e80;
+  --border-color: #e5e5e6;
+  --bg-color: #ffffff;
+  --success-color: #19C37D;
+  --accent-color: #f7f7f8;
+}
+
+/* Header com toggle */
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 25px 30px;
+  background: linear-gradient(135deg, #f7f7f8 0%, #e5e5e6 100%);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.toggle-label {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-light);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  user-select: none;
+}
+
+.toggle-label.active {
+  color: var(--primary-color);
+}
+
+/* Switch moderno */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 32px;
+}
+
+.toggle {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.3s;
+  border-radius: 32px;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: 0.3s;
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.toggle:checked+.slider {
+  background-color: var(--primary-color);
+}
+
+.toggle:checked+.slider:before {
+  transform: translateX(28px);
+}
+
+/* Container dos formulários */
+.form-container {
+  position: relative;
+  min-height: 480px;
+  /* Reduced from 530px */
+  overflow: hidden;
+}
+
+/* Cards dos formulários */
+.form-card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 30px 25px;
+  /* Reduced from 40px 30px */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  /* Changed from space-between to allow natural flow */
+  gap: 15px;
+  /* Added gap to control spacing better than space-between */
+  opacity: 1;
+  transform: translateX(0);
+  transition: all 0.4s ease;
+  box-sizing: border-box;
+}
+
+.form-card.hidden {
+  opacity: 0;
+  transform: translateX(100%);
+}
+
+#signup-form {
+  opacity: 0;
+  transform: translateX(-100%);
+}
+
+#signup-form.show {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+#login-form.hidden {
+  opacity: 0;
+  transform: translateX(-100%);
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--text-color);
+  margin: 0 0 30px 0;
+  text-align: center;
+}
+
+.flip-card__form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  max-width: 300px;
+  height: 100%;
+  justify-content: flex-start;
+  padding-bottom: 20px;
+  overflow-y: auto;
+  max-height: 100%;
+}
+
+.flip-card__input {
+  width: 100%;
+  height: 48px;
+  border: 2px solid var(--border-color);
+  border-radius: 12px;
+  background-color: var(--bg-color);
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text-color);
+  padding: 0 16px;
+  outline: none;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+.flip-card__input::placeholder {
+  color: var(--text-light);
+  font-weight: 400;
+}
+
+.flip-card__input:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(84, 54, 218, 0.1);
+  transform: translateY(-1px);
+}
+
+.flip-card__btn {
+  width: 100%;
+  height: 48px;
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+  box-shadow: 0 4px 15px rgba(84, 54, 218, 0.3);
+  flex-shrink: 0;
+}
+
+.flip-card__btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(84, 54, 218, 0.4);
+}
+
+.flip-card__btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 10px rgba(84, 54, 218, 0.3);
+}
+
+/* Responsividade */
+@media (max-width: 480px) {
+  .modal-content {
+    margin: 15% auto;
+    width: 95%;
+    max-width: 360px;
+  }
+
+  .modal-header {
+    padding: 20px 25px;
+    gap: 15px;
+  }
+
+  .toggle-label {
+    font-size: 14px;
+  }
+
+  .switch {
+    width: 50px;
+    height: 28px;
+  }
+
+  .slider:before {
+    height: 22px;
+    width: 22px;
+    left: 3px;
+    bottom: 3px;
+  }
+
+  .toggle:checked+.slider:before {
+    transform: translateX(22px);
+  }
+
+  .form-card {
+    padding: 30px 25px;
+  }
+
+  .title {
+    font-size: 24px;
+    margin-bottom: 25px;
+  }
+
+  .flip-card__form {
+    gap: 18px;
+  }
+
+  .flip-card__input {
+    height: 44px;
+    font-size: 14px;
+  }
+
+  .flip-card__btn {
+    height: 44px;
+    font-size: 15px;
+  }
+}
+
+/* =============================
+   ESTILOS DOS TERMOS NO POPUP
+   ============================= */
+.termos-container {
+  margin: 15px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.checkbox-wrapper {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.termos-checkbox {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.termos-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #4a5568;
+  transition: color 0.3s ease;
+}
+
+.termos-label:hover {
+  color: #2d3748;
+}
+
+.checkbox-custom {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  background: #ffffff;
+  border: 2px solid #cbd5e0;
+  border-radius: 4px;
+  flex-shrink: 0;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2px;
+}
+
+.checkbox-custom::after {
+  content: '';
+  position: absolute;
+  width: 6px;
+  height: 10px;
+  border: solid #ffffff;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.termos-checkbox:checked+.termos-label .checkbox-custom {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-color: #667eea;
+  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+}
+
+.termos-checkbox:checked+.termos-label .checkbox-custom::after {
+  opacity: 1;
+}
+
+.termos-checkbox:focus+.termos-label .checkbox-custom {
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+  border-color: #667eea;
+}
+
+.termos-text {
+  flex: 1;
+  line-height: 1.5;
+}
+
+.termos-link {
+  color: #667eea;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.termos-link:hover {
+  color: #764ba2;
+  text-decoration: underline;
+}
+
+.termos-link::after {
+  content: '↗';
+  margin-left: 4px;
+  font-size: 0.8em;
+  opacity: 0.7;
+}
+
+
+/* Animação de validação */
+.termos-checkbox:invalid+.termos-label .checkbox-custom {
+  border-color: #e53e3e;
+  animation: shake 0.5s ease-in-out;
+}
+
+@keyframes shake {
+
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+
+  25% {
+    transform: translateX(-2px);
+  }
+
+  75% {
+    transform: translateX(2px);
+  }
+}
+
+/* =============================
+   SEÇÃO DE MATÉRIAS ESCOLARES
+   ============================= */
+.materias-section {
+  width: 100%;
+  margin: 20px 0;
+  padding: 0 10px;
+  max-height: 400px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #e5e5e6 #f7f7f8;
+}
+
+.materias-section::-webkit-scrollbar {
+  width: 6px;
+}
+
+.materias-section::-webkit-scrollbar-track {
+  background: #f7f7f8;
+  border-radius: 3px;
+}
+
+.materias-section::-webkit-scrollbar-thumb {
+  background: #cbd5e0;
+  border-radius: 3px;
+}
+
+.materias-section::-webkit-scrollbar-thumb:hover {
+  background: #a0aec0;
+}
+
+.materias-header {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 16px;
+}
+
+.materias-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+.materias-subtitle {
+  font-size: 12px;
+  color: var(--text-light);
+  font-weight: 400;
+}
+
+.materias-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.materia-card {
+  position: relative;
+  cursor: pointer;
+  display: block;
+}
+
+.materia-checkbox {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  cursor: pointer;
+}
+
+.materia-box {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px 16px;
+  border: 2px solid var(--border-color);
+  border-radius: 10px;
+  background-color: #f9f9fa;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.materia-box::before {
+  content: '';
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 18px;
+  height: 18px;
+  border: 2px solid var(--border-color);
+  border-radius: 4px;
+  background-color: #ffffff;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.materia-box::after {
+  content: '';
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%) scale(0);
+  width: 10px;
+  height: 10px;
+  background-color: var(--primary-color);
+  border-radius: 2px;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.materia-checkbox:checked~.materia-box {
+  border-color: var(--primary-color);
+  background-color: rgba(84, 54, 218, 0.05);
+  box-shadow: 0 2px 8px rgba(84, 54, 218, 0.12);
+}
+
+.materia-checkbox:checked~.materia-box::before {
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+  border-color: var(--primary-color);
+  box-shadow: 0 2px 6px rgba(84, 54, 218, 0.3);
+}
+
+.materia-checkbox:checked~.materia-box::after {
+  opacity: 1;
+  transform: translateY(-50%) scale(1);
+}
+
+.materia-card:hover .materia-box {
+  border-color: var(--primary-color);
+  background-color: rgba(84, 54, 218, 0.02);
+}
+
+.materia-box>span:not(.materia-name):not(.materia-desc) {
+  flex: 1;
+}
+
+.materia-name {
+  display: block;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-color);
+  margin-left: 12px;
+  line-height: 1.3;
+}
+
+.materia-desc {
+  display: block;
+  font-size: 12px;
+  color: var(--text-light);
+  margin-left: 12px;
+  font-weight: 400;
+  line-height: 1.3;
+}
+
+/* Responsividade para materias */
+@media (max-width: 480px) {
+  .materias-section {
+    max-height: 300px;
+    margin: 15px 0;
+  }
+
+  .materias-title {
+    font-size: 13px;
+  }
+
+  .materias-subtitle {
+    font-size: 11px;
+  }
+
+  .materia-box {
+    padding: 12px 14px;
+  }
+
+  .materia-name {
+    font-size: 14px;
+  }
+
+  .materia-desc {
+    font-size: 11px;
+  }
+}

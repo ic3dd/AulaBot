@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <title>Debug Table Markdown</title>
+    <style>
+        body { font-family: monospace; padding: 20px; }
+        .section { background: #f0f0f0; padding: 10px; margin: 10px 0; border-radius: 4px; }
+        .markdown-table { border-collapse: collapse; border: 1px solid #ccc; margin: 10px 0; }
+        .markdown-table th, .markdown-table td { border: 1px solid #ccc; padding: 8px; }
+        .markdown-table th { background: #f3f4f6; font-weight: bold; }
+        pre { background: #eee; padding: 10px; overflow-x: auto; }
+    </style>
+</head>
+<body>
+    <h1>Debug: Detecção de Tabelas Markdown</h1>
+
+    <div class="section">
+        <h2>Teste 1: Tabela simples</h2>
+        <pre id="test1-input"></pre>
+        <h3>Resultado:</h3>
+        <div id="test1-output"></div>
+    </div>
+
+    <div class="section">
+        <h2>Teste 2: Com texto antes</h2>
+        <pre id="test2-input"></pre>
+        <h3>Resultado:</h3>
+        <div id="test2-output"></div>
+    </div>
+
+    <div class="section">
+        <h2>Teste 3: Com múltiplas tabelas</h2>
+        <pre id="test3-input"></pre>
+        <h3>Resultado:</h3>
+        <div id="test3-output"></div>
+    </div>
+
+    <script>
+        function escapeHtml(texto) {
+            const div = document.createElement('div');
+            div.textContent = texto;
+            return div.innerHTML;
+        }
+
+        function processTableMarkdown(texto) {
+            const tables = [];
+            
+            const resultado = texto.replace(/(^|\n)((?:\|.+\n?)+)/gm, (match, lineBreak) => {
+                console.log("Match encontrado:", JSON.stringify(match));
+                const allLines = match.split('\n').map(l => l.trim()).filter(l => l);
+                const lines = allLines.filter(l => l.startsWith('|') && l.endsWith('|'));
+                console.log("Lines após filtro:", lines);
+                
+                if (lines.length < 2) {
+                    console.log("Menos de 2 linhas, retornando match original");
+                    return match;
+                }
+
+                // Encontrar linha separadora
+                let separatorIndex = -1;
+                for (let i = 0; i < lines.length; i++) {
+                    const cells = lines[i].split('|').map(c => c.trim()).filter(c => c);
+                    const isSeparator = cells.length > 0 && cells.every(c => /^:?-+:?$/.test(c));
+                    console.log(`Linha ${i}:`, cells, "é separadora?", isSeparator);
+                    
+                    if (isSeparator) {
+                        separatorIndex = i;
+                        break;
+                    }
+                }
+                
+                if (separatorIndex === -1) {
+                    console.log("Nenhuma linha separadora encontrada");
+                    return match;
+                }
+
+                const rows = [];
+                let isHeader = true;
+                
+                for (let i = 0; i < lines.length; i++) {
+                    if (i === separatorIndex) {
+                        isHeader = false;
+                        continue;
+                    }
+                    
+                    const cells = lines[i].split('|').map(c => c.trim()).filter(c => c);
+                    if (cells.length === 0) continue;
+                    
+                    const cellTag = isHeader ? 'th' : 'td';
+                    const cellsHtml = cells.map(c => escapeHtml(c)).map(c => `<${cellTag}>${c}</${cellTag}>`).join('');
+                    rows.push(`<tr>${cellsHtml}</tr>`);
+                }
+
+                if (rows.length === 0) return match;
+                
+                const idx = tables.length;
+                tables.push(`<table class="markdown-table">${rows.join('')}</table>`);
+                return (lineBreak || '') + '\n__TABLE_PLACEHOLDER_' + idx + '__\n';
+            });
+
+            let final = resultado;
+            tables.forEach((table, idx) => {
+                final = final.split(`__TABLE_PLACEHOLDER_${idx}__`).join(table);
+            });
+            
+            return final;
+        }
+
+        // Teste 1
+        const test1 = `| Coluna 1 | Coluna 2 |
+|----------|----------|
+| Valor 1  | Valor 2  |
+| Valor 3  | Valor 4  |`;
+        document.getElementById('test1-input').textContent = test1;
+        document.getElementById('test1-output').innerHTML = processTableMarkdown(test1);
+
+        // Teste 2
+        const test2 = `Aqui está uma tabela:
+
+| Nome | Idade |
+|------|-------|
+| João | 25 |
+| Maria | 30 |`;
+        document.getElementById('test2-input').textContent = test2;
+        document.getElementById('test2-output').innerHTML = processTableMarkdown(test2);
+
+        // Teste 3
+        const test3 = `## Primeira Tabela
+
+| A | B |
+|---|---|
+| 1 | 2 |
+
+## Segunda Tabela
+
+| X | Y |
+|---|---|
+| a | b |`;
+        document.getElementById('test3-input').textContent = test3;
+        document.getElementById('test3-output').innerHTML = processTableMarkdown(test3);
+    </script>
+</body>
+</html>

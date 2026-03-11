@@ -1,0 +1,23 @@
+[03-Dec-2025 10:50:38 Europe/Lisbon] criarconta.php: Erro ao executar INSERT. Erro: Field 'tema_escola' doesn't have a default value
+[03-Dec-2025 10:50:38 Europe/Lisbon] Erro na criação de conta: Erro ao executar inserção: Field 'tema_escola' doesn't have a default value
+[03-Dec-2025 10:50:38 Europe/Lisbon] criarconta.php: Erro ao executar INSERT. Erro: Field 'tema_escola' doesn't have a default value
+[03-Dec-2025 10:50:38 Europe/Lisbon] Erro na criação de conta: Erro ao executar inserção: Field 'tema_escola' doesn't have a default value
+[03-Dec-2025 10:55:01 Europe/Lisbon] criarconta.php: Erro ao executar INSERT. Erro: Field 'tema_escola' doesn't have a default value
+[03-Dec-2025 10:55:01 Europe/Lisbon] Erro na criação de conta: Erro ao executar inserção: Field 'tema_escola' doesn't have a default value
+[03-Dec-2025 10:56:58 Europe/Lisbon] criarconta.php: Erro ao executar INSERT. Erro: Field 'tema_escola' doesn't have a default value
+[03-Dec-2025 10:56:58 Europe/Lisbon] Erro na criação de conta: Erro ao executar inserção: Field 'tema_escola' doesn't have a default value
+[03-Dec-2025 10:58:49 Europe/Lisbon] criarconta.php: Erro ao executar INSERT. Erro: Field 'tema_escola' doesn't have a default value
+[03-Dec-2025 10:58:49 Europe/Lisbon] Erro na criação de conta: Erro ao executar inserção: Field 'tema_escola' doesn't have a default value
+[03-Dec-2025 11:00:32 Europe/Lisbon] criarconta.php: Erro ao executar INSERT. Erro: Field 'tema_escola' doesn't have a default value
+[03-Dec-2025 11:00:32 Europe/Lisbon] Erro na criação de conta: Erro ao executar inserção: Field 'tema_escola' doesn't have a default value
+[03-Dec-2025 11:01:47 Europe/Lisbon] criarconta.php: Erro ao executar INSERT. Erro: Data too long for column 'tema_escola' at row 1
+[03-Dec-2025 11:01:47 Europe/Lisbon] Erro na criação de conta: Erro ao executar inserção: Data too long for column 'tema_escola' at row 1
+[03-Dec-2025 11:03:23 Europe/Lisbon] criarconta.php: Erro ao executar INSERT. Erro: Data too long for column 'tema_escola' at row 1
+[03-Dec-2025 11:03:23 Europe/Lisbon] Erro na criação de conta: Erro ao executar inserção: Data too long for column 'tema_escola' at row 1
+[03-Dec-2025 11:05:03 Europe/Lisbon] criarconta.php: Conta criada com sucesso para: sss@gmail.com
+[06-Jan-2026 21:29:55 Europe/Lisbon] criarconta.php: Campos obrigatórios em falta. Nome: 'ADMIN', Email: 'santiagoesteves35@gmail.com', Password: vazio
+[06-Jan-2026 21:29:58 Europe/Lisbon] criarconta.php: Campos obrigatórios em falta. Nome: 'ADMIN', Email: 'santiagoesteves35@gmail.com', Password: vazio
+[06-Jan-2026 21:30:02 Europe/Lisbon] criarconta.php: Campos obrigatórios em falta. Nome: 'ADMIN', Email: 'santiagoesteves35@gmail.com', Password: vazio
+[06-Jan-2026 21:35:22 Europe/Lisbon] criarconta.php: Erro ao preparar INSERT query. Erro: Unknown column 'ip' in 'field list'
+[06-Jan-2026 21:35:22 Europe/Lisbon] Erro na criação de conta: Erro ao preparar query: Unknown column 'ip' in 'field list'
+[14-Jan-2026 12:05:24 Europe/Lisbon] Conta criada: for@gmail.com (IP: 193.236.56.176)

@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Termos de Utilização | AulaBot</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --secondary-gradient: linear-gradient(135deg, #06d6a0 0%, #118ab2 100%);
+            --accent-gradient: linear-gradient(135deg, #ffd166 0%, #f77f00 100%);
+            --text-primary: #2d3748;
+            --text-secondary: #4a5568;
+            --text-muted: #718096;
+            --bg-primary: #ffffff;
+            --bg-secondary: #f7fafc;
+            --border-color: #e2e8f0;
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+            --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+            --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.1);
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --radius-xl: 20px;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--primary-gradient);
+            min-height: 100vh;
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Header com botão de voltar */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-color);
+            padding: 1rem 2rem;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 24px;
+            background: var(--primary-gradient);
+            color: white;
+            text-decoration: none;
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: var(--shadow-md);
+            border: none;
+            cursor: pointer;
+        }
+
+        .back-button:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .back-button i {
+            font-size: 16px;
+            transition: transform 0.3s ease;
+        }
+
+        .back-button:hover i {
+            transform: translateX(-4px);
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--primary-gradient);
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+        }
+
+        .logo-text {
+            font-size: 24px;
+            font-weight: 700;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Container principal */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 120px 2rem 2rem;
+        }
+
+        .content-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: var(--radius-xl);
+            padding: 3rem;
+            box-shadow: var(--shadow-xl);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .content-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--primary-gradient);
+        }
+
+        /* Título principal */
+        .main-title {
+            font-size: 3rem;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 1rem;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.2;
+        }
+
+        .subtitle {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            text-align: center;
+            margin-bottom: 3rem;
+            font-weight: 500;
+        }
+
+        /* Seções */
+        .section {
+            margin-bottom: 2.5rem;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--border-color);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 60px;
+            height: 2px;
+            background: var(--primary-gradient);
+        }
+
+        .section-content {
+            color: var(--text-secondary);
+            line-height: 1.7;
+            font-size: 1rem;
+        }
+
+        .section-content p {
+            margin-bottom: 1rem;
+        }
+
+        /* Listas */
+        .terms-list {
+            list-style: none;
+            padding: 0;
+            margin: 1.5rem 0;
+        }
+
+        .terms-list li {
+            position: relative;
+            padding-left: 2rem;
+            margin-bottom: 1rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .terms-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 20px;
+            height: 20px;
+            background: var(--secondary-gradient);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        /* Links */
+        .link {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .link:hover {
+            color: #764ba2;
+        }
+
+        .link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-gradient);
+            transition: width 0.3s ease;
+        }
+
+        .link:hover::after {
+            width: 100%;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+        }
+
+        .last-updated {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* Animações */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .content-card {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        .section {
+            animation: fadeInUp 0.6s ease-out;
+            animation-fill-mode: both;
+        }
+
+        .section:nth-child(2) {
+            animation-delay: 0.1s;
+        }
+
+        .section:nth-child(3) {
+            animation-delay: 0.2s;
+        }
+
+        .section:nth-child(4) {
+            animation-delay: 0.3s;
+        }
+
+        .section:nth-child(5) {
+            animation-delay: 0.4s;
+        }
+
+        .section:nth-child(6) {
+            animation-delay: 0.5s;
+        }
+
+        .section:nth-child(7) {
+            animation-delay: 0.6s;
+        }
+
+        .section:nth-child(8) {
+            animation-delay: 0.7s;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .container {
+                padding: 100px 1rem 2rem;
+            }
+
+            .content-card {
+                padding: 2rem 1.5rem;
+                border-radius: var(--radius-lg);
+            }
+
+            .main-title {
+                font-size: 2.5rem;
+            }
+
+            .header {
+                padding: 1rem;
+            }
+
+            .back-button {
+                padding: 10px 20px;
+                font-size: 13px;
+            }
+
+            .logo-text {
+                font-size: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .main-title {
+                font-size: 2rem;
+            }
+
+            .subtitle {
+                font-size: 1.1rem;
+            }
+
+            .section-title {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="logo-section">
+                <div class="logo-icon">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <span class="logo-text">AulaBot</span>
+            </div>
+            <button class="back-button" onclick="window.location.href='index.php'">
+                <i class="fas fa-arrow-left"></i>
+                Voltar
+            </button>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="content-card">
+            <h1 class="main-title">Termos de Utilização</h1>
+            <p class="subtitle">Lê atentamente estes termos antes de utilizares o AulaBot. Ao acederes ao serviço,
+                aceitas cumprir estas condições.</p>
+
+            <div class="section">
+                <h2 class="section-title">1. Aceitação dos Termos</h2>
+                <div class="section-content">
+                    <p>Ao acederes e utilizares o AulaBot, declaras que leste, compreendeste e aceitas ficar vinculado a
+                        estes Termos de Utilização, bem como à nossa <a href="privacidade.html" class="link">Política de
+                            Privacidade</a>. Se não concordares com alguma das condições aqui descritas, deves cessar
+                        imediatamente a utilização do serviço.</p>
+                    <p>Estes termos constituem um acordo legal entre ti e o AulaBot, aplicável a partir do momento em
+                        que crias uma conta ou utilizas o serviço como visitante.</p>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">2. Sobre o AulaBot</h2>
+                <div class="section-content">
+                    <p>O AulaBot é uma plataforma educacional gratuita que utiliza inteligência artificial para auxiliar
+                        estudantes em Portugal. O nosso objetivo é democratizar o acesso a apoio escolar de qualidade,
+                        oferecendo:</p>
+                    <ul class="terms-list">
+                        <li>Explicações personalizadas sobre diversas matérias escolares</li>
+                        <li>Apoio na resolução de exercícios e trabalhos de casa</li>
+                        <li>Resumos de conteúdos programáticos do ensino básico e secundário</li>
+                        <li>Preparação para testes e exames nacionais</li>
+                    </ul>
+                    <p>O serviço destina-se exclusivamente a fins educativos e não substitui a orientação de professores
+                        ou profissionais de educação qualificados.</p>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">3. Regras de Utilização</h2>
+                <div class="section-content">
+                    <p>Ao utilizares o AulaBot, comprometes-te a:</p>
+                    <ul class="terms-list">
+                        <li><strong>Usar o serviço de forma ética:</strong> Apenas para fins educativos legítimos, sem o
+                            objetivo de copiar respostas em avaliações oficiais</li>
+                        <li><strong>Fornecer informações verdadeiras:</strong> Os dados de registo devem ser precisos e
+                            atualizados</li>
+                        <li><strong>Respeitar a comunidade:</strong> Não enviar conteúdos ofensivos, discriminatórios,
+                            ilegais ou que violem direitos de terceiros</li>
+                        <li><strong>Proteger a tua conta:</strong> Manter confidenciais as tuas credenciais de acesso e
+                            informar-nos de qualquer utilização suspeita</li>
+                        <li><strong>Não interferir com o serviço:</strong> Não tentar aceder a áreas restritas,
+                            sobrecarregar os servidores ou utilizar bots automatizados</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">4. Limitações e Isenção de Responsabilidade</h2>
+                <div class="section-content">
+                    <p>O AulaBot é uma ferramenta de apoio educacional baseada em inteligência artificial e, como tal,
+                        apresenta limitações que deves ter em consideração:</p>
+                    <ul class="terms-list">
+                        <li><strong>Precisão das respostas:</strong> Embora nos esforcemos por fornecer informações
+                            corretas, as respostas geradas podem conter erros ou imprecisões. Recomendamos sempre a
+                            verificação através de outras fontes</li>
+                        <li><strong>Disponibilidade:</strong> O serviço é fornecido "tal como está", sem garantias de
+                            disponibilidade permanente. Poderão ocorrer interrupções para manutenção ou por motivos
+                            técnicos</li>
+                        <li><strong>Resultados académicos:</strong> Não garantimos a melhoria de notas ou resultados em
+                            exames. O sucesso académico depende do esforço individual do aluno</li>
+                        <li><strong>Atualização de conteúdos:</strong> Os programas escolares podem ser atualizados e o
+                            AulaBot pode não refletir imediatamente essas alterações</li>
+                    </ul>
+                    <p>O AulaBot não se responsabiliza por quaisquer danos diretos ou indiretos resultantes da
+                        utilização do serviço.</p>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">5. Propriedade Intelectual</h2>
+                <div class="section-content">
+                    <p>Todo o conteúdo presente no AulaBot, incluindo mas não limitado ao design, logótipos, textos,
+                        código-fonte e funcionalidades, está protegido por direitos de autor e outras leis de
+                        propriedade intelectual.</p>
+                    <p>É expressamente proibido:</p>
+                    <ul class="terms-list">
+                        <li>Copiar, modificar ou distribuir partes do serviço sem autorização prévia</li>
+                        <li>Utilizar a marca AulaBot para fins comerciais ou de forma que possa causar confusão</li>
+                        <li>Fazer engenharia reversa ou tentar aceder ao código-fonte do sistema</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">6. Suspensão e Cancelamento</h2>
+                <div class="section-content">
+                    <p>Reservamo-nos o direito de suspender ou cancelar o teu acesso ao AulaBot, sem aviso prévio, nas
+                        seguintes situações:</p>
+                    <ul class="terms-list">
+                        <li>Violação de qualquer disposição destes Termos de Utilização</li>
+                        <li>Comportamento que prejudique outros utilizadores ou o funcionamento do serviço</li>
+                        <li>Utilização do serviço para fins fraudulentos ou ilegais</li>
+                        <li>Inatividade prolongada da conta (após 12 meses sem acesso)</li>
+                    </ul>
+                    <p>Podes cancelar a tua conta a qualquer momento através das definições do teu perfil ou
+                        contactando-nos diretamente.</p>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">7. Alterações aos Termos</h2>
+                <div class="section-content">
+                    <p>Podemos atualizar estes Termos de Utilização periodicamente para refletir alterações no serviço,
+                        requisitos legais ou melhorias. Em caso de alterações significativas, notificar-te-emos através
+                        do email associado à tua conta ou através de um aviso no próprio serviço.</p>
+                    <p>A continuação da utilização do AulaBot após a publicação de alterações constitui a aceitação dos
+                        novos termos. É tua responsabilidade consultar esta página regularmente.</p>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">8. Legislação Aplicável</h2>
+                <div class="section-content">
+                    <p>Estes Termos de Utilização regem-se pela legislação portuguesa. Qualquer litígio emergente da
+                        utilização do serviço será submetido aos tribunais portugueses competentes.</p>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">9. Contacto</h2>
+                <div class="section-content">
+                    <p>Se tiveres dúvidas sobre estes Termos de Utilização ou precisares de esclarecer alguma questão,
+                        entra em contacto connosco através do email: <a href="mailto:suporte@aulabot.pt"
+                            class="link">suporte@aulabot.pt</a></p>
+                    <p>Estamos disponíveis para te ajudar e responderemos no prazo máximo de 5 dias úteis.</p>
+                </div>
+            </div>
+
+            <div class="footer">
+                <p class="last-updated">Última atualização: Fevereiro 2026</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Animação suave ao carregar
+        document.addEventListener('DOMContentLoaded', function () {
+            // Adicionar efeito de parallax sutil
+            window.addEventListener('scroll', function () {
+                const scrolled = window.pageYOffset;
+                const parallax = document.querySelector('.content-card');
+                const speed = scrolled * 0.1;
+                parallax.style.transform = `translateY(${speed}px)`;
+            });
+
+            // Efeito de hover nos links
+            const links = document.querySelectorAll('.link');
+            links.forEach(link => {
+                link.addEventListener('mouseenter', function () {
+                    this.style.transform = 'translateY(-1px)';
+                });
+                link.addEventListener('mouseleave', function () {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

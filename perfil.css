@@ -1,0 +1,103 @@
+/* Estilos para o modal de perfil */
+.perfil-content {
+    padding: 20px;
+}
+
+.perfil-info {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.perfil-avatar {
+    font-size: 60px;
+    color: #6c757d;
+}
+
+.perfil-detalhes h4 {
+    margin: 0;
+    font-size: 1.2rem;
+    color: #333;
+}
+
+.perfil-email {
+    margin: 5px 0;
+    color: #6c757d;
+    font-size: 0.9rem;
+}
+
+.perfil-tipo {
+    margin: 5px 0;
+    font-size: 0.85rem;
+    color: #28a745;
+    text-transform: capitalize;
+}
+
+.perfil-links {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.perfil-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px;
+    text-decoration: none;
+    color: #333;
+    background: #f8f9fa;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.perfil-link:hover {
+    background: #e9ecef;
+    transform: translateX(5px);
+}
+
+.perfil-link i {
+    color: #6c757d;
+}
+
+/* Estilos para os modais de termos e privacidade */
+.termos-content {
+    padding: 20px;
+    max-height: 70vh;
+    overflow-y: auto;
+}
+
+.termos-texto {
+    line-height: 1.6;
+}
+
+.termos-texto h4 {
+    margin: 20px 0 10px;
+    color: #333;
+}
+
+.termos-texto p {
+    margin: 0 0 15px;
+    color: #666;
+}
+
+/* Customização da scrollbar */
+.termos-content::-webkit-scrollbar {
+    width: 6px;
+}
+
+.termos-content::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.termos-content::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 3px;
+}
+
+.termos-content::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}

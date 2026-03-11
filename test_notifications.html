@@ -1,0 +1,117 @@
+                                                                     <!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste de Notificações</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body style="background: #f0f0f0; padding: 50px; font-family: Arial, sans-serif;">
+    <div style="max-width: 600px; margin: 0 auto; background: white; padding: 30px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+        <h1>🎉 Teste do Sistema de Notificações</h1>
+        <p>Clique nos botões abaixo para testar as diferentes mensagens de notificação:</p>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin: 30px 0;">
+            <button onclick="showToast.success('Sucesso! 🎉', 'Login realizado com sucesso! Bem-vindo ao AulaBot!')" 
+                    style="background: #10b981; color: white; border: none; padding: 12px 20px; border-radius: 8px; cursor: pointer;">
+                ✅ Teste Sucesso
+            </button>
+            
+            <button onclick="showToast.error('Erro de Login', 'Palavra-passe incorreta. Tente novamente.')" 
+                    style="background: #ef4444; color: white; border: none; padding: 12px 20px; border-radius: 8px; cursor: pointer;">
+                ❌ Teste Erro
+            </button>
+            
+            <button onclick="showToast.warning('Atenção!', 'A palavra-passe deve ter pelo menos 6 caracteres.')" 
+                    style="background: #f59e0b; color: white; border: none; padding: 12px 20px; border-radius: 8px; cursor: pointer;">
+                ⚠️ Teste Aviso
+            </button>
+            
+            <button onclick="showToast.info('Informação', 'Verifique o seu email para confirmar a conta.')" 
+                    style="background: #3b82f6; color: white; border: none; padding: 12px 20px; border-radius: 8px; cursor: pointer;">
+                ℹ️ Teste Info
+            </button>
+        </div>
+        
+        <h3>Testes Específicos de Autenticação:</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin: 20px 0;">
+            <button onclick="showAuthMessage.loginSuccess('João Silva')" 
+                    style="background: #10b981; color: white; border: none; padding: 12px 20px; border-radius: 8px; cursor: pointer;">
+                🎉 Login Sucesso
+            </button>
+            
+            <button onclick="showAuthMessage.loginError('Email não encontrado')" 
+                    style="background: #ef4444; color: white; border: none; padding: 12px 20px; border-radius: 8px; cursor: pointer;">
+                ❌ Login Erro
+            </button>
+            
+            <button onclick="showAuthMessage.signupSuccess()" 
+                    style="background: #10b981; color: white; border: none; padding: 12px 20px; border-radius: 8px; cursor: pointer;">
+                ✅ Conta Criada
+            </button>
+            
+            <button onclick="showAuthMessage.signupError('Já existe uma conta com esse email')" 
+                    style="background: #ef4444; color: white; border: none; padding: 12px 20px; border-radius: 8px; cursor: pointer;">
+                ❌ Erro Conta
+            </button>
+            
+            <button onclick="showAuthMessage.validationError('Por favor, preencha todos os campos!')" 
+                    style="background: #f59e0b; color: white; border: none; padding: 12px 20px; border-radius: 8px; cursor: pointer;">
+                ⚠️ Validação
+            </button>
+        </div>
+
+        <h3>Testes de Notificações Adicionais:</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin: 20px 0;">
+            <button onclick="showToast.info('Feedback Recebido', 'Recebeu uma resposta sobre seu feedback enviado!')" 
+                    style="background: #06b6d4; color: white; border: none; padding: 12px 20px; border-radius: 8px; cursor: pointer;">
+                💬 Feedback
+            </button>
+            
+            <button onclick="showToast.success('Nova Aula Disponível', 'Uma nova aula foi adicionada ao seu curso!')" 
+                    style="background: #10b981; color: white; border: none; padding: 12px 20px; border-radius: 8px; cursor: pointer;">
+                🎓 Atividades Educacionais
+            </button>
+            
+            <button onclick="showToast.warning('Perfil Alterado', 'Sua senha foi alterada com sucesso!')" 
+                    style="background: #f97316; color: white; border: none; padding: 12px 20px; border-radius: 8px; cursor: pointer;">
+                👤 Alterações de Conta
+            </button>
+            
+            <button onclick="showToast.info('Suporte Respondeu', 'Sua solicitação de suporte foi respondida!')" 
+                    style="background: #ec4899; color: white; border: none; padding: 12px 20px; border-radius: 8px; cursor: pointer;">
+                🎧 Suporte
+            </button>
+            
+            <button onclick="showToast.success('Oferta Especial', 'Aproveite 20% de desconto neste mês!')" 
+                    style="background: #ef4444; color: white; border: none; padding: 12px 20px; border-radius: 8px; cursor: pointer;">
+                🏷️ Promoções
+            </button>
+            
+            <button onclick="showToast.success('Relatório Disponível', 'Seu relatório mensal está pronto!')" 
+                    style="background: #8b5cf6; color: white; border: none; padding: 12px 20px; border-radius: 8px; cursor: pointer;">
+                📊 Relatórios
+            </button>
+        </div>
+        
+        <div style="margin-top: 30px; padding: 20px; background: #f8f9fa; border-radius: 8px;">
+            <h4>Características das Novas Notificações:</h4>
+            <ul style="margin: 10px 0; padding-left: 20px;">
+                <li>🎨 <strong>Design Moderno:</strong> Notificações elegantes com sombras e animações</li>
+                <li>🎯 <strong>Tipos Específicos:</strong> Sucesso, Erro, Aviso e Informação</li>
+                <li>📱 <strong>Responsivo:</strong> Adapta-se a diferentes tamanhos de ecrã</li>
+                <li>⏰ <strong>Auto-dismiss:</strong> Desaparecem automaticamente</li>
+                <li>❌ <strong>Fechar Manual:</strong> Botão para fechar manualmente</li>
+                <li>🔄 <strong>Múltiplas:</strong> Suporta várias notificações simultâneas</li>
+                <li>🎭 <strong>Ícones:</strong> Ícones SVG apropriados para cada tipo</li>
+                <li>⚡ <strong>Animações:</strong> Entrada e saída suaves</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Container para as notificações -->
+    <div id="toast-container" class="toast-container"></div>
+    
+    <script src="toast-notifications.js"></script>
+</body>
+</html>

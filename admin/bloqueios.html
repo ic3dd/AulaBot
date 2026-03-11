@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciar Bloqueios - Admin</title>
+    <link rel="stylesheet" href="admin.css">
+    <style>
+        .bloqueios-container {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .bloqueios-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .bloqueios-search {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .bloqueios-search input {
+            width: 100%;
+            padding: 10px 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+
+        .bloqueios-search input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .bloqueios-tabla {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        .bloqueios-tabla th {
+            background: #f5f5f5;
+            padding: 12px;
+            text-align: left;
+            border-bottom: 2px solid #e0e0e0;
+            font-weight: 600;
+            color: #333;
+            font-size: 13px;
+        }
+
+        .bloqueios-tabla td {
+            padding: 12px;
+            border-bottom: 1px solid #e0e0e0;
+            font-size: 14px;
+        }
+
+        .bloqueios-tabla tr:hover {
+            background: #f9f9f9;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .status-ativo {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .status-bloqueado {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .btn-acao {
+            padding: 8px 12px;
+            border: none;
+            border-radius: 4px;
+            font-size: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .btn-bloquear {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .btn-bloquear:hover {
+            background: #f5c6cb;
+        }
+
+        .btn-desbloquear {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .btn-desbloquear:hover {
+            background: #c3e6cb;
+        }
+
+        .modal-bloqueio {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+        }
+
+        .modal-bloqueio-content {
+            background: white;
+            margin: 5% auto;
+            padding: 25px;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 400px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+        }
+
+        .modal-bloqueio-header {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .modal-bloqueio-body {
+            margin-bottom: 20px;
+        }
+
+        .modal-bloqueio-body p {
+            margin: 10px 0;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .modal-bloqueio-body .email {
+            font-weight: 600;
+            color: #333;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+            font-size: 13px;
+            color: #333;
+        }
+
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #e0e0e0;
+            border-radius: 4px;
+            font-family: inherit;
+            font-size: 13px;
+            resize: vertical;
+            min-height: 60px;
+        }
+
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .modal-bloqueio-actions {
+            display: flex;
+            gap: 10px;
+            justify-content: flex-end;
+        }
+
+        .btn-modal {
+            padding: 10px 16px;
+            border: none;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-cancelar {
+            background: #e0e0e0;
+            color: #333;
+        }
+
+        .btn-cancelar:hover {
+            background: #d0d0d0;
+        }
+
+        .btn-confirmar {
+            background: #dc3545;
+            color: white;
+        }
+
+        .btn-confirmar:hover {
+            background: #c82333;
+        }
+
+        .mensagem {
+            padding: 12px;
+            border-radius: 4px;
+            margin: 10px 0;
+            text-align: center;
+            font-size: 14px;
+            display: none;
+        }
+
+        .mensagem-sucesso {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .mensagem-erro {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .semUtilizadores {
+            text-align: center;
+            padding: 40px;
+            color: #999;
+            font-size: 16px;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .stat-card {
+            background: #f5f5f5;
+            padding: 15px;
+            border-radius: 6px;
+            text-align: center;
+        }
+
+        .stat-numero {
+            font-size: 28px;
+            font-weight: 600;
+            color: #667eea;
+        }
+
+        .stat-label {
+            font-size: 12px;
+            color: #999;
+            margin-top: 5px;
+        }
+
+        .notification-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 2000;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            max-width: 400px;
+        }
+
+        .notification {
+            padding: 16px 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            animation: slideInRight 0.3s ease-out;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: white;
+            font-weight: 500;
+        }
+
+        @keyframes slideInRight {
+            from {
+                transform: translateX(400px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideOutRight {
+            from {
+                transform: translateX(0);
+                opacity: 1;
+            }
+            to {
+                transform: translateX(400px);
+                opacity: 0;
+            }
+        }
+
+        .notification.removing {
+            animation: slideOutRight 0.3s ease-in;
+        }
+
+        .notification-success {
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+        }
+
+        .notification-error {
+            background: linear-gradient(135deg, #dc3545 0%, #ff6b6b 100%);
+        }
+
+        .notification-info {
+            background: linear-gradient(135deg, #17a2b8 0%, #20c997 100%);
+        }
+
+        .notification-loading {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .notification-icon {
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+
+        .modal-bloqueio-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .modal-bloqueio-header .icon-lock {
+            font-size: 24px;
+        }
+
+        .header-unlock {
+            color: #155724;
+        }
+
+        .header-unlock .icon-unlock {
+            color: #28a745;
+        }
+
+        .modal-bloqueio-content {
+            animation: modalFadeIn 0.3s ease-out;
+        }
+
+        @keyframes modalFadeIn {
+            from {
+                transform: scale(0.95);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .modal-unlock .btn-confirmar-unlock {
+            background: #28a745;
+        }
+
+        .modal-unlock .btn-confirmar-unlock:hover {
+            background: #218838;
+        }
+
+        .btn-modal {
+            min-width: 120px;
+        }
+
+        .btn-modal:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .btn-modal.loading {
+            position: relative;
+            color: transparent;
+        }
+
+        .btn-modal.loading::after {
+            content: '';
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            top: 50%;
+            left: 50%;
+            margin-left: -8px;
+            margin-top: -8px;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 0.6s linear infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .notification-container {
+                left: 10px;
+                right: 10px;
+                max-width: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bloqueios-container">
+        <div class="bloqueios-header">
+            <h2>Gerenciar Bloqueios de Utilizadores</h2>
+        </div>
+
+        <div class="stats">
+            <div class="stat-card">
+                <div class="stat-numero" id="totalUtilizadores">0</div>
+                <div class="stat-label">Total de Utilizadores</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-numero" id="totalBloqueados">0</div>
+                <div class="stat-label">Bloqueados</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-numero" id="totalAtivos">0</div>
+                <div class="stat-label">Ativos</div>
+            </div>
+        </div>
+
+        <div class="bloqueios-header">
+            <div class="bloqueios-search">
+                <input type="text" id="pesquisaUtilizador" placeholder="Pesquisar por nome ou email...">
+            </div>
+        </div>
+
+        <div id="notificationContainer" class="notification-container"></div>
+    <div id="mensagemResultado" class="mensagem"></div>
+
+        <table class="bloqueios-tabla" id="tabelaBloqueios">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Email</th>
+                    <th>Status</th>
+                    <th>Motivo</th>
+                    <th>Data Bloqueio</th>
+                    <th>Acao</th>
+                </tr>
+            </thead>
+            <tbody id="corpoBloqueios">
+                <tr>
+                    <td colspan="6" class="semUtilizadores">Carregando...</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div id="modalBloqueio" class="modal-bloqueio">
+        <div class="modal-bloqueio-content">
+            <div class="modal-bloqueio-header">
+                <i class="icon-lock">🔒</i> Bloquear Utilizador
+            </div>
+            <div class="modal-bloqueio-body">
+                <p>Tem a certeza que deseja bloquear este utilizador?</p>
+                <p>Email: <span class="email" id="emailModalBloqueio"></span></p>
+            </div>
+            <div class="form-group">
+                <label for="motivoBloqueio">Motivo (opcional):</label>
+                <textarea id="motivoBloqueio" placeholder="Ex: Comportamento inadequado, violacao de termos..."></textarea>
+            </div>
+            <div class="modal-bloqueio-actions">
+                <button class="btn-modal btn-cancelar" id="botaoCancelarBloqueio">Cancelar</button>
+                <button class="btn-modal btn-confirmar" id="botaoConfirmarBloqueio">Bloquear</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="modalDesbloquear" class="modal-bloqueio">
+        <div class="modal-bloqueio-content modal-unlock">
+            <div class="modal-bloqueio-header header-unlock">
+                <i class="icon-unlock">🔓</i> Desbloquear Utilizador
+            </div>
+            <div class="modal-bloqueio-body">
+                <p>Tem a certeza que deseja desbloquear este utilizador?</p>
+                <p>Email: <span class="email" id="emailModalDesbloquear"></span></p>
+            </div>
+            <div class="modal-bloqueio-actions">
+                <button class="btn-modal btn-cancelar" id="botaoCancelarDesbloquear">Cancelar</button>
+                <button class="btn-modal btn-confirmar-unlock" id="botaoConfirmarDesbloquear">Desbloquear</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let utilizadorSelecionado = null;
+        let utilizadorDesbloquearId = null;
+        const modal = document.getElementById('modalBloqueio');
+        const modalDesbloquear = document.getElementById('modalDesbloquear');
+        const tabela = document.getElementById('corpoBloqueios');
+        const pesquisa = document.getElementById('pesquisaUtilizador');
+        const mensagem = document.getElementById('mensagemResultado');
+        const notificationContainer = document.getElementById('notificationContainer');
+
+        class NotificationSystem {
+            static show(message, type = 'info', duration = 4000) {
+                const notification = document.createElement('div');
+                notification.className = `notification notification-${type}`;
+                
+                const icons = {
+                    success: '✓',
+                    error: '✕',
+                    info: 'ℹ',
+                    loading: '⟳'
+                };
+                
+                notification.innerHTML = `
+                    <span class="notification-icon">${icons[type]}</span>
+                    <span>${message}</span>
+                `;
+                
+                notificationContainer.appendChild(notification);
+                
+                if (duration > 0) {
+                    setTimeout(() => {
+                        notification.classList.add('removing');
+                        setTimeout(() => notification.remove(), 300);
+                    }, duration);
+                }
+                
+                return notification;
+            }
+
+            static success(message) {
+                return this.show(message, 'success', 3500);
+            }
+
+            static error(message) {
+                return this.show(message, 'error', 4000);
+            }
+
+            static info(message) {
+                return this.show(message, 'info', 3000);
+            }
+
+            static loading(message) {
+                return this.show(message, 'loading', 0);
+            }
+        }
+
+        function carregarUtilizadores() {
+            fetch('gerenciar_bloqueios.php', {
+                method: 'GET'
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.sucesso) {
+                    mostrarUtilizadores(data.utilizadores);
+                    atualizarStats(data.utilizadores);
+                } else {
+                    tabela.innerHTML = '<tr><td colspan="6" class="semUtilizadores">Erro ao carregar utilizadores</td></tr>';
+                }
+            })
+            .catch(err => {
+                console.error('Erro:', err);
+                tabela.innerHTML = '<tr><td colspan="6" class="semUtilizadores">Erro de conexao</td></tr>';
+            });
+        }
+
+        function atualizarStats(utilizadores) {
+            const total = utilizadores.length;
+            const bloqueados = utilizadores.filter(u => u.bloqueado == 1).length;
+            const ativos = total - bloqueados;
+
+            document.getElementById('totalUtilizadores').textContent = total;
+            document.getElementById('totalBloqueados').textContent = bloqueados;
+            document.getElementById('totalAtivos').textContent = ativos;
+        }
+
+        function mostrarUtilizadores(utilizadores) {
+            if (utilizadores.length === 0) {
+                tabela.innerHTML = '<tr><td colspan="6" class="semUtilizadores">Nenhum utilizador encontrado</td></tr>';
+                return;
+            }
+
+            tabela.innerHTML = utilizadores.map(user => `
+                <tr>
+                    <td>${user.nome}</td>
+                    <td>${user.email}</td>
+                    <td>
+                        <span class="status-badge ${user.bloqueado == 1 ? 'status-bloqueado' : 'status-ativo'}">
+                            ${user.bloqueado == 1 ? 'Bloqueado' : 'Ativo'}
+                        </span>
+                    </td>
+                    <td>${user.motivo_bloqueio || '-'}</td>
+                    <td>${user.data_bloqueio ? new Date(user.data_bloqueio).toLocaleDateString('pt-PT') : '-'}</td>
+                    <td>
+                        ${user.bloqueado == 1 
+                            ? `<button class="btn-acao btn-desbloquear" onclick="desbloquearUtilizador(${user.id_utilizador}, '${user.email}')">Desbloquear</button>`
+                            : `<button class="btn-acao btn-bloquear" onclick="abrirModalBloqueio(${user.id_utilizador}, '${user.email}')">Bloquear</button>`
+                        }
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        function abrirModalBloqueio(id, email) {
+            utilizadorSelecionado = id;
+            document.getElementById('emailModalBloqueio').textContent = email;
+            document.getElementById('motivoBloqueio').value = '';
+            modal.style.display = 'block';
+        }
+
+        function bloquearUtilizador() {
+            const motivo = document.getElementById('motivoBloqueio').value;
+            const btnConfirmar = document.getElementById('botaoConfirmarBloqueio');
+            const btnCancelar = document.getElementById('botaoCancelarBloqueio');
+            
+            btnConfirmar.disabled = true;
+            btnCancelar.disabled = true;
+            btnConfirmar.classList.add('loading');
+            btnConfirmar.textContent = '';
+
+            fetch('gerenciar_bloqueios.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: `acao=bloquear&id_utilizador=${utilizadorSelecionado}&motivo=${encodeURIComponent(motivo)}`
+            })
+            .then(response => response.json())
+            .then(data => {
+                modal.style.display = 'none';
+                if (data.sucesso) {
+                    NotificationSystem.success('✓ Utilizador bloqueado com sucesso');
+                    carregarUtilizadores();
+                } else {
+                    NotificationSystem.error('✕ Erro ao bloquear utilizador: ' + (data.erro || 'Erro desconhecido'));
+                }
+            })
+            .catch(err => {
+                modal.style.display = 'none';
+                NotificationSystem.error('✕ Erro na comunicação com o servidor');
+                console.error(err);
+            })
+            .finally(() => {
+                btnConfirmar.disabled = false;
+                btnCancelar.disabled = false;
+                btnConfirmar.classList.remove('loading');
+                btnConfirmar.textContent = 'Bloquear';
+            });
+        }
+
+        function desbloquearUtilizador(id, email) {
+            utilizadorDesbloquearId = id;
+            document.getElementById('emailModalDesbloquear').textContent = email;
+            modalDesbloquear.style.display = 'block';
+        }
+
+        function confirmarDesbloquear() {
+            const btnConfirmar = document.getElementById('botaoConfirmarDesbloquear');
+            const btnCancelar = document.getElementById('botaoCancelarDesbloquear');
+            
+            btnConfirmar.disabled = true;
+            btnCancelar.disabled = true;
+            btnConfirmar.classList.add('loading');
+            btnConfirmar.textContent = '';
+
+            fetch('gerenciar_bloqueios.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: `acao=desbloquear&id_utilizador=${utilizadorDesbloquearId}`
+            })
+            .then(response => response.json())
+            .then(data => {
+                modalDesbloquear.style.display = 'none';
+                if (data.sucesso) {
+                    NotificationSystem.success('✓ Utilizador desbloqueado com sucesso');
+                    carregarUtilizadores();
+                } else {
+                    NotificationSystem.error('✕ Erro ao desbloquear utilizador: ' + (data.erro || 'Erro desconhecido'));
+                }
+            })
+            .catch(err => {
+                modalDesbloquear.style.display = 'none';
+                NotificationSystem.error('✕ Erro na comunicação com o servidor');
+                console.error(err);
+            })
+            .finally(() => {
+                btnConfirmar.disabled = false;
+                btnCancelar.disabled = false;
+                btnConfirmar.classList.remove('loading');
+                btnConfirmar.textContent = 'Desbloquear';
+            });
+        }
+
+        function mostrarMensagem(texto, tipo) {
+            mensagem.textContent = texto;
+            mensagem.className = `mensagem mensagem-${tipo}`;
+            mensagem.style.display = 'block';
+            setTimeout(() => {
+                mensagem.style.display = 'none';
+            }, 3000);
+        }
+
+        document.getElementById('botaoCancelarBloqueio').addEventListener('click', () => {
+            modal.style.display = 'none';
+        });
+
+        document.getElementById('botaoConfirmarBloqueio').addEventListener('click', bloquearUtilizador);
+
+        document.getElementById('botaoCancelarDesbloquear').addEventListener('click', () => {
+            modalDesbloquear.style.display = 'none';
+        });
+
+        document.getElementById('botaoConfirmarDesbloquear').addEventListener('click', confirmarDesbloquear);
+
+        window.addEventListener('click', (event) => {
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+            if (event.target === modalDesbloquear) {
+                modalDesbloquear.style.display = 'none';
+            }
+        });
+
+        pesquisa.addEventListener('input', (e) => {
+            const termo = e.target.value.toLowerCase();
+            const linhas = document.querySelectorAll('#corpoBloqueios tr');
+            
+            linhas.forEach(linha => {
+                const texto = linha.textContent.toLowerCase();
+                linha.style.display = texto.includes(termo) ? '' : 'none';
+            });
+        });
+
+        carregarUtilizadores();
+        setInterval(carregarUtilizadores, 30000);
+    </script>
+</body>
+</html>
