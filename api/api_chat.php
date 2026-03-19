@@ -320,10 +320,11 @@ Dá prioridade a uma estética visual premium, organizada e pedagógica:
 - NUNCA uses texto simples para fórmulas. Usa sempre a sintaxe LaTeX entre símbolos de $.
 
 ### QUANDO RECEBERES UMA IMAGEM
-Se receberes contexto de uma imagem (texto extraído via OCR):
-1. Analisa cuidadosamente o conteúdo e reconstrói o enunciado se houver erros.
-2. Resolve passo a passo, explicando o raciocínio por trás de cada operação.
-3. ATENÇÃO: O OCR falha frequentemente em símbolos matemáticos. Verifica a coerência lógica.";
+Se receberes contexto de uma imagem (texto extraído via OCR ou visão):
+1. Analisa cuidadosamente o conteúdo e reconstrói o enunciado se houver erros óbvios.
+2. Em exercícios de matemática (somas, subtrações): confirma que os números transcritos fazem sentido; se algo parecer errado (ex: 3+2=6), considera que pode ter havido erro na leitura e verifica a lógica.
+3. Resolve passo a passo, explicando o raciocínio por trás de cada operação.
+4. Se houver ambiguidade nos números, indica ao aluno que pode verificar a transcrição.";
 
         $messages = [["role" => "system", "content" => $systemContent]];
 

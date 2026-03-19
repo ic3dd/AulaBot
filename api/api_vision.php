@@ -15,12 +15,13 @@ header("Access-Control-Allow-Origin: *");
 // 2. CHAVES
 if (file_exists(__DIR__ . '/../config/config_secrets.php')) {
     require_once(__DIR__ . '/../config/config_secrets.php');
+} elseif (file_exists(__DIR__ . '/../config_secrets.php')) {
+    require_once(__DIR__ . '/../config_secrets.php');
 }
-
-// Chave de Fallback (Caso o config falhe)
-if (!defined('OCR_API_KEY'))
-    define('OCR_API_KEY', 'K82634633988957');
+if (!defined('GROQ_API_KEY')) define('GROQ_API_KEY', getenv('GROQ_API_KEY') ?: '');
+if (!defined('OCR_API_KEY')) define('OCR_API_KEY', 'K82634633988957');
 define('OCR_API_URL', 'https://api.ocr.space/parse/image');
+define('GROQ_VISION_MODEL', 'meta-llama/llama-4-scout-17b-16e-instruct');
 
 // Função de resposta rápida
 function respondWithError($message, $code = 400)
@@ -62,69 +63,112 @@ try {
     }
 
     $imageTmpPath = $file['tmp_name'];
-
-    // 4. PROCESSAMENTO OCR
-    $curlFile = function_exists('curl_file_create')
-        ? curl_file_create($imageTmpPath, $file['type'], $file['name'])
-        : new CURLFile($imageTmpPath, $file['type'], $file['name']);
-
-    // Mapear MIME type para extensão para a API OCR.space
-    $mimeToExt = [
-        'image/jpeg' => 'jpg',
-        'image/png' => 'png',
-        'image/webp' => 'webp',
-        'image/gif' => 'gif'
-    ];
-    $fileType = $mimeToExt[$file['type']] ?? 'png'; // Default para PNG
-
-    $postFields = [
-        'apikey' => OCR_API_KEY,
-        'file' => $curlFile,
-        'filetype' => $fileType, // IMPORTANTE: Informa o tipo explicitamente para evitar erro E216
-        'language' => 'por', // Português
-        'OCREngine' => '2', // Engine 2 é mais preciso para textos densos e manuscritos
-        'isTable' => 'false', // Desativado para evitar quebra de linhas em perguntas de escolha múltipla
-        'scale' => 'true',
-        'detectOrientation' => 'true',
-        'isOverlayRequired' => 'false' // Desativa overlay para mais velocidade
-    ];
-
-    $ch = curl_init(OCR_API_URL);
-    curl_setopt_array($ch, [
-        CURLOPT_POST => true,
-        CURLOPT_POSTFIELDS => $postFields,
-        CURLOPT_RETURNTRANSFER => true,
-        CURLOPT_SSL_VERIFYPEER => false,
-        CURLOPT_TIMEOUT => 30 // Timeout curto para não bloquear
-    ]);
-
-    $resRaw = curl_exec($ch);
-    $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-    curl_close($ch);
-
-    // Processar Resposta OCR
-    $ocr_failed = false;
     $contextoExtraido = null;
+    $ocr_failed = false;
+    $usedGroqVision = false;
 
-    if ($resRaw) {
-        $res = json_decode($resRaw, true);
-        if (isset($res['ParsedResults'][0]['ParsedText'])) {
-            $contextoExtraido = $res['ParsedResults'][0]['ParsedText'];
-        } else {
-            $ocr_failed = true;
-            error_log("OCR Falhou: " . substr($resRaw, 0, 200));
+    // 4. TENTAR GROQ VISION PRIMEIRO (mais preciso para números e matemática)
+    if (GROQ_API_KEY && $file['size'] < 3 * 1024 * 1024) { // Base64 limit ~4MB, deixamos margem
+        $imageData = file_get_contents($imageTmpPath);
+        $base64 = base64_encode($imageData);
+        $mime = $file['type'];
+        $dataUrl = "data:{$mime};base64,{$base64}";
+
+        $groqPrompt = "Transcreve EXATAMENTE o texto e os números desta imagem, linha a linha. " .
+            "Se for um exercício de matemática (contas, somas, subtrações), copia cada número e cada sinal (+, -, ×, ÷) com precisão total. " .
+            "Não inventes nem interpretes - transcreve literalmente o que vês. Responde apenas com o texto transcrito, sem explicações.";
+
+        $payload = [
+            'model' => GROQ_VISION_MODEL,
+            'messages' => [
+                [
+                    'role' => 'user',
+                    'content' => [
+                        ['type' => 'text', 'text' => $groqPrompt],
+                        ['type' => 'image_url', 'image_url' => ['url' => $dataUrl]]
+                    ]
+                ]
+            ],
+            'temperature' => 0.1,
+            'max_tokens' => 2048
+        ];
+
+        $ch = curl_init('https://api.groq.com/openai/v1/chat/completions');
+        curl_setopt_array($ch, [
+            CURLOPT_POST => true,
+            CURLOPT_POSTFIELDS => json_encode($payload),
+            CURLOPT_HTTPHEADER => [
+                'Content-Type: application/json',
+                'Authorization: Bearer ' . GROQ_API_KEY
+            ],
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_TIMEOUT => 25
+        ]);
+        $groqRes = curl_exec($ch);
+        $groqCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        curl_close($ch);
+
+        if ($groqRes && $groqCode === 200) {
+            $groqJson = json_decode($groqRes, true);
+            $text = $groqJson['choices'][0]['message']['content'] ?? null;
+            if ($text && trim($text) !== '') {
+                $contextoExtraido = trim($text);
+                $usedGroqVision = true;
+                $ocr_failed = false;
+            }
         }
-    } else {
-        $ocr_failed = true;
     }
 
-    // Fallback de texto
+    // 5. FALLBACK: OCR.space (quando Groq Vision falha ou não está disponível)
+    if (empty($contextoExtraido) || trim($contextoExtraido) === '') {
+        $curlFile = function_exists('curl_file_create')
+            ? curl_file_create($imageTmpPath, $file['type'], $file['name'])
+            : new CURLFile($imageTmpPath, $file['type'], $file['name']);
+
+        $mimeToExt = ['image/jpeg' => 'jpg', 'image/png' => 'png', 'image/webp' => 'webp', 'image/gif' => 'gif'];
+        $fileType = $mimeToExt[$file['type']] ?? 'png';
+
+        $postFields = [
+            'apikey' => OCR_API_KEY,
+            'file' => $curlFile,
+            'filetype' => $fileType,
+            'language' => 'por', // Português
+            'OCREngine' => '2', // Melhor para números e caracteres especiais (+, -, etc.)
+            'isTable' => 'false',
+            'scale' => 'true',
+            'detectOrientation' => 'true',
+            'isOverlayRequired' => 'false'
+        ];
+
+        $ch = curl_init(OCR_API_URL);
+        curl_setopt_array($ch, [
+            CURLOPT_POST => true,
+            CURLOPT_POSTFIELDS => $postFields,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_SSL_VERIFYPEER => false,
+            CURLOPT_TIMEOUT => 30
+        ]);
+        $resRaw = curl_exec($ch);
+        curl_close($ch);
+
+        if ($resRaw) {
+            $res = json_decode($resRaw, true);
+            if (isset($res['ParsedResults'][0]['ParsedText'])) {
+                $contextoExtraido = trim($res['ParsedResults'][0]['ParsedText']);
+            }
+        }
+        if (empty($contextoExtraido)) {
+            $ocr_failed = true;
+        }
+    }
+
+    // Fallback final
     if (empty($contextoExtraido) || trim($contextoExtraido) === '') {
         $contextoExtraido = "Não consegui ler o texto da imagem. Por favor descreve-a.";
         $ocr_failed = true;
     }
 
-    // 5. GUARDAR IMAGEM LOCALMENTE (Backup e Histórico)
+    // 6. GUARDAR IMAGEM LOCALMENTE (Backup e Histórico)
     // Guardamos o ficheiro numa pasta pública para que possa ser mostrado no chat depois.
     // Usamos um nome aleatório (hash) para evitar conflitos e proteger a privacidade.
     $imageUrl = null;
@@ -153,10 +197,9 @@ try {
         error_log("Falha ao mover ficheiro final.");
     }
 
-    // DEBUG: Log do texto extraído para percebermos o que o OCR leu
-    error_log("OCR Success: " . substr($contextoExtraido, 0, 500));
+    error_log("Vision " . ($usedGroqVision ? "Groq" : "OCR") . ": " . substr($contextoExtraido, 0, 300));
 
-    // 6. RESPOSTA JSON FINAL
+    // 7. RESPOSTA JSON FINAL
     echo json_encode([
         'status' => 'success',
         'description' => $contextoExtraido,

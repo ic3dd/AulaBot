@@ -38,17 +38,20 @@ Guia para colocar o AulaBot online no Render usando Docker e Supabase.
 
 ## 3. Variáveis de Ambiente
 
-No Render, vai a **Environment** e adiciona:
+No Render, vai ao teu serviço → **Environment** e adiciona:
 
 | Variável | Valor |
 |----------|-------|
 | `USE_SUPABASE` | `true` |
-| `SUPABASE_DB_URL` | `postgresql://postgres.XXX:TUAPASSWORD@aws-0-REGIAO.pooler.supabase.com:5432/postgres` |
+| `SUPABASE_DB_URL` | Connection string do **pooler** (ver abaixo) |
 | `GROQ_API_KEY` | `gsk_...` (tua chave da API Groq) |
 | `IP_SECRET_PEPPER` | `uma_string_aleatoria_secreta` |
 | `DEBUG_ENDPOINT_TOKEN` | `token_seguro_para_debug` |
 
-**Importante:** Cola a connection string completa do Supabase em `SUPABASE_DB_URL`, com a password já substituída.
+**SUPABASE_DB_URL – usa o pooler, não a conexão direta:**
+- Supabase → **Connect** → **Session pooler** ou **Transaction pooler**
+- Formato: `postgresql://postgres.PROJECT_REF:PASSWORD@aws-1-eu-west-1.pooler.supabase.com:6543/postgres`
+- A conexão direta (`db.xxx.supabase.co:5432`) falha no Render com "Network unreachable"
 
 ---
 
