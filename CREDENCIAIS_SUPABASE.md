@@ -16,11 +16,9 @@
 
 1. Entra no teu projeto no dashboard
 2. No topo da página, procura e clica no botão **Connect** (ou **Connect to your project**)
-3. No painel que abrir, escolhe **Session mode** (ou **Supavisor Session mode**)
+3. No painel que abrir, escolhe **Session pooler** (recomendado para redes IPv4) ou **Transaction pooler** (porta 6543)
 4. Copia a connection string que aparece (formato URI)
-5. Substitui `[YOUR-PASSWORD]` pela password que definiste ao criar o projeto
-
-postgresql://postgres:[twlruaZApG5rKJQb]@db.zdoycrhztbebhbmzjfom.supabase.co:5432/postgres
+5. Substitui `[YOUR-PASSWORD]` pela password que definiste ao criar o projeto (sem parêntesis retos)
 
 **Método B – Definições do projeto:**
 
