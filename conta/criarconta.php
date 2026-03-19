@@ -39,7 +39,7 @@ try {
     $conn = $con ?? null;
     
     if (!$conn) {
-        throw new Exception("Erro na conexão: " . mysqli_connect_error());
+        throw new Exception("Erro na conexão: " . db_connect_error());
     }
 
     $nome = trim($_POST['nome'] ?? '');
@@ -60,16 +60,16 @@ try {
 
     // 1. Verificar se email existe
     $sql = "SELECT COUNT(*) as total FROM utilizador WHERE email = ?";
-    $stmt = mysqli_prepare($conn, $sql);
-    mysqli_stmt_bind_param($stmt, "s", $email);
-    mysqli_stmt_execute($stmt);
-    $result = mysqli_stmt_get_result($stmt);
-    $row = mysqli_fetch_assoc($result);
+    $stmt = db_prepare($conn, $sql);
+    db_stmt_bind_param($stmt, "s", $email);
+    db_stmt_execute($stmt);
+    $result = db_stmt_get_result($stmt);
+    $row = db_fetch_assoc($result);
     
     if ($row && $row['total'] > 0) {
         respondJson(false, 'Já existe uma conta registada com este email.', 409);
     }
-    mysqli_stmt_close($stmt);
+    db_stmt_close($stmt);
 
     // Preparar dados para inserção
     $hash = substr(md5($password), 0, 12); // Hash compatível com o teu login.php
@@ -80,22 +80,22 @@ try {
     // Nota: Verifica se a coluna 'tema_escola' existe na tua tabela. 
     $sql = "INSERT INTO utilizador (nome, email, palavra_passe, tipo, tema_escola, data_criacao) VALUES (?, ?, ?, ?, ?, NOW())";
     
-    $stmt = mysqli_prepare($conn, $sql);
+    $stmt = db_prepare($conn, $sql);
     
     if (!$stmt) {
-        throw new Exception('Erro ao preparar query: ' . mysqli_error($conn));
+        throw new Exception('Erro ao preparar query: ' . db_error($conn));
     }
     
     // "sssss" = 5 strings (nome, email, hash, tipo, temaMaterias)
-    mysqli_stmt_bind_param($stmt, "sssss", $nome, $email, $hash, $tipo, $temaMaterias);
+    db_stmt_bind_param($stmt, "sssss", $nome, $email, $hash, $tipo, $temaMaterias);
 
-    if (!mysqli_stmt_execute($stmt)) {
-        throw new Exception('Erro ao executar inserção: ' . mysqli_stmt_error($stmt));
+    if (!db_stmt_execute($stmt)) {
+        throw new Exception('Erro ao executar inserção: ' . db_stmt_error($stmt));
     }
     
     error_log("Conta criada: $email (IP: $ip_address)");
-    mysqli_stmt_close($stmt);
-    mysqli_close($conn);
+    db_stmt_close($stmt);
+    db_close($conn);
     
     respondJson(true, 'Conta criada com sucesso!', 201);
 

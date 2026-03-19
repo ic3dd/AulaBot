@@ -38,43 +38,43 @@ try {
     $agora = date('Y-m-d H:i:s');
 
     $sql = "SELECT email FROM utilizador WHERE reset_token = ? AND reset_token_expiry > NOW()";
-    $stmt = mysqli_prepare($con, $sql);
+    $stmt = db_prepare($con, $sql);
     
     if (!$stmt) {
-        throw new Exception('Erro ao preparar query: ' . mysqli_error($con));
+        throw new Exception('Erro ao preparar query: ' . db_error($con));
     }
     
-    mysqli_stmt_bind_param($stmt, "s", $token_hash);
-    mysqli_stmt_execute($stmt);
-    $result = mysqli_stmt_get_result($stmt);
+    db_stmt_bind_param($stmt, "s", $token_hash);
+    db_stmt_execute($stmt);
+    $result = db_stmt_get_result($stmt);
     
-    if (mysqli_num_rows($result) === 0) {
-        mysqli_stmt_close($stmt);
+    if (db_num_rows($result) === 0) {
+        db_stmt_close($stmt);
         respondJson(false, 'Link de recuperação inválido ou expirado. Solicite um novo.', 400);
     }
     
-    $user = mysqli_fetch_assoc($result);
+    $user = db_fetch_assoc($result);
     $user_email = $user['email'];
-    mysqli_stmt_close($stmt);
+    db_stmt_close($stmt);
 
     $password_hash = substr(md5($nova_password), 0, 12);
 
     $sql_update = "UPDATE utilizador SET palavra_passe = ?, reset_token = NULL, reset_token_expiry = NULL WHERE email = ?";
-    $stmt_update = mysqli_prepare($con, $sql_update);
+    $stmt_update = db_prepare($con, $sql_update);
     
     if (!$stmt_update) {
-        throw new Exception('Erro ao preparar query: ' . mysqli_error($con));
+        throw new Exception('Erro ao preparar query: ' . db_error($con));
     }
     
-    mysqli_stmt_bind_param($stmt_update, "ss", $password_hash, $user_email);
+    db_stmt_bind_param($stmt_update, "ss", $password_hash, $user_email);
     
-    if (!mysqli_stmt_execute($stmt_update)) {
-        mysqli_stmt_close($stmt_update);
-        throw new Exception('Erro ao atualizar palavra-passe: ' . mysqli_error($con));
+    if (!db_stmt_execute($stmt_update)) {
+        db_stmt_close($stmt_update);
+        throw new Exception('Erro ao atualizar palavra-passe: ' . db_error($con));
     }
     
-    mysqli_stmt_close($stmt_update);
-    mysqli_close($con);
+    db_stmt_close($stmt_update);
+    db_close($con);
 
     respondJson(true, 'Palavra-passe redefinida com sucesso! Será redirecionado para o login.', 200);
 

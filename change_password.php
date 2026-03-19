@@ -41,21 +41,21 @@ if (strlen($new) < 6) {
 try {
     // Buscar utilizador
     $sql = "SELECT id_utilizador, palavra_passe FROM utilizador WHERE email = ? LIMIT 1";
-    $stmt = mysqli_prepare($con, $sql);
-    if (!$stmt) throw new Exception('Erro ao preparar query: ' . mysqli_error($con));
-    mysqli_stmt_bind_param($stmt, 's', $email);
-    mysqli_stmt_execute($stmt);
-    $result = mysqli_stmt_get_result($stmt);
+    $stmt = db_prepare($con, $sql);
+    if (!$stmt) throw new Exception('Erro ao preparar query: ' . db_error($con));
+    db_stmt_bind_param($stmt, 's', $email);
+    db_stmt_execute($stmt);
+    $result = db_stmt_get_result($stmt);
 
-    if (mysqli_num_rows($result) !== 1) {
+    if (db_num_rows($result) !== 1) {
         respondJson(false, 'Utilizador não encontrado no sistema.', 404);
-        mysqli_stmt_close($stmt);
+        db_stmt_close($stmt);
     }
 
-    $user = mysqli_fetch_assoc($result);
+    $user = db_fetch_assoc($result);
     $stored = isset($user['palavra_passe']) ? trim($user['palavra_passe']) : '';
     $userId = $user['id_utilizador'];
-    mysqli_stmt_close($stmt);
+    db_stmt_close($stmt);
 
     $verified = false;
     if ($current === $stored) $verified = true;
@@ -78,16 +78,16 @@ try {
     $newHash = substr(md5($new), 0, 12);
 
     $updateSql = "UPDATE utilizador SET palavra_passe = ? WHERE id_utilizador = ?";
-    $upd = mysqli_prepare($con, $updateSql);
-    if (!$upd) throw new Exception('Erro ao preparar update: ' . mysqli_error($con));
-    mysqli_stmt_bind_param($upd, 'si', $newHash, $userId);
+    $upd = db_prepare($con, $updateSql);
+    if (!$upd) throw new Exception('Erro ao preparar update: ' . db_error($con));
+    db_stmt_bind_param($upd, 'si', $newHash, $userId);
 
-    if (mysqli_stmt_execute($upd)) {
-        mysqli_stmt_close($upd);
+    if (db_stmt_execute($upd)) {
+        db_stmt_close($upd);
         respondJson(true, 'Palavra-passe alterada com sucesso!', 200);
     } else {
-        $err = mysqli_stmt_error($upd);
-        mysqli_stmt_close($upd);
+        $err = db_stmt_error($upd);
+        db_stmt_close($upd);
         throw new Exception('Erro ao atualizar password: ' . $err);
     }
 
@@ -96,5 +96,5 @@ try {
     respondJson(false, 'Erro ao processar a alteração. Por favor, tente novamente.', 500);
 }
 
-mysqli_close($con);
+db_close($con);
 ?>

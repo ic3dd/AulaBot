@@ -1,6 +1,6 @@
 <?php
-require_once('../auth_check.php');
-require_once('../ligarbd.php');
+require_once('../auth/auth_check.php');
+require_once(__DIR__ . '/../ligarbd.php');
 verificarAutenticacao();
 
 // Obter dados do usuário logado

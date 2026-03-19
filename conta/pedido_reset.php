@@ -38,43 +38,43 @@ try {
     }
 
     $sql = "SELECT COUNT(*) as total FROM utilizador WHERE email = ?";
-    $stmt = mysqli_prepare($con, $sql);
+    $stmt = db_prepare($con, $sql);
     
     if (!$stmt) {
-        throw new Exception('Erro ao preparar query: ' . mysqli_error($con));
+        throw new Exception('Erro ao preparar query: ' . db_error($con));
     }
     
-    mysqli_stmt_bind_param($stmt, "s", $email);
-    mysqli_stmt_execute($stmt);
-    $result = mysqli_stmt_get_result($stmt);
-    $row = mysqli_fetch_assoc($result);
+    db_stmt_bind_param($stmt, "s", $email);
+    db_stmt_execute($stmt);
+    $result = db_stmt_get_result($stmt);
+    $row = db_fetch_assoc($result);
     
     if ($row['total'] == 0) {
-        mysqli_stmt_close($stmt);
+        db_stmt_close($stmt);
         respondJson(false, 'Email não encontrado no sistema.', 404);
     }
     
-    mysqli_stmt_close($stmt);
+    db_stmt_close($stmt);
 
     $reset_token = bin2hex(random_bytes(32));
     $token_hash = hash('sha256', $reset_token);
     $expiry_time = date('Y-m-d H:i:s', strtotime('+1 hour'));
 
     $sql_update = "UPDATE utilizador SET reset_token = ?, reset_token_expiry = ? WHERE email = ?";
-    $stmt_update = mysqli_prepare($con, $sql_update);
+    $stmt_update = db_prepare($con, $sql_update);
     
     if (!$stmt_update) {
-        throw new Exception('Erro ao preparar query de atualização: ' . mysqli_error($con));
+        throw new Exception('Erro ao preparar query de atualização: ' . db_error($con));
     }
     
-    mysqli_stmt_bind_param($stmt_update, "sss", $token_hash, $expiry_time, $email);
+    db_stmt_bind_param($stmt_update, "sss", $token_hash, $expiry_time, $email);
     
-    if (!mysqli_stmt_execute($stmt_update)) {
-        mysqli_stmt_close($stmt_update);
+    if (!db_stmt_execute($stmt_update)) {
+        db_stmt_close($stmt_update);
         throw new Exception('Erro ao gerar token de reset');
     }
     
-    mysqli_stmt_close($stmt_update);
+    db_stmt_close($stmt_update);
 
     $protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https' : 'http';
     $host = $_SERVER['HTTP_HOST'];
@@ -156,7 +156,7 @@ body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f5f5f
         throw new Exception('Erro ao enviar email: ' . $e->getMessage());
     }
 
-    mysqli_close($con);
+    db_close($con);
 
 } catch (Exception $e) {
     error_log("Erro na recuperação de conta: " . $e->getMessage());

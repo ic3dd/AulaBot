@@ -19,19 +19,19 @@ if (!isset($_SESSION['tipo']) || $_SESSION['tipo'] !== 'admin') {
     respondJson(false, 'Acesso negado. Permissões insuficientes.', [], 403);
 }
 
-require_once('../ligarbd.php');
+require_once(__DIR__ . '/../ligarbd.php');
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     try {
         $sql = "SELECT id_utilizador, email, nome, bloqueado, motivo_bloqueio, data_bloqueio FROM utilizador ORDER BY nome ASC";
-        $resultado = mysqli_query($con, $sql);
+        $resultado = db_query($con, $sql);
         
         if (!$resultado) {
             throw new Exception('Erro ao buscar utilizadores.');
         }
         
         $utilizadores = [];
-        while ($linha = mysqli_fetch_assoc($resultado)) {
+        while ($linha = db_fetch_assoc($resultado)) {
             $utilizadores[] = $linha;
         }
         
@@ -52,26 +52,26 @@ elseif ($_SERVER['REQUEST_METHOD'] === 'POST') {
     try {
         if ($acao === 'bloquear') {
             $sql = "UPDATE utilizador SET bloqueado = 1, motivo_bloqueio = ?, data_bloqueio = NOW() WHERE id_utilizador = ?";
-            $stmt = mysqli_prepare($con, $sql);
-            mysqli_stmt_bind_param($stmt, "si", $motivo, $id_utilizador);
+            $stmt = db_prepare($con, $sql);
+            db_stmt_bind_param($stmt, "si", $motivo, $id_utilizador);
             
-            if (!mysqli_stmt_execute($stmt)) {
+            if (!db_stmt_execute($stmt)) {
                 throw new Exception('Erro ao bloquear utilizador.');
             }
             
-            mysqli_stmt_close($stmt);
+            db_stmt_close($stmt);
             respondJson(true, 'Utilizador bloqueado com sucesso!', [], 200);
         } 
         else if ($acao === 'desbloquear') {
             $sql = "UPDATE utilizador SET bloqueado = 0, motivo_bloqueio = NULL, data_bloqueio = NULL WHERE id_utilizador = ?";
-            $stmt = mysqli_prepare($con, $sql);
-            mysqli_stmt_bind_param($stmt, "i", $id_utilizador);
+            $stmt = db_prepare($con, $sql);
+            db_stmt_bind_param($stmt, "i", $id_utilizador);
             
-            if (!mysqli_stmt_execute($stmt)) {
+            if (!db_stmt_execute($stmt)) {
                 throw new Exception('Erro ao desbloquear utilizador.');
             }
             
-            mysqli_stmt_close($stmt);
+            db_stmt_close($stmt);
             respondJson(true, 'Utilizador desbloqueado com sucesso!', [], 200);
         }
     } catch (Exception $e) {
@@ -79,6 +79,6 @@ elseif ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-mysqli_close($con);
+db_close($con);
 exit;
 ?>

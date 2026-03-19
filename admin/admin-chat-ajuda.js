@@ -141,7 +141,7 @@ function abrirConversa(conversa, targetElement) {
 }
 
 function carregarMensagensConversa(conversaId) {
-  fetch(`../live_chat.php?action=get_conversation&conversation_id=${conversaId}`)
+  fetch(`../api/live_chat.php?action=get_conversation&conversation_id=${conversaId}`)
     .then(response => response.json())
     .then(result => {
       if (result.success) {
@@ -374,7 +374,7 @@ function verificarNovasConversas() {
 }
 
 function verificarNovasMensagens(conversaId) {
-  fetch(`../live_chat.php?action=check_new_messages&conversation_id=${conversaId}`)
+  fetch(`../api/live_chat.php?action=check_new_messages&conversation_id=${conversaId}`)
     .then(response => response.json())
     .then(result => {
       if (result.success) {

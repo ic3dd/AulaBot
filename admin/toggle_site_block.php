@@ -3,8 +3,8 @@ header('Content-Type: application/json; charset=utf-8');
 error_reporting(0);
 
 
-require_once '../ligarbd.php';
-require_once '../auth_check.php';
+require_once __DIR__ . '/../ligarbd.php';
+require_once __DIR__ . '/../auth/auth_check.php';
 
 function respondJson($success, $message = '', $data = [], $httpCode = 200)
 {
@@ -22,19 +22,19 @@ if (!verificarSeAdmin()) {
 }
 
 $query = "SELECT site_bloqueado FROM configuracoes_site WHERE id = 1";
-$result = mysqli_query($con, $query);
+$result = db_query($con, $query);
 
-if (mysqli_num_rows($result) === 0) {
-    mysqli_query($con, "INSERT INTO configuracoes_site (site_bloqueado) VALUES (FALSE)");
+if (db_num_rows($result) === 0) {
+    db_query($con, "INSERT INTO configuracoes_site (site_bloqueado) VALUES (FALSE)");
     $bloqueado = false;
 } else {
-    $row = mysqli_fetch_assoc($result);
+    $row = db_fetch_assoc($result);
     $bloqueado = (bool) $row['site_bloqueado'];
 }
 
 $novo_estado = !$bloqueado;
 $query = "UPDATE configuracoes_site SET site_bloqueado = " . ($novo_estado ? "TRUE" : "FALSE") . " WHERE id = 1";
-$result = mysqli_query($con, $query);
+$result = db_query($con, $query);
 
 if (!$result) {
     respondJson(false, 'Erro ao atualizar estado do site. Tente novamente.', [], 500);

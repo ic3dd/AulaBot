@@ -1,0 +1,1 @@
+[2026-02-03 14:09:58] ID:  | Materias: ["portugues","matematica","fisica","quimica","biologia","ingles","franc\u00e9s","artes","educacao_fisica"]

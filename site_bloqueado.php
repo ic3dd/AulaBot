@@ -225,9 +225,9 @@
       try { localStorage.removeItem('auth_email'); localStorage.removeItem('auth_nome'); } catch(e) {}
       const authId = (function(){ try { return localStorage.getItem('auth_id'); } catch(e){ return null; } })();
       if (authId) {
-        window.location.href = 'logout.php?id=' + encodeURIComponent(authId);
+        window.location.href = 'auth/logout.php?id=' + encodeURIComponent(authId);
       } else {
-        window.location.href = 'logout.php';
+        window.location.href = 'auth/logout.php';
       }
     }
 

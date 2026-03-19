@@ -6,7 +6,7 @@ error_reporting(E_ALL);
 
 header('Content-Type: application/json; charset=UTF-8');
 
-require_once('../ligarbd.php');
+require_once(__DIR__ . '/../ligarbd.php');
 
 function respondJson($success, $message = '', $httpCode = 200) {
     if (ob_get_length()) ob_clean();

@@ -2,7 +2,7 @@
 
 // Verificar se o utilizador é administrador
 // Inclui o script de verificação de autenticação
-require_once('../auth_check.php');
+require_once('../auth/auth_check.php');
 // Executa a função que garante que apenas admins acedem a esta página
 verificarPermissoesAdmin();
 
@@ -22,14 +22,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
     
     if ($id > 0) {
         // Atualiza a base de dados marcando o feedback como lido ('sim')
-        $stmt = mysqli_prepare($con, "UPDATE feedback SET lido = 'sim' WHERE id_feedback = ?");
-        mysqli_stmt_bind_param($stmt, 'i', $id);
-        $success = mysqli_stmt_execute($stmt);
+        $stmt = db_prepare($con, "UPDATE feedback SET lido = 'sim' WHERE id_feedback = ?");
+        db_stmt_bind_param($stmt, 'i', $id);
+        $success = db_stmt_execute($stmt);
         
         // Recalcular total de não lidos
         // Necessário para atualizar o contador na interface imediatamente
-        $res = mysqli_query($con, "SELECT COUNT(*) as total FROM feedback WHERE (lido = 'nao' OR lido IS NULL OR lido = '')");
-        $row = mysqli_fetch_assoc($res);
+        $res = db_query($con, "SELECT COUNT(*) as total FROM feedback WHERE (lido = 'nao' OR lido IS NULL OR lido = '')");
+        $row = db_fetch_assoc($res);
         $total = $row ? $row['total'] : 0;
         
         echo json_encode(['success' => $success, 'total' => $total]);
@@ -55,9 +55,9 @@ error_log('Dashboard - Feedbacks carregados: ' . json_encode($feedbacks));
 $ultimaAtualizacao = null;
 if (isset($con)) {
     // Busca a atualização mais recente do sistema para exibir no widget de novidades
-    $resultadoAtualizacao = @mysqli_query($con, "SELECT id_update, nome, versao, descricao, data_update FROM updates ORDER BY data_update DESC LIMIT 1");
-    if ($resultadoAtualizacao && mysqli_num_rows($resultadoAtualizacao) > 0) {
-        $ultimaAtualizacao = mysqli_fetch_assoc($resultadoAtualizacao);
+    $resultadoAtualizacao = @db_query($con, "SELECT id_update, nome, versao, descricao, data_update FROM updates ORDER BY data_update DESC LIMIT 1");
+    if ($resultadoAtualizacao && db_num_rows($resultadoAtualizacao) > 0) {
+        $ultimaAtualizacao = db_fetch_assoc($resultadoAtualizacao);
     }
 }
 
@@ -69,20 +69,20 @@ function obterEstatisticasSistema($conexao) {
     $stats = [];
     
     // Total de utilizadores
-    $result = mysqli_query($conexao, "SELECT COUNT(*) as total FROM utilizador");
-    $stats['total_utilizadores'] = mysqli_fetch_assoc($result)['total'];
+    $result = db_query($conexao, "SELECT COUNT(*) as total FROM utilizador");
+    $stats['total_utilizadores'] = db_fetch_assoc($result)['total'];
     
     // Total de administradores
-    $result = mysqli_query($conexao, "SELECT COUNT(*) as total FROM utilizador WHERE tipo = 'admin'");
-    $stats['total_admins'] = mysqli_fetch_assoc($result)['total'];
+    $result = db_query($conexao, "SELECT COUNT(*) as total FROM utilizador WHERE tipo = 'admin'");
+    $stats['total_admins'] = db_fetch_assoc($result)['total'];
     
     // Utilizadores registados hoje
-    $result = mysqli_query($conexao, "SELECT COUNT(*) as total FROM utilizador WHERE DATE(data_criacao) = CURDATE()");
-    $stats['novos_hoje'] = mysqli_fetch_assoc($result)['total'];
+    $result = db_query($conexao, "SELECT COUNT(*) as total FROM utilizador WHERE " . db_sql_date_col('data_criacao') . " = " . db_sql_date());
+    $stats['novos_hoje'] = db_fetch_assoc($result)['total'];
     
     // Utilizadores registados esta semana
-    $result = mysqli_query($conexao, "SELECT COUNT(*) as total FROM utilizador WHERE data_criacao >= DATE_SUB(NOW(), INTERVAL 7 DAY)");
-    $stats['novos_semana'] = mysqli_fetch_assoc($result)['total'];
+    $result = db_query($conexao, "SELECT COUNT(*) as total FROM utilizador WHERE data_criacao >= " . db_sql_date_sub('7 DAY'));
+    $stats['novos_semana'] = db_fetch_assoc($result)['total'];
     
     return $stats;
 }
@@ -94,9 +94,9 @@ function obterEstatisticasSistema($conexao) {
 function obterListaUtilizadores($conexao) {
     $utilizadores = [];
     
-    $result = mysqli_query($conexao, "SELECT id_utilizador, nome, email, tipo, data_criacao, bloqueado, motivo_bloqueio FROM utilizador ORDER BY data_criacao DESC LIMIT 10");
+    $result = db_query($conexao, "SELECT id_utilizador, nome, email, tipo, data_criacao, bloqueado, motivo_bloqueio FROM utilizador ORDER BY data_criacao DESC LIMIT 10");
     
-    while ($row = mysqli_fetch_assoc($result)) {
+    while ($row = db_fetch_assoc($result)) {
         $utilizadores[] = $row;
     }
     
@@ -128,12 +128,12 @@ function obterFeedbacks($conexao) {
     
     // Contar total de feedbacks não lidos
     $sqlTotal = "SELECT COUNT(*) as total FROM feedback WHERE (lido = 'nao' OR lido IS NULL OR lido = '')";
-    $resultTotal = mysqli_query($conexao, $sqlTotal);
+    $resultTotal = db_query($conexao, $sqlTotal);
     if ($resultTotal) {
-        $row = mysqli_fetch_assoc($resultTotal);
+        $row = db_fetch_assoc($resultTotal);
         $retorno['total'] = $row ? $row['total'] : 0;
     } else {
-        error_log('obterFeedbacks: Erro ao contar feedbacks: ' . mysqli_error($conexao));
+        error_log('obterFeedbacks: Erro ao contar feedbacks: ' . db_error($conexao));
     }
     
     // Buscar os 8 feedbacks mais recentes
@@ -143,14 +143,14 @@ function obterFeedbacks($conexao) {
             ORDER BY data_feedback DESC 
             LIMIT 8";
     
-    $result = mysqli_query($conexao, $sql);
+    $result = db_query($conexao, $sql);
     if ($result) {
-        while ($row = mysqli_fetch_assoc($result)) {
+        while ($row = db_fetch_assoc($result)) {
             $retorno['lista'][] = $row;
         }
         error_log('obterFeedbacks: ' . count($retorno['lista']) . ' feedbacks carregados');
     } else {
-        error_log('obterFeedbacks: Erro ao buscar feedbacks: ' . mysqli_error($conexao));
+        error_log('obterFeedbacks: Erro ao buscar feedbacks: ' . db_error($conexao));
     }
     
     return $retorno;
@@ -162,8 +162,8 @@ function obterFeedbacks($conexao) {
  */
 function obterRegistosPaginados($conexao, $pagina_atual, $items_por_pagina = 8) {
     // 1. Obter o número total de registos
-    $total_result = mysqli_query($conexao, "SELECT COUNT(*) as total FROM registo");
-    $total_registos = mysqli_fetch_assoc($total_result)['total'] ?? 0;
+    $total_result = db_query($conexao, "SELECT COUNT(*) as total FROM registo");
+    $total_registos = db_fetch_assoc($total_result)['total'] ?? 0;
 
     // 2. Calcular o offset
     $offset = ($pagina_atual - 1) * $items_por_pagina;
@@ -176,15 +176,15 @@ function obterRegistosPaginados($conexao, $pagina_atual, $items_por_pagina = 8) 
             ORDER BY r.data DESC 
             LIMIT ? OFFSET ?";
     
-    $stmt = mysqli_prepare($conexao, $sql);
-    mysqli_stmt_bind_param($stmt, "ii", $items_por_pagina, $offset);
-    mysqli_stmt_execute($stmt);
-    $result = mysqli_stmt_get_result($stmt);
+    $stmt = db_prepare($conexao, $sql);
+    db_stmt_bind_param($stmt, "ii", $items_por_pagina, $offset);
+    db_stmt_execute($stmt);
+    $result = db_stmt_get_result($stmt);
     
-    while ($row = mysqli_fetch_assoc($result)) {
+    while ($row = db_fetch_assoc($result)) {
         $registos[] = $row;
     }
-    mysqli_stmt_close($stmt);
+    db_stmt_close($stmt);
 
     // 4. Retornar dados e contagem total
     return [
@@ -263,7 +263,7 @@ $total_paginas_registos = ceil($total_registos / $items_por_pagina_registos);
                         </div>
                         <div class="user-dropdown" id="userDropdown" aria-hidden="true">
                             <a href="../index.php" class="dropdown-item">Voltar ao Início</a>
-                            <a href="../logout.php<?php echo isset($_SESSION['id_utilizador']) ? '?id=' . urlencode($_SESSION['id_utilizador']) : ''; ?>" class="dropdown-item logout-item">Terminar Sessão</a>
+                            <a href="../auth/logout.php<?php echo isset($_SESSION['id_utilizador']) ? '?id=' . urlencode($_SESSION['id_utilizador']) : ''; ?>" class="dropdown-item logout-item">Terminar Sessão</a>
                         </div>
                     </div>
                 </div>
@@ -281,10 +281,10 @@ $total_paginas_registos = ceil($total_registos / $items_por_pagina_registos);
                             <?php
                             // Verificar estado atual do bloqueio do site
                             $query = "SELECT site_bloqueado FROM configuracoes_site WHERE id = 1";
-                            $result = mysqli_query($con, $query);
+                            $result = db_query($con, $query);
                             $bloqueado = false;
-                            if (mysqli_num_rows($result) > 0) {
-                                $row = mysqli_fetch_assoc($result);
+                            if (db_num_rows($result) > 0) {
+                                $row = db_fetch_assoc($result);
                                 $bloqueado = (bool)$row['site_bloqueado'];
                             }
                             ?>

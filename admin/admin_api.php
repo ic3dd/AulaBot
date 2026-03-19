@@ -38,8 +38,8 @@ register_shutdown_function(function () use ($debugLogFile) {
 });
 
 // Incluir ficheiros necessários
-require_once('../auth_check.php');
-require_once('../ligarbd.php');
+require_once(__DIR__ . '/../auth/auth_check.php');
+require_once(__DIR__ . '/../ligarbd.php');
 
 // Verificar se o utilizador é administrador (SEM REDIRECT AUTOMÁTICO)
 // Se não for admin, retornamos JSON 403 em vez de HTML
@@ -173,34 +173,34 @@ function atualizarUtilizador($dados)
             responderErro('Email inválido');
         }
         $id = intval($dados['id_utilizador']);
-        $nome = mysqli_real_escape_string($con, $dados['nome']);
-        $email = mysqli_real_escape_string($con, $dados['email']);
+        $nome = db_real_escape_string($con, $dados['nome']);
+        $email = db_real_escape_string($con, $dados['email']);
         $tipo = in_array($dados['tipo'], ['utilizador', 'admin']) ? $dados['tipo'] : 'utilizador';
 
         // Verificar se email já existe em outro utilizador
-        $stmt = mysqli_prepare($con, "SELECT id_utilizador FROM utilizador WHERE email = ? AND id_utilizador != ?");
+        $stmt = db_prepare($con, "SELECT id_utilizador FROM utilizador WHERE email = ? AND id_utilizador != ?");
         if (!$stmt) {
-            escreverDebug('atualizarUtilizador prepare SELECT error: ' . mysqli_error($con));
-            responderErro('Erro ao preparar query: ' . mysqli_error($con));
+            escreverDebug('atualizarUtilizador prepare SELECT error: ' . db_error($con));
+            responderErro('Erro ao preparar query: ' . db_error($con));
         }
-        mysqli_stmt_bind_param($stmt, "si", $email, $id);
-        mysqli_stmt_execute($stmt);
-        $result = mysqli_stmt_get_result($stmt);
-        if ($result && mysqli_num_rows($result) > 0) {
+        db_stmt_bind_param($stmt, "si", $email, $id);
+        db_stmt_execute($stmt);
+        $result = db_stmt_get_result($stmt);
+        if ($result && db_num_rows($result) > 0) {
             escreverDebug('atualizarUtilizador: email already used by other user');
             responderErro('Já existe outro utilizador com esse email');
         }
 
         // Atualizar dados
-        $stmt = mysqli_prepare($con, "UPDATE utilizador SET nome = ?, email = ?, tipo = ? WHERE id_utilizador = ?");
+        $stmt = db_prepare($con, "UPDATE utilizador SET nome = ?, email = ?, tipo = ? WHERE id_utilizador = ?");
         if (!$stmt) {
-            escreverDebug('atualizarUtilizador prepare UPDATE error: ' . mysqli_error($con));
-            responderErro('Erro ao preparar query: ' . mysqli_error($con));
+            escreverDebug('atualizarUtilizador prepare UPDATE error: ' . db_error($con));
+            responderErro('Erro ao preparar query: ' . db_error($con));
         }
-        mysqli_stmt_bind_param($stmt, "sssi", $nome, $email, $tipo, $id);
-        $exec = mysqli_stmt_execute($stmt);
+        db_stmt_bind_param($stmt, "sssi", $nome, $email, $tipo, $id);
+        $exec = db_stmt_execute($stmt);
         if ($exec) {
-            $affected = mysqli_stmt_affected_rows($stmt);
+            $affected = db_stmt_affected_rows($stmt);
             escreverDebug('atualizarUtilizador execute UPDATE success, affected rows: ' . $affected);
             if ($affected >= 0) {
                 responderSucesso(null, 'Dados do utilizador atualizados com sucesso');
@@ -208,7 +208,7 @@ function atualizarUtilizador($dados)
                 responderErro('Nenhuma alteração foi efetuada');
             }
         } else {
-            $stmtErr = mysqli_stmt_error($stmt);
+            $stmtErr = db_stmt_error($stmt);
             escreverDebug('atualizarUtilizador execute UPDATE error: ' . $stmtErr);
             responderErro('Erro ao atualizar utilizador: ' . $stmtErr);
         }
@@ -290,33 +290,33 @@ function obterEstatisticas()
         $stats = [];
 
         // Total de utilizadores
-        $result = mysqli_query($con, "SELECT COUNT(*) as total FROM utilizador");
+        $result = db_query($con, "SELECT COUNT(*) as total FROM utilizador");
         if ($result) {
-            $stats['total_utilizadores'] = mysqli_fetch_assoc($result)['total'];
+            $stats['total_utilizadores'] = db_fetch_assoc($result)['total'];
         } else {
             $stats['total_utilizadores'] = 0;
         }
 
         // Total de administradores
-        $result = mysqli_query($con, "SELECT COUNT(*) as total FROM utilizador WHERE tipo = 'admin'");
+        $result = db_query($con, "SELECT COUNT(*) as total FROM utilizador WHERE tipo = 'admin'");
         if ($result) {
-            $stats['total_admins'] = mysqli_fetch_assoc($result)['total'];
+            $stats['total_admins'] = db_fetch_assoc($result)['total'];
         } else {
             $stats['total_admins'] = 0;
         }
 
         // Utilizadores registados hoje
-        $result = mysqli_query($con, "SELECT COUNT(*) as total FROM utilizador WHERE DATE(data_criacao) = CURDATE()");
+        $result = db_query($con, "SELECT COUNT(*) as total FROM utilizador WHERE " . db_sql_date_col('data_criacao') . " = " . db_sql_date());
         if ($result) {
-            $stats['novos_hoje'] = mysqli_fetch_assoc($result)['total'];
+            $stats['novos_hoje'] = db_fetch_assoc($result)['total'];
         } else {
             $stats['novos_hoje'] = 0;
         }
 
         // Utilizadores registados esta semana
-        $result = mysqli_query($con, "SELECT COUNT(*) as total FROM utilizador WHERE data_criacao >= DATE_SUB(NOW(), INTERVAL 7 DAY)");
+        $result = db_query($con, "SELECT COUNT(*) as total FROM utilizador WHERE data_criacao >= " . db_sql_date_sub('7 DAY'));
         if ($result) {
-            $stats['novos_semana'] = mysqli_fetch_assoc($result)['total'];
+            $stats['novos_semana'] = db_fetch_assoc($result)['total'];
         } else {
             $stats['novos_semana'] = 0;
         }
@@ -335,9 +335,9 @@ function obterBloqueio()
 {
     global $con;
     try {
-        $result = mysqli_query($con, "SELECT id_bloqueio, bloqueio FROM bloqueio ORDER BY id_bloqueio DESC LIMIT 1");
-        if ($result && mysqli_num_rows($result) > 0) {
-            $row = mysqli_fetch_assoc($result);
+        $result = db_query($con, "SELECT id_bloqueio, bloqueio FROM bloqueio ORDER BY id_bloqueio DESC LIMIT 1");
+        if ($result && db_num_rows($result) > 0) {
+            $row = db_fetch_assoc($result);
             responderSucesso(['id' => intval($row['id_bloqueio']), 'bloqueio' => intval($row['bloqueio'])], 'Estado de bloqueio obtido');
         } else {
             // Sem registos assume desbloqueado
@@ -359,24 +359,24 @@ function setBloqueio($value)
             responderErro('Valor de bloqueio não especificado');
         $val = intval($value) ? 1 : 0;
 
-        $result = mysqli_query($con, "SELECT id_bloqueio FROM bloqueio ORDER BY id_bloqueio DESC LIMIT 1");
-        if ($result && mysqli_num_rows($result) > 0) {
-            $row = mysqli_fetch_assoc($result);
+        $result = db_query($con, "SELECT id_bloqueio FROM bloqueio ORDER BY id_bloqueio DESC LIMIT 1");
+        if ($result && db_num_rows($result) > 0) {
+            $row = db_fetch_assoc($result);
             $id = intval($row['id_bloqueio']);
-            $stmt = mysqli_prepare($con, "UPDATE bloqueio SET bloqueio = ? WHERE id_bloqueio = ?");
+            $stmt = db_prepare($con, "UPDATE bloqueio SET bloqueio = ? WHERE id_bloqueio = ?");
             if (!$stmt)
-                responderErro('Erro ao preparar atualização de bloqueio: ' . mysqli_error($con));
-            mysqli_stmt_bind_param($stmt, "ii", $val, $id);
-            if (!mysqli_stmt_execute($stmt))
-                responderErro('Erro ao atualizar bloqueio: ' . mysqli_stmt_error($stmt));
+                responderErro('Erro ao preparar atualização de bloqueio: ' . db_error($con));
+            db_stmt_bind_param($stmt, "ii", $val, $id);
+            if (!db_stmt_execute($stmt))
+                responderErro('Erro ao atualizar bloqueio: ' . db_stmt_error($stmt));
         } else {
-            $stmt = mysqli_prepare($con, "INSERT INTO bloqueio (bloqueio) VALUES (?)");
+            $stmt = db_prepare($con, "INSERT INTO bloqueio (bloqueio) VALUES (?)");
             if (!$stmt)
-                responderErro('Erro ao preparar inserção de bloqueio: ' . mysqli_error($con));
-            mysqli_stmt_bind_param($stmt, "i", $val);
-            if (!mysqli_stmt_execute($stmt))
-                responderErro('Erro ao inserir bloqueio: ' . mysqli_stmt_error($stmt));
-            $id = mysqli_insert_id($con);
+                responderErro('Erro ao preparar inserção de bloqueio: ' . db_error($con));
+            db_stmt_bind_param($stmt, "i", $val);
+            if (!db_stmt_execute($stmt))
+                responderErro('Erro ao inserir bloqueio: ' . db_stmt_error($stmt));
+            $id = db_insert_id($con);
         }
 
         responderSucesso(['id' => $id, 'bloqueio' => $val], $val ? 'Site bloqueado' : 'Site desbloqueado');
@@ -392,17 +392,17 @@ function criarAtualizacao($dados)
         responderErro('Ligação à base de dados indisponível');
     }
 
-    $checkColumn = mysqli_query($con, "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME='updates' AND COLUMN_NAME='tema'");
-    if ($checkColumn && mysqli_num_rows($checkColumn) === 0) {
-        mysqli_query($con, "ALTER TABLE updates ADD COLUMN tema VARCHAR(50) DEFAULT 'atualizacoes'");
+    if (!db_column_exists($con, 'updates', 'tema')) {
+        db_query($con, db_sql_add_column('updates', 'tema', "VARCHAR(50) DEFAULT 'atualizacoes'"));
     }
-
-    $checkVersaoType = mysqli_query($con, "SELECT COLUMN_TYPE FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME='updates' AND COLUMN_NAME='versao'");
-    if ($checkVersaoType && mysqli_num_rows($checkVersaoType) > 0) {
-        $versaoInfo = mysqli_fetch_assoc($checkVersaoType);
-        $columnType = strtoupper($versaoInfo['COLUMN_TYPE'] ?? '');
-        if (strpos($columnType, 'FLOAT') === 0 || strpos($columnType, 'INT') === 0) {
-            mysqli_query($con, "ALTER TABLE updates MODIFY versao VARCHAR(100)");
+    if (!defined('DB_IS_POSTGRES') || !DB_IS_POSTGRES) {
+        $checkVersaoType = db_query($con, "SELECT COLUMN_TYPE FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME='updates' AND COLUMN_NAME='versao'");
+        if ($checkVersaoType && db_num_rows($checkVersaoType) > 0) {
+            $versaoInfo = db_fetch_assoc($checkVersaoType);
+            $columnType = strtoupper($versaoInfo['COLUMN_TYPE'] ?? '');
+            if (strpos($columnType, 'FLOAT') === 0 || strpos($columnType, 'INT') === 0) {
+                db_query($con, "ALTER TABLE updates MODIFY versao VARCHAR(100)");
+            }
         }
     }
 
@@ -421,18 +421,18 @@ function criarAtualizacao($dados)
 
     $temaValido = in_array($tema, ['atualizacoes', 'manutencao', 'novidades', 'seguranca', 'performance']) ? $tema : 'atualizacoes';
 
-    $stmt = mysqli_prepare($con, "INSERT INTO updates (nome, versao, descricao, tema, data_update) VALUES (?, ?, ?, ?, NOW())");
+    $stmt = db_prepare($con, "INSERT INTO updates (nome, versao, descricao, tema, data_update) VALUES (?, ?, ?, ?, NOW())");
     if (!$stmt) {
-        responderErro('Erro ao preparar query: ' . mysqli_error($con));
+        responderErro('Erro ao preparar query: ' . db_error($con));
     }
 
-    mysqli_stmt_bind_param($stmt, "ssss", $nome, $versao, $descricao, $temaValido);
+    db_stmt_bind_param($stmt, "ssss", $nome, $versao, $descricao, $temaValido);
 
-    if (!mysqli_stmt_execute($stmt)) {
-        responderErro('Erro ao criar anúncio: ' . mysqli_stmt_error($stmt));
+    if (!db_stmt_execute($stmt)) {
+        responderErro('Erro ao criar anúncio: ' . db_stmt_error($stmt));
     }
 
-    $id = mysqli_insert_id($con);
+    $id = db_insert_id($con);
     responderSucesso(['id_update' => $id], 'Atualização publicada com sucesso');
 }
 
@@ -457,7 +457,7 @@ function adicionarUtilizador($dados)
         }
 
         // Verificar se a conexão à base de dados está ativa
-        if (mysqli_ping($con) === false) {
+        if (db_ping($con) === false) {
             escreverDebug('adicionarUtilizador error: database connection lost');
             responderErro('Erro de conexão à base de dados');
         }
@@ -478,15 +478,15 @@ function adicionarUtilizador($dados)
         }
 
         // Verificar se email já existe
-        $email = mysqli_real_escape_string($con, $dados['email']);
-        $stmt = mysqli_prepare($con, "SELECT id_utilizador FROM utilizador WHERE email = ?");
+        $email = db_real_escape_string($con, $dados['email']);
+        $stmt = db_prepare($con, "SELECT id_utilizador FROM utilizador WHERE email = ?");
         if (!$stmt) {
             responderErro('Erro interno ao verificar email');
         }
-        mysqli_stmt_bind_param($stmt, "s", $email);
-        mysqli_stmt_execute($stmt);
-        $result = mysqli_stmt_get_result($stmt);
-        if ($result && mysqli_num_rows($result) > 0) {
+        db_stmt_bind_param($stmt, "s", $email);
+        db_stmt_execute($stmt);
+        $result = db_stmt_get_result($stmt);
+        if ($result && db_num_rows($result) > 0) {
             responderErro('Já existe uma conta com esse email');
         }
 
@@ -508,24 +508,24 @@ function adicionarUtilizador($dados)
         $tipo = in_array($dados['tipo'] ?? '', ['utilizador', 'admin']) ? $dados['tipo'] : 'utilizador';
 
         // Nome escapado
-        $nome = mysqli_real_escape_string($con, $dados['nome']);
+        $nome = db_real_escape_string($con, $dados['nome']);
 
         // Inserir utilizador
-        $stmt = mysqli_prepare($con, "INSERT INTO utilizador (nome, email, palavra_passe, tipo, data_criacao) VALUES (?, ?, ?, ?, NOW())");
+        $stmt = db_prepare($con, "INSERT INTO utilizador (nome, email, palavra_passe, tipo, data_criacao) VALUES (?, ?, ?, ?, NOW())");
         if (!$stmt) {
-            $error = mysqli_error($con);
+            $error = db_error($con);
             escreverDebug('adicionarUtilizador error: failed to prepare INSERT statement: ' . $error);
             responderErro('Erro interno ao criar utilizador: ' . $error);
         }
 
-        mysqli_stmt_bind_param($stmt, "ssss", $nome, $email, $hash, $tipo);
+        db_stmt_bind_param($stmt, "ssss", $nome, $email, $hash, $tipo);
 
-        if (mysqli_stmt_execute($stmt)) {
-            $insertId = mysqli_insert_id($con);
+        if (db_stmt_execute($stmt)) {
+            $insertId = db_insert_id($con);
             escreverDebug('adicionarUtilizador success: user created with ID ' . $insertId);
             responderSucesso(['user_id' => $insertId], 'Utilizador criado com sucesso');
         } else {
-            $stmtError = mysqli_stmt_error($stmt);
+            $stmtError = db_stmt_error($stmt);
             escreverDebug('adicionarUtilizador error: failed to execute INSERT: ' . $stmtError);
 
             // Verificar se é erro de tamanho de dados
@@ -556,35 +556,35 @@ function marcarFeedbackLido($feedbackId)
         }
 
         // Desativar auto-commit para controle manual de transação
-        mysqli_autocommit($con, false);
+        db_autocommit($con, false);
 
         // 1. Primeiro verificar e atualizar o feedback atual
-        $stmt = mysqli_prepare($con, "UPDATE feedback SET lido = 'sim' WHERE id_feedback = ? AND lido = 'nao'");
+        $stmt = db_prepare($con, "UPDATE feedback SET lido = 'sim' WHERE id_feedback = ? AND lido = 'nao'");
         if (!$stmt) {
-            throw new Exception('Falha ao preparar query de atualização: ' . mysqli_error($con));
+            throw new Exception('Falha ao preparar query de atualização: ' . db_error($con));
         }
 
-        mysqli_stmt_bind_param($stmt, "i", $feedbackId);
+        db_stmt_bind_param($stmt, "i", $feedbackId);
 
-        if (!mysqli_stmt_execute($stmt)) {
-            throw new Exception('Erro ao marcar feedback como lido: ' . mysqli_stmt_error($stmt));
+        if (!db_stmt_execute($stmt)) {
+            throw new Exception('Erro ao marcar feedback como lido: ' . db_stmt_error($stmt));
         }
 
         // Verificar se algum registro foi atualizado
-        if (mysqli_stmt_affected_rows($stmt) === 0) {
+        if (db_stmt_affected_rows($stmt) === 0) {
             throw new Exception('Feedback não encontrado ou já está marcado como lido');
         }
 
         // Commit imediato da atualização
-        if (!mysqli_commit($con)) {
+        if (!db_commit($con)) {
             throw new Exception('Erro ao confirmar atualização do feedback');
         }
 
         // Resetar conexão para nova transação
-        mysqli_autocommit($con, true);
+        db_autocommit($con, true);
 
         // 2. Agora buscar o próximo feedback não lido
-        $stmt = mysqli_prepare($con, "
+        $stmt = db_prepare($con, "
             SELECT f.id_feedback, f.nome, f.email, f.rating, f.gostou, f.melhoria, f.autorizacao, f.data_feedback, f.lido 
             FROM feedback f
             WHERE f.lido = 'nao'
@@ -593,15 +593,15 @@ function marcarFeedbackLido($feedbackId)
         ");
 
         if (!$stmt) {
-            throw new Exception('Falha ao preparar query de busca: ' . mysqli_error($con));
+            throw new Exception('Falha ao preparar query de busca: ' . db_error($con));
         }
 
-        if (!mysqli_stmt_execute($stmt)) {
-            throw new Exception('Erro ao buscar próximo feedback: ' . mysqli_stmt_error($stmt));
+        if (!db_stmt_execute($stmt)) {
+            throw new Exception('Erro ao buscar próximo feedback: ' . db_stmt_error($stmt));
         }
 
-        $result = mysqli_stmt_get_result($stmt);
-        $proximoFeedback = mysqli_fetch_assoc($result);
+        $result = db_stmt_get_result($stmt);
+        $proximoFeedback = db_fetch_assoc($result);
 
         // Log para debug
         escreverDebug('marcarFeedbackLido: Feedback ' . $feedbackId . ' marcado como lido com sucesso.');
@@ -619,8 +619,8 @@ function marcarFeedbackLido($feedbackId)
 
     } catch (Exception $e) {
         // Se houver erro, fazer rollback
-        mysqli_rollback($con);
-        mysqli_autocommit($con, true);
+        db_rollback($con);
+        db_autocommit($con, true);
 
         escreverDebug('marcarFeedbackLido ERROR: ' . $e->getMessage());
         responderErro('Erro ao marcar feedback como lido: ' . $e->getMessage());
@@ -649,38 +649,38 @@ function eliminarUtilizador($userId)
         }
 
         // Verificar se a conexão à base de dados está ativa
-        if (!$con || mysqli_ping($con) === false) {
+        if (!$con || db_ping($con) === false) {
             escreverDebug('eliminarUtilizador error: database connection lost');
             responderErro('Erro de conexão à base de dados');
         }
 
         // Iniciar transação
-        mysqli_begin_transaction($con);
+        db_begin_transaction($con);
 
         // Verificar se o utilizador existe (usar id_utilizador corretamente)
-        $stmt = mysqli_prepare($con, "SELECT id_utilizador, email FROM utilizador WHERE id_utilizador = ?");
+        $stmt = db_prepare($con, "SELECT id_utilizador, email FROM utilizador WHERE id_utilizador = ?");
         if (!$stmt) {
-            mysqli_rollback($con);
-            responderErro('Falha ao preparar query: ' . mysqli_error($con));
+            db_rollback($con);
+            responderErro('Falha ao preparar query: ' . db_error($con));
         }
 
-        mysqli_stmt_bind_param($stmt, "i", $userId);
-        mysqli_stmt_execute($stmt);
-        $result = mysqli_stmt_get_result($stmt);
+        db_stmt_bind_param($stmt, "i", $userId);
+        db_stmt_execute($stmt);
+        $result = db_stmt_get_result($stmt);
 
         if (!$result) {
-            mysqli_rollback($con);
-            escreverDebug('eliminarUtilizador error: failed to get SELECT result: ' . mysqli_error($con));
+            db_rollback($con);
+            escreverDebug('eliminarUtilizador error: failed to get SELECT result: ' . db_error($con));
             responderErro('Erro interno ao procurar utilizador');
         }
 
-        if (mysqli_num_rows($result) === 0) {
-            mysqli_rollback($con);
+        if (db_num_rows($result) === 0) {
+            db_rollback($con);
             escreverDebug('eliminarUtilizador: utilizador não encontrado para id ' . $userId);
             responderErro('Utilizador não encontrado');
         }
 
-        $user = mysqli_fetch_assoc($result);
+        $user = db_fetch_assoc($result);
         $userEmail = $user['email'];
 
         // Normalizar chave de sessão: alguns lugares usam 'id_utilizador' outros 'user_id'
@@ -694,97 +694,97 @@ function eliminarUtilizador($userId)
         // Verificar se é o próprio administrador (não pode eliminar-se a si mesmo)
         escreverDebug('eliminarUtilizador: fetched user id_utilizador=' . $user['id_utilizador'] . '; sessionUserId=' . var_export($sessionUserId, true));
         if ($sessionUserId !== null && intval($user['id_utilizador']) === intval($sessionUserId)) {
-            mysqli_rollback($con);
+            db_rollback($con);
             escreverDebug('eliminarUtilizador aborted: attempt to delete self');
             responderErro('Não pode eliminar a sua própria conta');
         }
 
         // Eliminar mensagens de chat do utilizador
         $sql = "SELECT id FROM chat_ajuda WHERE id_utilizador = ?";
-        $stmtChat = mysqli_prepare($con, $sql);
-        mysqli_stmt_bind_param($stmtChat, "i", $userId);
-        mysqli_stmt_execute($stmtChat);
-        $chatResult = mysqli_stmt_get_result($stmtChat);
-        mysqli_stmt_close($stmtChat);
+        $stmtChat = db_prepare($con, $sql);
+        db_stmt_bind_param($stmtChat, "i", $userId);
+        db_stmt_execute($stmtChat);
+        $chatResult = db_stmt_get_result($stmtChat);
+        db_stmt_close($stmtChat);
 
-        while ($chatRow = mysqli_fetch_assoc($chatResult)) {
+        while ($chatRow = db_fetch_assoc($chatResult)) {
             $chatId = $chatRow['id'];
             $sqlDelMsg = "DELETE FROM mensagens_chat_ajuda WHERE conversation_id = ?";
-            $stmtDelMsg = mysqli_prepare($con, $sqlDelMsg);
-            mysqli_stmt_bind_param($stmtDelMsg, "i", $chatId);
-            if (!mysqli_stmt_execute($stmtDelMsg)) {
-                mysqli_rollback($con);
-                throw new Exception('Erro ao eliminar mensagens de chat: ' . mysqli_stmt_error($stmtDelMsg));
+            $stmtDelMsg = db_prepare($con, $sqlDelMsg);
+            db_stmt_bind_param($stmtDelMsg, "i", $chatId);
+            if (!db_stmt_execute($stmtDelMsg)) {
+                db_rollback($con);
+                throw new Exception('Erro ao eliminar mensagens de chat: ' . db_stmt_error($stmtDelMsg));
             }
-            mysqli_stmt_close($stmtDelMsg);
+            db_stmt_close($stmtDelMsg);
         }
         escreverDebug('eliminarUtilizador: Mensagens de chat eliminadas para id ' . $userId);
 
         // Eliminar conversas de chat do utilizador
         $sql = "DELETE FROM chat_ajuda WHERE id_utilizador = ?";
-        $stmtChatDel = mysqli_prepare($con, $sql);
-        mysqli_stmt_bind_param($stmtChatDel, "i", $userId);
-        if (!mysqli_stmt_execute($stmtChatDel)) {
-            mysqli_rollback($con);
-            throw new Exception('Erro ao eliminar chat_ajuda: ' . mysqli_stmt_error($stmtChatDel));
+        $stmtChatDel = db_prepare($con, $sql);
+        db_stmt_bind_param($stmtChatDel, "i", $userId);
+        if (!db_stmt_execute($stmtChatDel)) {
+            db_rollback($con);
+            throw new Exception('Erro ao eliminar chat_ajuda: ' . db_stmt_error($stmtChatDel));
         }
-        mysqli_stmt_close($stmtChatDel);
+        db_stmt_close($stmtChatDel);
         escreverDebug('eliminarUtilizador: Conversas de chat eliminadas para id ' . $userId);
 
         // Eliminar anúncios vistos pelo utilizador
         $sql = "DELETE FROM anuncios_vistos WHERE id_utilizador = ?";
-        $stmtAnunc = mysqli_prepare($con, $sql);
-        mysqli_stmt_bind_param($stmtAnunc, "i", $userId);
-        if (!mysqli_stmt_execute($stmtAnunc)) {
-            mysqli_rollback($con);
-            throw new Exception('Erro ao eliminar anuncios_vistos: ' . mysqli_stmt_error($stmtAnunc));
+        $stmtAnunc = db_prepare($con, $sql);
+        db_stmt_bind_param($stmtAnunc, "i", $userId);
+        if (!db_stmt_execute($stmtAnunc)) {
+            db_rollback($con);
+            throw new Exception('Erro ao eliminar anuncios_vistos: ' . db_stmt_error($stmtAnunc));
         }
-        mysqli_stmt_close($stmtAnunc);
+        db_stmt_close($stmtAnunc);
         escreverDebug('eliminarUtilizador: Anúncios vistos eliminados para id ' . $userId);
 
         // Eliminar feedback do utilizador
         $sql = "DELETE FROM feedback WHERE email = ?";
-        $stmtFeed = mysqli_prepare($con, $sql);
-        mysqli_stmt_bind_param($stmtFeed, "s", $userEmail);
-        if (!mysqli_stmt_execute($stmtFeed)) {
-            mysqli_rollback($con);
-            throw new Exception('Erro ao eliminar feedback: ' . mysqli_stmt_error($stmtFeed));
+        $stmtFeed = db_prepare($con, $sql);
+        db_stmt_bind_param($stmtFeed, "s", $userEmail);
+        if (!db_stmt_execute($stmtFeed)) {
+            db_rollback($con);
+            throw new Exception('Erro ao eliminar feedback: ' . db_stmt_error($stmtFeed));
         }
-        mysqli_stmt_close($stmtFeed);
+        db_stmt_close($stmtFeed);
         escreverDebug('eliminarUtilizador: Feedback eliminado para email ' . $userEmail);
 
         // Eliminar utilizador com prepared statement
-        $delStmt = mysqli_prepare($con, "DELETE FROM utilizador WHERE id_utilizador = ?");
+        $delStmt = db_prepare($con, "DELETE FROM utilizador WHERE id_utilizador = ?");
         if (!$delStmt) {
-            mysqli_rollback($con);
-            responderErro('Falha ao preparar query de eliminação: ' . mysqli_error($con));
+            db_rollback($con);
+            responderErro('Falha ao preparar query de eliminação: ' . db_error($con));
         }
 
-        mysqli_stmt_bind_param($delStmt, "i", $userId);
+        db_stmt_bind_param($delStmt, "i", $userId);
 
-        $execResult = mysqli_stmt_execute($delStmt);
+        $execResult = db_stmt_execute($delStmt);
         if ($execResult) {
-            $affectedRows = mysqli_stmt_affected_rows($delStmt);
+            $affectedRows = db_stmt_affected_rows($delStmt);
             escreverDebug('eliminarUtilizador: DELETE executed successfully for id ' . $userId . ', affected rows: ' . $affectedRows);
 
             if ($affectedRows > 0) {
                 // Confirmar transação
-                mysqli_commit($con);
+                db_commit($con);
                 responderSucesso(null, 'Utilizador e todos os seus dados eliminados com sucesso');
             } else {
-                mysqli_rollback($con);
+                db_rollback($con);
                 escreverDebug('eliminarUtilizador: No rows affected, user may not exist');
                 responderErro('Utilizador não encontrado ou já foi eliminado');
             }
         } else {
-            mysqli_rollback($con);
-            $stmtErr = mysqli_stmt_error($delStmt);
+            db_rollback($con);
+            $stmtErr = db_stmt_error($delStmt);
             escreverDebug('eliminarUtilizador execute DELETE error: ' . $stmtErr);
             responderErro('Erro ao eliminar utilizador: ' . $stmtErr);
         }
 
     } catch (Exception $e) {
-        mysqli_rollback($con);
+        db_rollback($con);
         escreverDebug('eliminarUtilizador Exception: ' . $e->getMessage());
         responderErro('Erro ao eliminar utilizador: ' . $e->getMessage());
     }
@@ -807,27 +807,27 @@ function bloquearUtilizador($userId, $motivo = '')
             responderErro('ID do utilizador inválido');
         }
 
-        if (!$con || mysqli_ping($con) === false) {
+        if (!$con || db_ping($con) === false) {
             escreverDebug('bloquearUtilizador error: database connection lost');
             responderErro('Erro de conexão à base de dados');
         }
 
         // Verificar se o utilizador existe
-        $stmt = mysqli_prepare($con, "SELECT id_utilizador, tipo FROM utilizador WHERE id_utilizador = ?");
+        $stmt = db_prepare($con, "SELECT id_utilizador, tipo FROM utilizador WHERE id_utilizador = ?");
         if (!$stmt) {
-            responderErro('Falha ao preparar query: ' . mysqli_error($con));
+            responderErro('Falha ao preparar query: ' . db_error($con));
         }
 
-        mysqli_stmt_bind_param($stmt, "i", $userId);
-        mysqli_stmt_execute($stmt);
-        $result = mysqli_stmt_get_result($stmt);
+        db_stmt_bind_param($stmt, "i", $userId);
+        db_stmt_execute($stmt);
+        $result = db_stmt_get_result($stmt);
 
-        if (mysqli_num_rows($result) === 0) {
+        if (db_num_rows($result) === 0) {
             escreverDebug('bloquearUtilizador: utilizador não encontrado para id ' . $userId);
             responderErro('Utilizador não encontrado');
         }
 
-        $user = mysqli_fetch_assoc($result);
+        $user = db_fetch_assoc($result);
 
         // Normalizar chave de sessão
         $sessionUserId = null;
@@ -851,20 +851,20 @@ function bloquearUtilizador($userId, $motivo = '')
 
         // Bloquear utilizador
         $motivo = trim($motivo) ? substr(trim($motivo), 0, 255) : 'Bloqueado pelo administrador';
-        $stmt = mysqli_prepare($con, "UPDATE utilizador SET bloqueado = 1, motivo_bloqueio = ? WHERE id_utilizador = ?");
+        $stmt = db_prepare($con, "UPDATE utilizador SET bloqueado = 1, motivo_bloqueio = ? WHERE id_utilizador = ?");
         if (!$stmt) {
-            responderErro('Falha ao preparar query: ' . mysqli_error($con));
+            responderErro('Falha ao preparar query: ' . db_error($con));
         }
 
-        mysqli_stmt_bind_param($stmt, "si", $motivo, $userId);
+        db_stmt_bind_param($stmt, "si", $motivo, $userId);
 
-        if (!mysqli_stmt_execute($stmt)) {
-            $stmtErr = mysqli_stmt_error($stmt);
+        if (!db_stmt_execute($stmt)) {
+            $stmtErr = db_stmt_error($stmt);
             escreverDebug('bloquearUtilizador execute error: ' . $stmtErr);
             responderErro('Erro ao bloquear utilizador: ' . $stmtErr);
         }
 
-        $affectedRows = mysqli_stmt_affected_rows($stmt);
+        $affectedRows = db_stmt_affected_rows($stmt);
         escreverDebug('bloquearUtilizador: User blocked successfully, affected rows: ' . $affectedRows);
         responderSucesso(null, 'Utilizador bloqueado com sucesso');
 
@@ -891,41 +891,41 @@ function desbloquearUtilizador($userId)
             responderErro('ID do utilizador inválido');
         }
 
-        if (!$con || mysqli_ping($con) === false) {
+        if (!$con || db_ping($con) === false) {
             escreverDebug('desbloquearUtilizador error: database connection lost');
             responderErro('Erro de conexão à base de dados');
         }
 
         // Verificar se o utilizador existe
-        $stmt = mysqli_prepare($con, "SELECT id_utilizador FROM utilizador WHERE id_utilizador = ?");
+        $stmt = db_prepare($con, "SELECT id_utilizador FROM utilizador WHERE id_utilizador = ?");
         if (!$stmt) {
-            responderErro('Falha ao preparar query: ' . mysqli_error($con));
+            responderErro('Falha ao preparar query: ' . db_error($con));
         }
 
-        mysqli_stmt_bind_param($stmt, "i", $userId);
-        mysqli_stmt_execute($stmt);
-        $result = mysqli_stmt_get_result($stmt);
+        db_stmt_bind_param($stmt, "i", $userId);
+        db_stmt_execute($stmt);
+        $result = db_stmt_get_result($stmt);
 
-        if (mysqli_num_rows($result) === 0) {
+        if (db_num_rows($result) === 0) {
             escreverDebug('desbloquearUtilizador: utilizador não encontrado para id ' . $userId);
             responderErro('Utilizador não encontrado');
         }
 
         // Desbloquear utilizador
-        $stmt = mysqli_prepare($con, "UPDATE utilizador SET bloqueado = 0, motivo_bloqueio = NULL WHERE id_utilizador = ?");
+        $stmt = db_prepare($con, "UPDATE utilizador SET bloqueado = 0, motivo_bloqueio = NULL WHERE id_utilizador = ?");
         if (!$stmt) {
-            responderErro('Falha ao preparar query: ' . mysqli_error($con));
+            responderErro('Falha ao preparar query: ' . db_error($con));
         }
 
-        mysqli_stmt_bind_param($stmt, "i", $userId);
+        db_stmt_bind_param($stmt, "i", $userId);
 
-        if (!mysqli_stmt_execute($stmt)) {
-            $stmtErr = mysqli_stmt_error($stmt);
+        if (!db_stmt_execute($stmt)) {
+            $stmtErr = db_stmt_error($stmt);
             escreverDebug('desbloquearUtilizador execute error: ' . $stmtErr);
             responderErro('Erro ao desbloquear utilizador: ' . $stmtErr);
         }
 
-        $affectedRows = mysqli_stmt_affected_rows($stmt);
+        $affectedRows = db_stmt_affected_rows($stmt);
         escreverDebug('desbloquearUtilizador: User unblocked successfully, affected rows: ' . $affectedRows);
         responderSucesso(null, 'Utilizador desbloqueado com sucesso');
 
@@ -949,18 +949,18 @@ function fecharConversa($dados)
     try {
         $conversationId = intval($conversationId);
 
-        $stmt = mysqli_prepare($con, "UPDATE chat_ajuda SET estado = 'fechado' WHERE id = ?");
+        $stmt = db_prepare($con, "UPDATE chat_ajuda SET estado = 'fechado' WHERE id = ?");
         if (!$stmt) {
-            responderErro('Erro ao fechar conversa: ' . mysqli_error($con));
+            responderErro('Erro ao fechar conversa: ' . db_error($con));
         }
 
-        mysqli_stmt_bind_param($stmt, "i", $conversationId);
+        db_stmt_bind_param($stmt, "i", $conversationId);
 
-        if (!mysqli_stmt_execute($stmt)) {
-            responderErro('Erro ao fechar conversa: ' . mysqli_stmt_error($stmt));
+        if (!db_stmt_execute($stmt)) {
+            responderErro('Erro ao fechar conversa: ' . db_stmt_error($stmt));
         }
 
-        $affectedRows = mysqli_stmt_affected_rows($stmt);
+        $affectedRows = db_stmt_affected_rows($stmt);
 
         if ($affectedRows > 0) {
             escreverDebug('Conversa ' . $conversationId . ' fechada pelo admin');
@@ -979,7 +979,7 @@ function obterConversasAjuda()
     global $con;
 
     try {
-        $stmt = mysqli_prepare($con, "
+        $stmt = db_prepare($con, "
             SELECT 
                 ca.id,
                 ca.criado_em,
@@ -997,14 +997,14 @@ function obterConversasAjuda()
         ");
 
         if (!$stmt) {
-            responderErro('Erro ao obter conversas: ' . mysqli_error($con));
+            responderErro('Erro ao obter conversas: ' . db_error($con));
         }
 
-        mysqli_stmt_execute($stmt);
-        $result = mysqli_stmt_get_result($stmt);
+        db_stmt_execute($stmt);
+        $result = db_stmt_get_result($stmt);
         $conversas = [];
 
-        while ($row = mysqli_fetch_assoc($result)) {
+        while ($row = db_fetch_assoc($result)) {
             $conversas[] = $row;
         }
 
@@ -1035,67 +1035,67 @@ function enviarRespostaAdmin($dados)
     }
 
     try {
-        mysqli_begin_transaction($con);
+        db_begin_transaction($con);
 
         $conversationId = intval($conversationId);
 
-        $stmtCheck = mysqli_prepare($con, "SELECT estado, id_utilizador FROM chat_ajuda WHERE id = ? FOR UPDATE");
+        $stmtCheck = db_prepare($con, "SELECT estado, id_utilizador FROM chat_ajuda WHERE id = ? FOR UPDATE");
         if (!$stmtCheck) {
-            throw new Exception('Erro ao preparar verificação de conversa: ' . mysqli_error($con));
+            throw new Exception('Erro ao preparar verificação de conversa: ' . db_error($con));
         }
 
-        mysqli_stmt_bind_param($stmtCheck, "i", $conversationId);
-        mysqli_stmt_execute($stmtCheck);
-        $resultCheck = mysqli_stmt_get_result($stmtCheck);
+        db_stmt_bind_param($stmtCheck, "i", $conversationId);
+        db_stmt_execute($stmtCheck);
+        $resultCheck = db_stmt_get_result($stmtCheck);
 
-        if (mysqli_num_rows($resultCheck) === 0) {
+        if (db_num_rows($resultCheck) === 0) {
             throw new Exception('Conversa não encontrada');
         }
 
-        $chatInfo = mysqli_fetch_assoc($resultCheck);
-        mysqli_stmt_close($stmtCheck);
+        $chatInfo = db_fetch_assoc($resultCheck);
+        db_stmt_close($stmtCheck);
 
         if ($chatInfo['estado'] === 'fechado') {
             throw new Exception('Esta conversa está fechada e não pode receber novas mensagens');
         }
 
-        $conteudo = mysqli_real_escape_string($con, $conteudo);
+        $conteudo = db_real_escape_string($con, $conteudo);
 
-        $stmt = mysqli_prepare($con, "INSERT INTO mensagens_chat_ajuda (conversation_id, sender, conteudo, enviado_em) VALUES (?, 'admin', ?, NOW())");
+        $stmt = db_prepare($con, "INSERT INTO mensagens_chat_ajuda (conversation_id, sender, conteudo, enviado_em) VALUES (?, 'admin', ?, NOW())");
         if (!$stmt) {
-            throw new Exception('Erro ao preparar para enviar resposta: ' . mysqli_error($con));
+            throw new Exception('Erro ao preparar para enviar resposta: ' . db_error($con));
         }
 
-        mysqli_stmt_bind_param($stmt, "is", $conversationId, $conteudo);
+        db_stmt_bind_param($stmt, "is", $conversationId, $conteudo);
 
-        if (!mysqli_stmt_execute($stmt)) {
-            throw new Exception('Erro ao executar envio de resposta: ' . mysqli_stmt_error($stmt));
+        if (!db_stmt_execute($stmt)) {
+            throw new Exception('Erro ao executar envio de resposta: ' . db_stmt_error($stmt));
         }
 
-        $messageId = mysqli_insert_id($con);
+        $messageId = db_insert_id($con);
 
         if (isset($chatInfo['id_utilizador']) && (int) $chatInfo['id_utilizador'] > 0) {
             $userId = (int) $chatInfo['id_utilizador'];
             escreverDebug("Tentando atualizar 'mensagem' para o id_utilizador: $userId.");
 
             // Verificar se o utilizador realmente existe
-            $stmtUserCheck = mysqli_prepare($con, "SELECT id_utilizador FROM utilizador WHERE id_utilizador = ?");
-            mysqli_stmt_bind_param($stmtUserCheck, "i", $userId);
-            mysqli_stmt_execute($stmtUserCheck);
-            $userResult = mysqli_stmt_get_result($stmtUserCheck);
+            $stmtUserCheck = db_prepare($con, "SELECT id_utilizador FROM utilizador WHERE id_utilizador = ?");
+            db_stmt_bind_param($stmtUserCheck, "i", $userId);
+            db_stmt_execute($stmtUserCheck);
+            $userResult = db_stmt_get_result($stmtUserCheck);
 
-            if (mysqli_num_rows($userResult) > 0) {
+            if (db_num_rows($userResult) > 0) {
                 // O utilizador existe, prosseguir com a atualização
-                $stmtUpdate = mysqli_prepare($con, "UPDATE utilizador SET mensagem = 1 WHERE id_utilizador = ?");
+                $stmtUpdate = db_prepare($con, "UPDATE utilizador SET mensagem = 1 WHERE id_utilizador = ?");
                 if (!$stmtUpdate) {
-                    throw new Exception('Erro ao preparar atualização do utilizador: ' . mysqli_error($con));
+                    throw new Exception('Erro ao preparar atualização do utilizador: ' . db_error($con));
                 }
-                mysqli_stmt_bind_param($stmtUpdate, "i", $userId);
+                db_stmt_bind_param($stmtUpdate, "i", $userId);
 
-                if (!mysqli_stmt_execute($stmtUpdate)) {
-                    throw new Exception('Erro ao executar atualização do utilizador: ' . mysqli_stmt_error($stmtUpdate));
+                if (!db_stmt_execute($stmtUpdate)) {
+                    throw new Exception('Erro ao executar atualização do utilizador: ' . db_stmt_error($stmtUpdate));
                 }
-                $affected_rows = mysqli_stmt_affected_rows($stmtUpdate);
+                $affected_rows = db_stmt_affected_rows($stmtUpdate);
                 escreverDebug("UPDATE de utilizador executado para ID $userId. Linhas afetadas: $affected_rows");
                 if ($affected_rows == 0) {
                     escreverDebug("Aviso: Nenhuma linha foi atualizada para o utilizador ID $userId. O valor 'mensagem' talvez já fosse 1.");
@@ -1109,7 +1109,7 @@ function enviarRespostaAdmin($dados)
             escreverDebug("Nenhum id_utilizador válido associado à conversa $conversationId (valor: $uid). 'mensagem' não foi atualizado.");
         }
 
-        mysqli_commit($con);
+        db_commit($con);
 
         escreverDebug('Resposta do admin enviada com sucesso: ID ' . $messageId . ' na conversa ' . $conversationId);
 
@@ -1119,7 +1119,7 @@ function enviarRespostaAdmin($dados)
         ], 'Resposta enviada com sucesso');
 
     } catch (Exception $e) {
-        mysqli_rollback($con);
+        db_rollback($con);
         escreverDebug("Erro na transação ao enviar resposta de admin: " . $e->getMessage());
         responderErro('Erro ao enviar resposta: ' . $e->getMessage());
     }
@@ -1151,9 +1151,9 @@ function exportarUtilizadores()
 
     // Dados
     $query = "SELECT id_utilizador, nome, email, tipo, data_criacao, bloqueado FROM utilizador ORDER BY data_criacao DESC";
-    $result = mysqli_query($con, $query);
+    $result = db_query($con, $query);
 
-    while ($row = mysqli_fetch_assoc($result)) {
+    while ($row = db_fetch_assoc($result)) {
         fputcsv($output, [
             $row['id_utilizador'],
             $row['nome'],
@@ -1170,7 +1170,7 @@ function exportarUtilizadores()
 
 // Fechar ligação à base de dados
 if (isset($con) && $con) {
-    mysqli_close($con);
+    db_close($con);
 }
 
 ?>

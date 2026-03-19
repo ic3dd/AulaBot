@@ -167,9 +167,9 @@ header('Content-Type: text/html; charset=utf-8');
             $sucessos++;
             
             // Verificar colunas na tabela utilizador
-            $resultado = mysqli_query($con, "SHOW COLUMNS FROM utilizador");
+            $resultado = db_query($con, "SHOW COLUMNS FROM utilizador");
             $colunas = [];
-            while ($linha = mysqli_fetch_assoc($resultado)) {
+            while ($linha = db_fetch_assoc($resultado)) {
                 $colunas[] = $linha['Field'];
             }
             
@@ -184,7 +184,7 @@ header('Content-Type: text/html; charset=utf-8');
                 }
             }
             
-            mysqli_close($con);
+            db_close($con);
         } else {
             echo "<div class='verificacao erro'>Não conseguiu conectar à base de dados</div>";
             $problemas++;

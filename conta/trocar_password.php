@@ -42,23 +42,23 @@ try {
     }
 
     $sql = "SELECT palavra_passe FROM utilizador WHERE email = ?";
-    $stmt = mysqli_prepare($con, $sql);
+    $stmt = db_prepare($con, $sql);
     
     if (!$stmt) {
-        throw new Exception('Erro ao preparar query: ' . mysqli_error($con));
+        throw new Exception('Erro ao preparar query: ' . db_error($con));
     }
     
-    mysqli_stmt_bind_param($stmt, "s", $email_usuario);
-    mysqli_stmt_execute($stmt);
-    $result = mysqli_stmt_get_result($stmt);
+    db_stmt_bind_param($stmt, "s", $email_usuario);
+    db_stmt_execute($stmt);
+    $result = db_stmt_get_result($stmt);
 
-    if (mysqli_num_rows($result) === 0) {
-        mysqli_stmt_close($stmt);
+    if (db_num_rows($result) === 0) {
+        db_stmt_close($stmt);
         respondJson(false, 'Utilizador não encontrado no sistema.', 404);
     }
 
-    $user = mysqli_fetch_assoc($result);
-    mysqli_stmt_close($stmt);
+    $user = db_fetch_assoc($result);
+    db_stmt_close($stmt);
 
     $password_verified = false;
     
@@ -85,24 +85,24 @@ try {
     $nova_password_hash = substr(md5($nova_password), 0, 12);
 
     $sql_update = "UPDATE utilizador SET palavra_passe = ? WHERE email = ?";
-    $stmt_update = mysqli_prepare($con, $sql_update);
+    $stmt_update = db_prepare($con, $sql_update);
     
     if (!$stmt_update) {
-        throw new Exception('Erro ao preparar query de atualização: ' . mysqli_error($con));
+        throw new Exception('Erro ao preparar query de atualização: ' . db_error($con));
     }
     
-    mysqli_stmt_bind_param($stmt_update, "ss", $nova_password_hash, $email_usuario);
+    db_stmt_bind_param($stmt_update, "ss", $nova_password_hash, $email_usuario);
     
-    if (!mysqli_stmt_execute($stmt_update)) {
-        mysqli_stmt_close($stmt_update);
+    if (!db_stmt_execute($stmt_update)) {
+        db_stmt_close($stmt_update);
         throw new Exception('Erro ao atualizar palavra-passe');
     }
     
-    mysqli_stmt_close($stmt_update);
+    db_stmt_close($stmt_update);
 
     respondJson(true, 'Palavra-passe alterada com sucesso! Será redirecionado para a página inicial.', 200);
 
-    mysqli_close($con);
+    db_close($con);
 
 } catch (Exception $e) {
     error_log("Erro ao trocar palavra-passe: " . $e->getMessage());

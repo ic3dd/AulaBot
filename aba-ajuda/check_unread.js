@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
 
-        fetch('../api_check_unread.php')
+        fetch('../api/api_check_unread.php')
             .then(response => response.json())
             .then(data => {
                 if (data.unread) {

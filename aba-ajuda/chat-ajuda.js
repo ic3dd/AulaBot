@@ -24,7 +24,7 @@ function abrirChat() {
   modalElement.classList.add('ativo');
 
   // Clear the new message notification
-  fetch('/api_clear_message.php', { credentials: 'include' })
+  fetch('/api/api_clear_message.php', { credentials: 'include' })
     .then(response => response.json())
     .then(data => {
       if (!data.success) {
@@ -60,7 +60,7 @@ function recuperarConversaAnterior() {
     email: email
   });
 
-  fetch(`../live_chat.php?${params.toString()}`, {
+  fetch(`../api/live_chat.php?${params.toString()}`, {
     credentials: 'include'
   })
     .then(response => response.json())
@@ -125,7 +125,7 @@ function verificarNovasMensagens() {
     email: email
   });
 
-  fetch(`../live_chat.php?${params.toString()}`, {
+  fetch(`../api/live_chat.php?${params.toString()}`, {
     credentials: 'include'
   })
     .then(response => response.json())
@@ -184,7 +184,7 @@ function enviarMensagem() {
     email: localStorage.getItem('auth_email')
   };
 
-  fetch('../live_chat.php', {
+  fetch('../api/live_chat.php', {
     method: 'POST',
     credentials: 'include',
     headers: {
@@ -237,7 +237,7 @@ function carregarConversa() {
     email: email
   });
 
-  fetch(`../live_chat.php?${params.toString()}`, {
+  fetch(`../api/live_chat.php?${params.toString()}`, {
     credentials: 'include'
   })
     .then(response => response.json())
@@ -374,7 +374,7 @@ function fecharConversa() {
         email: localStorage.getItem('auth_email')
       };
 
-      fetch('../live_chat.php', {
+      fetch('../api/live_chat.php', {
         method: 'POST',
         credentials: 'include',
         headers: {

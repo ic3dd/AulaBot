@@ -1,6 +1,6 @@
 <?php
 // Inclui verificação de autenticação para proteger a página
-require_once('../auth_check.php');
+require_once('../auth/auth_check.php');
 // Garante que o utilizador está logado antes de mostrar o conteúdo
 verificarAutenticacao();
 ?>
@@ -125,10 +125,10 @@ verificarAutenticacao();
   </footer>
 
   <!-- Scripts para funcionalidade da FAQ e do Chat -->
-  <script src="../toast-notifications.js"></script>
+  <script src="../assets/js/toast-notifications.js"></script>
   <script src="ajuda.js"></script>
   <script src="chat-ajuda.js"></script>
-  <script src="../monitor_site_bloqueio.js"></script>
+  <script src="../assets/js/monitor_site_bloqueio.js"></script>
 
   <div id="toast-container" class="toast-container"></div>
 

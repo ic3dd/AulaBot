@@ -82,18 +82,18 @@ if (!$email || !$password) {
 
 try {
     $sql = "SELECT id_utilizador, nome, palavra_passe, tipo, bloqueado, motivo_bloqueio FROM utilizador WHERE email = ?";
-    $stmt = mysqli_prepare($con, $sql);
+    $stmt = db_prepare($con, $sql);
     
     if (!$stmt) {
-        throw new Exception('Erro ao preparar query: ' . mysqli_error($con));
+        throw new Exception('Erro ao preparar query: ' . db_error($con));
     }
     
-    mysqli_stmt_bind_param($stmt, "s", $email);
-    mysqli_stmt_execute($stmt);
-    $result = mysqli_stmt_get_result($stmt);
+    db_stmt_bind_param($stmt, "s", $email);
+    db_stmt_execute($stmt);
+    $result = db_stmt_get_result($stmt);
 
-    if (mysqli_num_rows($result) === 1) {
-        $user = mysqli_fetch_assoc($result);
+    if (db_num_rows($result) === 1) {
+        $user = db_fetch_assoc($result);
 
         if ($user['bloqueado'] == 1) {
             $motivo = $user['motivo_bloqueio'] ?? 'Bloqueio administrativo';
@@ -124,33 +124,33 @@ try {
                 try {
                     $ip_address = getIpAddress();
                     $sqlReg = "INSERT INTO registo (reg, data, id_utilizador) VALUES ('login', NOW(), ?)";
-                    $stmtReg = mysqli_prepare($con, $sqlReg);
+                    $stmtReg = db_prepare($con, $sqlReg);
                     if ($stmtReg) {
-                        mysqli_stmt_bind_param($stmtReg, "i", $user['id_utilizador']);
-                        mysqli_stmt_execute($stmtReg);
-                        mysqli_stmt_close($stmtReg);
+                        db_stmt_bind_param($stmtReg, "i", $user['id_utilizador']);
+                        db_stmt_execute($stmtReg);
+                        db_stmt_close($stmtReg);
                     }
                 } catch (Exception $e) { /* Ignora erro de log */ }
 
                 // Disciplinas (Lógica mantida)
                 $sqlCheckDisciplinas = "SELECT tema_escola FROM utilizador WHERE id_utilizador = ?";
-                $stmtCheck = mysqli_prepare($con, $sqlCheckDisciplinas);
-                mysqli_stmt_bind_param($stmtCheck, "i", $user['id_utilizador']);
-                mysqli_stmt_execute($stmtCheck);
-                $resultCheck = mysqli_stmt_get_result($stmtCheck);
-                $rowCheck = mysqli_fetch_assoc($resultCheck);
+                $stmtCheck = db_prepare($con, $sqlCheckDisciplinas);
+                db_stmt_bind_param($stmtCheck, "i", $user['id_utilizador']);
+                db_stmt_execute($stmtCheck);
+                $resultCheck = db_stmt_get_result($stmtCheck);
+                $rowCheck = db_fetch_assoc($resultCheck);
                 
                 if (empty($rowCheck['tema_escola'])) {
                     $todasAsDisciplinas = ['portugues', 'matematica', 'fisica', 'quimica', 'biologia', 'historia', 'geografia', 'ingles', 'francés', 'artes', 'educacao_fisica', 'cidadania'];
                     $disciplinasJson = json_encode($todasAsDisciplinas, JSON_UNESCAPED_UNICODE);
                     
                     $sqlUpdate = "UPDATE utilizador SET tema_escola = ? WHERE id_utilizador = ?";
-                    $stmtUpdate = mysqli_prepare($con, $sqlUpdate);
-                    mysqli_stmt_bind_param($stmtUpdate, "si", $disciplinasJson, $user['id_utilizador']);
-                    mysqli_stmt_execute($stmtUpdate);
-                    mysqli_stmt_close($stmtUpdate);
+                    $stmtUpdate = db_prepare($con, $sqlUpdate);
+                    db_stmt_bind_param($stmtUpdate, "si", $disciplinasJson, $user['id_utilizador']);
+                    db_stmt_execute($stmtUpdate);
+                    db_stmt_close($stmtUpdate);
                 }
-                mysqli_stmt_close($stmtCheck);
+                db_stmt_close($stmtCheck);
 
                 // Forçar a escrita da sessão antes de enviar o JSON
                 session_write_close();
@@ -166,10 +166,10 @@ try {
         respondJson(false, 'Email não encontrado.', [], 404);
     }
     
-    mysqli_stmt_close($stmt);
+    db_stmt_close($stmt);
 } catch (Exception $e) {
     respondJson(false, 'Erro no servidor: ' . $e->getMessage(), [], 500);
 }
 
-if (isset($con) && $con) mysqli_close($con);
+if (isset($con) && $con) db_close($con);
 ?>

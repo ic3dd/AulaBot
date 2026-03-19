@@ -18,3 +18,4 @@ Thumbs.db
 .env.local
 *config_local*
 config_secrets.php
+config/config_secrets.php

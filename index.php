@@ -27,42 +27,37 @@ $autenticado = true;
 // =================================================================================
 
 // 3. CONEXÃO À BASE DE DADOS E SEGURANÇA
-// Carrega verificações de bloqueio (se existir)
-if (file_exists(__DIR__ . '/bloqueio_check.php')) {
-    require_once __DIR__ . '/bloqueio_check.php';
+if (file_exists(__DIR__ . '/config/bloqueio_check.php')) {
+    require_once __DIR__ . '/config/bloqueio_check.php';
 }
-
-// Garante conexão à BD
 if (!isset($con) || !$con) {
-    if (file_exists(__DIR__ . '/ligarbd.php')) {
-        require_once __DIR__ . '/ligarbd.php';
+    if (file_exists(__DIR__ . '/config/ligarbd.php')) {
+        require_once __DIR__ . '/config/ligarbd.php';
     } else {
-        die("Erro Crítico: Ficheiro ligarbd.php não encontrado.");
+        die("Erro Crítico: Ficheiro config/ligarbd.php não encontrado.");
     }
 }
 
 // 4. VERIFICAR MENSAGENS NÃO LIDAS (SUPORTE)
 $tem_mensagem_nao_lida = false;
-$emailUtilizador = mysqli_real_escape_string($con, $_SESSION['email']);
+$emailUtilizador = db_real_escape_string($con, $_SESSION['email']);
 
-// Criar coluna se não existir
-$checkMsgColumn = mysqli_query($con, "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME='utilizador' AND COLUMN_NAME='mensagem'");
-if ($checkMsgColumn && mysqli_num_rows($checkMsgColumn) === 0) {
-    mysqli_query($con, "ALTER TABLE utilizador ADD COLUMN mensagem TINYINT DEFAULT 0");
+if (!db_column_exists($con, 'utilizador', 'mensagem')) {
+    db_query($con, db_sql_add_column('utilizador', 'mensagem', 'TINYINT DEFAULT 0'));
 }
 
 $queryMsg = "SELECT mensagem FROM utilizador WHERE email = '$emailUtilizador' LIMIT 1";
-$resultadoMsg = mysqli_query($con, $queryMsg);
-if ($resultadoMsg && mysqli_num_rows($resultadoMsg) > 0) {
-    $rowMsg = mysqli_fetch_assoc($resultadoMsg);
+$resultadoMsg = db_query($con, $queryMsg);
+if ($resultadoMsg && db_num_rows($resultadoMsg) > 0) {
+    $rowMsg = db_fetch_assoc($resultadoMsg);
     if (isset($rowMsg['mensagem']) && $rowMsg['mensagem'] == 1) {
         $tem_mensagem_nao_lida = true;
     }
 }
 
 // 5. INICIALIZAR NOTIFICAÇÕES (AJAX/JS)
-if (file_exists(__DIR__ . '/init_notificacoes.php')) {
-    @include_once __DIR__ . '/init_notificacoes.php';
+if (file_exists(__DIR__ . '/scripts/init_notificacoes.php')) {
+    @include_once __DIR__ . '/scripts/init_notificacoes.php';
 }
 
 // 6. SISTEMA DE ANÚNCIOS E ATUALIZAÇÕES
@@ -80,23 +75,22 @@ $colunas = [
 ];
 
 foreach ($colunas as $coluna => $tipo) {
-    $checkColumn = mysqli_query($con, "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME='utilizador' AND COLUMN_NAME='$coluna'");
-    if ($checkColumn && mysqli_num_rows($checkColumn) === 0) {
-        mysqli_query($con, "ALTER TABLE utilizador ADD COLUMN $coluna $tipo");
+    if (!db_column_exists($con, 'utilizador', $coluna)) {
+        db_query($con, db_sql_add_column('utilizador', $coluna, $tipo));
     }
 }
 
 // 6.2 Buscar preferências do utilizador
 $queryPreferencias = "SELECT notif_atualizacoes, notif_manutencao, notif_novidades, notif_seguranca, notif_performance FROM utilizador WHERE email = '$emailUtilizador' LIMIT 1";
-$resultadoPreferencias = mysqli_query($con, $queryPreferencias);
+$resultadoPreferencias = db_query($con, $queryPreferencias);
 
 $preferencias = [
     'notif_atualizacoes' => 1, 'notif_manutencao' => 1, 'notif_novidades' => 1, 
     'notif_seguranca' => 1, 'notif_performance' => 0
 ];
 
-if ($resultadoPreferencias && mysqli_num_rows($resultadoPreferencias) > 0) {
-    $rowPref = mysqli_fetch_assoc($resultadoPreferencias);
+if ($resultadoPreferencias && db_num_rows($resultadoPreferencias) > 0) {
+    $rowPref = db_fetch_assoc($resultadoPreferencias);
     foreach ($preferencias as $key => $val) {
         if (isset($rowPref[$key])) $preferencias[$key] = (int)$rowPref[$key];
     }
@@ -111,18 +105,17 @@ $mapa_tema_preferencia = [
 ];
 
 // 6.3 Buscar Updates Recentes (Últimas 24h)
-$checkTemaColumn = mysqli_query($con, "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME='updates' AND COLUMN_NAME='tema'");
-$temTema = ($checkTemaColumn && mysqli_num_rows($checkTemaColumn) > 0);
+$temTema = db_column_exists($con, 'updates', 'tema');
 
-$sqlUpdates = "SELECT id_update, nome, versao, descricao, data_update " . ($temTema ? ", tema" : "") . " FROM updates WHERE data_update > DATE_SUB(NOW(), INTERVAL 24 HOUR) ORDER BY data_update DESC LIMIT 20";
-$resultadoAtualizacaoPublica = mysqli_query($con, $sqlUpdates);
+$sqlUpdates = "SELECT id_update, nome, versao, descricao, data_update " . ($temTema ? ", tema" : "") . " FROM updates WHERE data_update > " . db_sql_date_sub('24 HOUR') . " ORDER BY data_update DESC LIMIT 20";
+$resultadoAtualizacaoPublica = db_query($con, $sqlUpdates);
 
-if ($resultadoAtualizacaoPublica && mysqli_num_rows($resultadoAtualizacaoPublica) > 0) {
+if ($resultadoAtualizacaoPublica && db_num_rows($resultadoAtualizacaoPublica) > 0) {
     // Buscar ID numérico do utilizador para a tabela de vistos
-    $resId = mysqli_query($con, "SELECT id_utilizador FROM utilizador WHERE email = '$emailUtilizador' LIMIT 1");
-    $idUtilizador = ($resId && mysqli_num_rows($resId) > 0) ? (int)mysqli_fetch_assoc($resId)['id_utilizador'] : 0;
+    $resId = db_query($con, "SELECT id_utilizador FROM utilizador WHERE email = '$emailUtilizador' LIMIT 1");
+    $idUtilizador = ($resId && db_num_rows($resId) > 0) ? (int)db_fetch_assoc($resId)['id_utilizador'] : 0;
     
-    while ($row = mysqli_fetch_assoc($resultadoAtualizacaoPublica)) {
+    while ($row = db_fetch_assoc($resultadoAtualizacaoPublica)) {
         $idUpdate = (int)$row['id_update'];
         $temaDaAtualizacao = isset($row['tema']) ? $row['tema'] : 'atualizacoes';
         $colunaDaTema = $mapa_tema_preferencia[$temaDaAtualizacao] ?? 'notif_atualizacoes';
@@ -132,10 +125,10 @@ if ($resultadoAtualizacaoPublica && mysqli_num_rows($resultadoAtualizacaoPublica
         
         // Verificar se já viu este anúncio
         $queryVerificar = "SELECT data_visualizacao FROM anuncios_vistos WHERE id_utilizador = $idUtilizador AND id_update = $idUpdate";
-        $resultadoVerificar = mysqli_query($con, $queryVerificar);
+        $resultadoVerificar = db_query($con, $queryVerificar);
         
         // Se não houver registo de visualização, mostra o anúncio
-        if ($resultadoVerificar && mysqli_num_rows($resultadoVerificar) === 0) {
+        if ($resultadoVerificar && db_num_rows($resultadoVerificar) === 0) {
             $ultimaAtualizacaoPublica = $row;
             $mostrarAnuncio = true;
             break; // Mostra apenas 1 (o mais recente)
@@ -152,13 +145,13 @@ if ($resultadoAtualizacaoPublica && mysqli_num_rows($resultadoAtualizacaoPublica
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="AulaBot - Assistente Educacional para estudantes">
     <title>AulaBot - Assistente Educacional</title>
-    <link rel="icon" href="nova-logo-removebg.png">
+    <link rel="icon" href="assets/img/nova-logo-removebg.png">
     <link rel="shortcut icon" href="data:image/x-icon;base64,AAABAAEAEBAQAAEABACoBAAA">
     
     <!-- Folhas de estilo CSS para o design da aplicação -->
-    <link rel="stylesheet" href="style.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="assets/css/style.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="conta/criarconta.css">
-    <link rel="stylesheet" href="perfil.css">
+    <link rel="stylesheet" href="assets/css/perfil.css">
     <!-- FontAwesome para ícones -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
@@ -379,7 +372,7 @@ if ($resultadoAtualizacaoPublica && mysqli_num_rows($resultadoAtualizacaoPublica
         <!-- Cabeçalho da barra lateral com logo e botão de nova conversa -->
         <div class="cabecalho-lateral">
             <div class="logo">
-                <img src="nova-logo-removebg.png" alt="Logo do AulaBot" class="logo-imagem">
+                <img src="assets/img/nova-logo-removebg.png" alt="Logo do AulaBot" class="logo-imagem">
                 <h2>AulaBot</h2>
             </div>
             <button class="botao-nova-conversa" aria-label="Iniciar nova conversa">
@@ -395,18 +388,18 @@ if ($resultadoAtualizacaoPublica && mysqli_num_rows($resultadoAtualizacaoPublica
                 // Listar chats do utilizador (ou chats anónimos se id_utilizador = 0)
                 $idUtilizadorQuery = 0;
                 if (isset($_SESSION['email'])) {
-                    $emailEsc = mysqli_real_escape_string($con, $_SESSION['email']);
-                    $resId = mysqli_query($con, "SELECT id_utilizador FROM utilizador WHERE email = '$emailEsc' LIMIT 1");
-                    if ($resId && mysqli_num_rows($resId) > 0) {
-                        $rowId = mysqli_fetch_assoc($resId);
+                    $emailEsc = db_real_escape_string($con, $_SESSION['email']);
+                    $resId = db_query($con, "SELECT id_utilizador FROM utilizador WHERE email = '$emailEsc' LIMIT 1");
+                    if ($resId && db_num_rows($resId) > 0) {
+                        $rowId = db_fetch_assoc($resId);
                         $idUtilizadorQuery = (int)$rowId['id_utilizador'];
                     }
                 }
 
                 $sqlChats = "SELECT id_chat, titulo, data_atualizacao FROM chats WHERE id_utilizador = $idUtilizadorQuery ORDER BY data_atualizacao DESC LIMIT 50";
-                $resChats = mysqli_query($con, $sqlChats);
-                if ($resChats && mysqli_num_rows($resChats) > 0) {
-                    while ($chat = mysqli_fetch_assoc($resChats)) {
+                $resChats = db_query($con, $sqlChats);
+                if ($resChats && db_num_rows($resChats) > 0) {
+                    while ($chat = db_fetch_assoc($resChats)) {
                         $idc = (int)$chat['id_chat'];
                         $titulo = htmlspecialchars($chat['titulo']);
                         echo "<li class=\"item-historico\" data-id=\"$idc\">";
@@ -1063,10 +1056,10 @@ if ($resultadoAtualizacaoPublica && mysqli_num_rows($resultadoAtualizacaoPublica
     <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
 
     <!-- Scripts JavaScript externos para funcionalidades da aplicação -->
-    <script src="toast-notifications.js?v=<?php echo time(); ?>"></script>
-    <script src="reactive.js?v=<?php echo time(); ?>"></script>
+    <script src="assets/js/toast-notifications.js?v=<?php echo time(); ?>"></script>
+    <script src="assets/js/reactive.js?v=<?php echo time(); ?>"></script>
     <script src="conta/criarconta.js?v=<?php echo time(); ?>"></script>
-    <script src="personalizacao.js?v=<?php echo time(); ?>"></script>
+    <script src="assets/js/personalizacao.js?v=<?php echo time(); ?>"></script>
     <script src="aba-ajuda/check_unread.js?v=<?php echo time(); ?>"></script>
     
     <script>
@@ -1089,9 +1082,9 @@ if ($resultadoAtualizacaoPublica && mysqli_num_rows($resultadoAtualizacaoPublica
             localStorage.removeItem('chat_ajuda_conversation_id');
             // Se possível, enviar id via querystring para garantir que o servidor sabe quem fez logout
             if (authId) {
-                window.location.href = 'logout.php?id=' + encodeURIComponent(authId);
+                window.location.href = 'auth/logout.php?id=' + encodeURIComponent(authId);
             } else {
-                window.location.href = 'logout.php';
+                window.location.href = 'auth/logout.php';
             }
         }
 
@@ -1232,7 +1225,7 @@ if ($resultadoAtualizacaoPublica && mysqli_num_rows($resultadoAtualizacaoPublica
                     confirmarExclusao.disabled = true;
                     
                     // Redirecionar diretamente para o arquivo de exclusão
-                    window.location.href = 'deletar_conta.php';
+                    window.location.href = 'auth/deletar_conta.php';
                 });
             } else {
                 console.error('Botão de confirmar exclusão não encontrado');
@@ -1292,6 +1285,42 @@ if ($resultadoAtualizacaoPublica && mysqli_num_rows($resultadoAtualizacaoPublica
                 cancelTrocarPassword.addEventListener('click', function() {
                     popupTrocarPassword.style.display = 'none';
                     if (popupOpcoes) popupOpcoes.style.display = 'block';
+                });
+            }
+
+            const trocarPasswordForm = document.getElementById('trocarPasswordForm');
+            if (trocarPasswordForm) {
+                trocarPasswordForm.addEventListener('submit', async function(e) {
+                    e.preventDefault();
+                    const current = document.getElementById('current_password')?.value || '';
+                    const newPwd = document.getElementById('new_password')?.value || '';
+                    const confirm = document.getElementById('confirm_password')?.value || '';
+                    if (newPwd !== confirm) {
+                        if (typeof showToast === 'function') showToast('error', 'As palavras-passe não coincidem');
+                        return;
+                    }
+                    const btn = trocarPasswordForm.querySelector('button[type="submit"]');
+                    const orig = btn?.innerHTML;
+                    if (btn) { btn.disabled = true; btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> A alterar...'; }
+                    try {
+                        const fd = new FormData();
+                        fd.append('current_password', current);
+                        fd.append('new_password', newPwd);
+                        const res = await fetch('auth/change_password.php', { method: 'POST', body: fd });
+                        const data = await res.json();
+                        if (data.sucesso) {
+                            if (typeof showToast === 'function') showToast('success', 'Palavra-passe alterada com sucesso!');
+                            trocarPasswordForm.reset();
+                            popupTrocarPassword.style.display = 'none';
+                            if (popupOpcoes) popupOpcoes.style.display = 'block';
+                        } else {
+                            if (typeof showToast === 'function') showToast('error', data.erro || 'Erro ao alterar');
+                        }
+                    } catch (err) {
+                        if (typeof showToast === 'function') showToast('error', 'Erro ao alterar palavra-passe');
+                    } finally {
+                        if (btn) { btn.disabled = false; btn.innerHTML = orig || 'Alterar'; }
+                    }
                 });
             }
 
@@ -1466,7 +1495,7 @@ if ($resultadoAtualizacaoPublica && mysqli_num_rows($resultadoAtualizacaoPublica
                         notif_performance: document.getElementById('notif-performance').checked
                     };
 
-                    const response = await fetch('salvar_notificacoes.php', {
+                    const response = await fetch('scripts/salvar_notificacoes.php', {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify(preferencias)
@@ -1497,7 +1526,7 @@ if ($resultadoAtualizacaoPublica && mysqli_num_rows($resultadoAtualizacaoPublica
             // Função para carregar preferências de notificações
             async function carregarPreferenciasNotificacoes() {
                 try {
-                    const response = await fetch('carregar_notificacoes.php');
+                    const response = await fetch('scripts/carregar_notificacoes.php');
                     const data = await response.json();
 
                     if (response.ok && data.success) {
@@ -1593,7 +1622,7 @@ if ($resultadoAtualizacaoPublica && mysqli_num_rows($resultadoAtualizacaoPublica
                     const checkboxes = disciplinaForm.querySelectorAll('input[name="disciplina"]:checked');
                     const disciplina = Array.from(checkboxes).map(cb => cb.value);
 
-                    const response = await fetch('salvar_materias.php', {
+                    const response = await fetch('scripts/salvar_materias.php', {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({ disciplina: disciplina })
@@ -1626,7 +1655,7 @@ if ($resultadoAtualizacaoPublica && mysqli_num_rows($resultadoAtualizacaoPublica
             // Função para carregar disciplinas selecionadas
             async function carregarDisciplinasSelecionadas() {
                 try {
-                    const response = await fetch('carregar_materias.php');
+                    const response = await fetch('scripts/carregar_materias.php');
                     const data = await response.json();
 
                     if (response.ok && data.success) {
@@ -1713,7 +1742,7 @@ if ($resultadoAtualizacaoPublica && mysqli_num_rows($resultadoAtualizacaoPublica
                         formData.append('confirmar_novo_email', confirmarNovoEmail);
                         formData.append('password_para_email', password);
                         
-                        const response = await fetch('trocar_email.php', {
+                        const response = await fetch('auth/trocar_email.php', {
                             method: 'POST',
                             body: formData
                         });
@@ -1799,7 +1828,7 @@ document.addEventListener('DOMContentLoaded', function() {
             localStorage.setItem(storageKey, signature);
         } catch (e) {}
         
-        fetch('marcar_anuncio_visto.php', {
+        fetch('scripts/marcar_anuncio_visto.php', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded',
@@ -1879,7 +1908,7 @@ function renomearChat(chatId) {
         }
         
         // Fazer requisição
-        fetch('api_renomear_chat.php', {
+        fetch('api/api_renomear_chat.php', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -1958,7 +1987,7 @@ function eliminarChat(chatId) {
         confirmBtn.disabled = true;
         confirmBtn.textContent = 'Eliminando...';
         
-        fetch('api_eliminar_chat.php', {
+        fetch('api/api_eliminar_chat.php', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -2038,7 +2067,7 @@ function eliminarChat(chatId) {
 
             if (ajudaLink) {
                 setInterval(async function() {
-                    const data = await safeFetchJson('api_check_message.php', { cache: 'no-store' }, { mensagem: 0 });
+                    const data = await safeFetchJson('api/api_check_message.php', { cache: 'no-store' }, { mensagem: 0 });
                     const existingBadge = ajudaLink.querySelector('.notification-badge');
                     if (data.mensagem == 1) {
                         if (!existingBadge) {

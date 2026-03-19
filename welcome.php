@@ -23,8 +23,8 @@ if (empty($_SESSION['ip_protected_hash'])) {
   <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
   <title>AulaBot - Estuda com IA Gratuitamente</title>
 
-  <link rel="icon" href="nova-logo-removebg.png">
-  <link rel="shortcut icon" href="nova-logo-removebg.png">
+  <link rel="icon" href="assets/img/nova-logo-removebg.png">
+  <link rel="shortcut icon" href="assets/img/nova-logo-removebg.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -1364,7 +1364,7 @@ if (empty($_SESSION['ip_protected_hash'])) {
             <button class="flip-card__btn" type="submit">Entrar</button>
           </form>
           <div style="text-align: center; margin-top: 12px;">
-            <a href="pedido_reset.html"
+            <a href="conta/pedido_reset.html"
               style="color: var(--primary); text-decoration: none; font-size: 12px; display: inline-block;">Esqueci a
               palavra-passe</a>
           </div>
@@ -1538,7 +1538,7 @@ if (empty($_SESSION['ip_protected_hash'])) {
       const loadingMsgRow = appendBotMessage('<i class="fa-solid fa-ellipsis fa-fade"></i>');
 
       try {
-        const res = await fetch('api_chat.php', {
+        const res = await fetch('api/api_chat.php', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ message: txt, anonymousId: anonymousId, modo_demo: true })
