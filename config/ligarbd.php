@@ -29,6 +29,10 @@ if (!defined('SUPABASE_DB_URL') && getenv('SUPABASE_DB_URL') !== false) {
 if (defined('USE_SUPABASE') && USE_SUPABASE && defined('SUPABASE_DB_URL') && SUPABASE_DB_URL) {
     try {
         $url = SUPABASE_DB_URL;
+        // Converter conexão direta (db.xxx.supabase.co) para pooler - evita "Network unreachable" em redes que bloqueiam IPv6/5432
+        if (preg_match('#postgres(?:ql)?://postgres:([^@]+)@db\.([a-z0-9]+)\.supabase\.co(?::\d+)?/(.+)#', $url, $direct)) {
+            $url = sprintf('postgresql://postgres.%s:%s@aws-1-eu-west-1.pooler.supabase.com:6543/%s', $direct[2], $direct[1], $direct[3]);
+        }
         if (preg_match('#postgres(?:ql)?://([^:]+):([^@]+)@([^:/]+)(?::(\d+))?/(.+)#', $url, $m)) {
             $user = $m[1];
             $pass = $m[2];
