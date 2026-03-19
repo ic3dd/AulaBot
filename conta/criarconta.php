@@ -71,8 +71,8 @@ try {
     }
     db_stmt_close($stmt);
 
-    // Preparar dados para inserção
-    $hash = substr(md5($password), 0, 12); // Hash compatível com o teu login.php
+    // Preparar dados para inserção (hash seguro com bcrypt)
+    $hash = password_hash($password, PASSWORD_DEFAULT);
     $tipo = 'utilizador';
     $ip_address = getIpAddress(); // Usado apenas para log interno
 

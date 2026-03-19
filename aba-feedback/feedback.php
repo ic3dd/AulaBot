@@ -129,7 +129,7 @@ $emailUtilizador = htmlspecialchars($dadosUtilizador['email']);
     <div id="mensagem" class="mensagem"></div>
   </main>
   <script src="feedback.js"></script>
-  <script src="../monitor_site_bloqueio.js"></script>
+  <script src="../assets/js/monitor_site_bloqueio.js"></script>
 
 </body>
 

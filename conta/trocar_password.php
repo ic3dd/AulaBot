@@ -82,7 +82,7 @@ try {
         respondJson(false, 'A palavra-passe atual não está correta. Verifique e tente novamente.', 403);
     }
 
-    $nova_password_hash = substr(md5($nova_password), 0, 12);
+    $nova_password_hash = password_hash($nova_password, PASSWORD_DEFAULT);
 
     $sql_update = "UPDATE utilizador SET palavra_passe = ? WHERE email = ?";
     $stmt_update = db_prepare($con, $sql_update);

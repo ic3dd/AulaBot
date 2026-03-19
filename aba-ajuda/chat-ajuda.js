@@ -24,7 +24,7 @@ function abrirChat() {
   modalElement.classList.add('ativo');
 
   // Clear the new message notification
-  fetch('/api/api_clear_message.php', { credentials: 'include' })
+  fetch('../api/api_clear_message.php', { credentials: 'include' })
     .then(response => response.json())
     .then(data => {
       if (!data.success) {

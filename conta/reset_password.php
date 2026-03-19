@@ -57,7 +57,7 @@ try {
     $user_email = $user['email'];
     db_stmt_close($stmt);
 
-    $password_hash = substr(md5($nova_password), 0, 12);
+    $password_hash = password_hash($nova_password, PASSWORD_DEFAULT);
 
     $sql_update = "UPDATE utilizador SET palavra_passe = ?, reset_token = NULL, reset_token_expiry = NULL WHERE email = ?";
     $stmt_update = db_prepare($con, $sql_update);

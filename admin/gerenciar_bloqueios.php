@@ -1,10 +1,11 @@
 <?php
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
+ob_start();
 session_start();
 
 header('Content-Type: application/json; charset=utf-8');
-ob_clean();
+if (ob_get_length()) ob_clean();
 
 function respondJson($success, $message = '', $data = [], $httpCode = 200) {
     http_response_code($httpCode);

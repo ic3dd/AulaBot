@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Use safeFetchJson to handle non-JSON responses or HTTP errors gracefully
         (async function() {
             try {
-                const res = await fetch('api_check_unread.php', { cache: 'no-store' });
+                const res = await fetch('api/api_check_unread.php', { cache: 'no-store' });
                 if (!res.ok) {
                     const txt = await res.text().catch(() => '');
                     console.error('api_check_unread.php HTTP', res.status, txt);

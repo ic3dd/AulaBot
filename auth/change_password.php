@@ -65,7 +65,7 @@ if (!$verified) {
     respondJson(false, 'A palavra-passe atual não está correta.', 403);
 }
 
-$new_hash = substr(md5($new), 0, 12);
+$new_hash = password_hash($new, PASSWORD_DEFAULT);
 $stmt2 = db_prepare($con, "UPDATE utilizador SET palavra_passe = ? WHERE email = ?");
 if (!$stmt2 || !db_stmt_bind_param($stmt2, "ss", $new_hash, $email) || !db_stmt_execute($stmt2)) {
     respondJson(false, 'Erro ao alterar palavra-passe.', 500);

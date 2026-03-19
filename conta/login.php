@@ -102,14 +102,14 @@ try {
         } else {
             $password_verified = false;
             
-            // Verificação de password (Plain text, MD5 ou Hash seguro)
-            if ($password === $user['palavra_passe']) {
+            // Verificação de password (password_hash primeiro; compatível com MD5/texto antigos)
+            if (password_verify($password, $user['palavra_passe'])) {
+                $password_verified = true;
+            } elseif ($password === $user['palavra_passe']) {
                 $password_verified = true;
             } elseif (md5($password) === $user['palavra_passe']) {
                 $password_verified = true;
             } elseif (substr(md5($password), 0, 12) === $user['palavra_passe']) {
-                $password_verified = true;
-            } elseif (password_verify($password, $user['palavra_passe'])) {
                 $password_verified = true;
             }
             

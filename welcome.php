@@ -1358,7 +1358,7 @@ if (empty($_SESSION['ip_protected_hash'])) {
       <div class="form-container">
         <div class="form-card" id="login-form">
           <div class="title">Entrar</div>
-          <form class="flip-card__form" action="/conta/login.php" method="POST">
+          <form class="flip-card__form" action="conta/login.php" method="POST">
             <input class="flip-card__input" name="email" placeholder="Email" type="email" required>
             <input class="flip-card__input" name="password" placeholder="Palavra-passe" type="password" required>
             <button class="flip-card__btn" type="submit">Entrar</button>
@@ -1372,7 +1372,7 @@ if (empty($_SESSION['ip_protected_hash'])) {
 
         <div class="form-card" id="signup-form">
           <div class="title">Criar Conta</div>
-          <form class="flip-card__form" action="/conta/criarconta.php" method="POST"
+          <form class="flip-card__form" action="conta/criarconta.php" method="POST"
             onsubmit="return document.getElementById('termosCheck').checked;">
             <input class="flip-card__input" placeholder="Nome" name="nome" type="text" required>
             <input class="flip-card__input" name="email" placeholder="Email" type="email" required>

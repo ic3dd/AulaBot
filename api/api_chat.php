@@ -127,17 +127,20 @@ try {
     // 4. LIGAÇÃO BD E INPUTS
     // ---------------------------------------------------------------------------------
 
-    if (file_exists('ligarbd.php'))
+    if (file_exists(__DIR__ . '/../ligarbd.php'))
         require_once(__DIR__ . '/../ligarbd.php');
     if (!isset($con) && isset($conn))
         $con = $conn;
 
-    if (!isset($con) || !$con instanceof mysqli) {
+    if (!isset($con) || (!$con instanceof mysqli && !$con instanceof PDO)) {
         throw new Exception("Falha de conexão BD.");
     }
 
     db_set_charset($con, "utf8mb4");
-    criarTabelasSeNaoExistir($con);
+    // Só cria tabelas em MySQL; no Supabase o schema já existe (supabase_schema.sql)
+    if (!defined('DB_IS_POSTGRES') || !DB_IS_POSTGRES) {
+        criarTabelasSeNaoExistir($con);
+    }
 
     // Recebe o JSON do frontend
     $inputRaw = file_get_contents('php://input');
