@@ -1,0 +1,11 @@
+.git
+.gitignore
+.env
+.env.*
+*.log
+.idea
+.vscode
+config_secrets.php
+config/config_secrets.php
+node_modules
+*.md

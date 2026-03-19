@@ -1,0 +1,17 @@
+# Render Blueprint - AulaBot
+# Permite deploy com um clique a partir do repositório
+services:
+  - type: web
+    name: aulabot
+    runtime: docker
+    envVars:
+      - key: USE_SUPABASE
+        sync: false
+      - key: SUPABASE_DB_URL
+        sync: false
+      - key: GROQ_API_KEY
+        sync: false
+      - key: IP_SECRET_PEPPER
+        generateValue: true
+      - key: DEBUG_ENDPOINT_TOKEN
+        generateValue: true

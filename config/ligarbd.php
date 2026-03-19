@@ -18,6 +18,14 @@ if (file_exists(__DIR__ . '/config_secrets.php')) {
     require_once __DIR__ . '/../config_secrets.php';
 }
 
+// Variáveis de ambiente (Render, etc.) - usadas quando config_secrets não existe
+if (!defined('USE_SUPABASE') && getenv('USE_SUPABASE') !== false) {
+    define('USE_SUPABASE', in_array(strtolower((string)getenv('USE_SUPABASE')), ['true', '1', 'yes'], true));
+}
+if (!defined('SUPABASE_DB_URL') && getenv('SUPABASE_DB_URL') !== false) {
+    define('SUPABASE_DB_URL', getenv('SUPABASE_DB_URL'));
+}
+
 if (defined('USE_SUPABASE') && USE_SUPABASE && defined('SUPABASE_DB_URL') && SUPABASE_DB_URL) {
     try {
         $url = SUPABASE_DB_URL;
